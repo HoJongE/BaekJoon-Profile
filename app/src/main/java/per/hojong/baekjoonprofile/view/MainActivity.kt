@@ -8,11 +8,15 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.*
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Warning
 import androidx.compose.runtime.*
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.scale
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.compose.ui.layout.ContentScale
@@ -25,31 +29,38 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.ViewModelProvider
 import kotlinx.coroutines.launch
 import per.hojong.baekjoonprofile.R
+import per.hojong.baekjoonprofile.ui.theme.BackgroundColor
 import per.hojong.baekjoonprofile.ui.theme.BaekJoonProfileTheme
 import per.hojong.baekjoonprofile.ui.theme.Gray
+import per.hojong.baekjoonprofile.viewmodel.LoginViewModel
 
 class MainActivity : ComponentActivity() {
+    val loginViewModel: LoginViewModel by lazy {
+        ViewModelProvider(this).get(LoginViewModel::class.java)
+    }
+
     @ExperimentalComposeUiApi
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            ContentView()
+            ContentView(loginViewModel = loginViewModel)
         }
     }
 }
 
 @ExperimentalComposeUiApi
 @Composable
-fun ContentView() {
+fun ContentView(loginViewModel: LoginViewModel) {
     BaekJoonProfileTheme {
         // A surface container using the 'background' color from the theme
         Surface(
             color = MaterialTheme.colors.background,
             modifier = Modifier.fillMaxSize()
         ) {
-            LoginView()
+            LoginView(loginViewModel = loginViewModel)
         }
     }
 
@@ -57,14 +68,12 @@ fun ContentView() {
 
 @ExperimentalComposeUiApi
 @Composable
-fun LoginView() {
+fun LoginView(loginViewModel: LoginViewModel) {
     val id = remember {
         mutableStateOf("")
     }
-    val coroutineScope = rememberCoroutineScope()
-    val scaffoldState = rememberScaffoldState()
+
     Scaffold(
-        scaffoldState = scaffoldState
     ) {
         Column(
             modifier = Modifier.fillMaxSize(),
@@ -81,22 +90,29 @@ fun LoginView() {
             )
             Spacer(modifier = Modifier.fillMaxHeight(0.1f))
             BodyText(value = stringResource(id = R.string.login_description))
-            RoundTextField(8.dp, "ID", id)
+            RoundTextField(8.dp, "ID", id, isError = loginViewModel.profileLoadingError)
             Spacer(modifier = Modifier.fillMaxHeight(0.1f))
-            RoundButton(null, value = stringResource(id = R.string.login)) {
-                coroutineScope.launch {
-                    scaffoldState.snackbarHostState.showSnackbar(
-                        "버튼 클릭!"
-                    )
-                }
+            RoundLoadingButton(
+                value = stringResource(id = R.string.login),
+                loading = loginViewModel.profileLoadingState,
+                backgroundColor = BackgroundColor,
+                disabledBackgroundColor = BackgroundColor
+            ) {
+                loginViewModel.getProfile(id = id.value)
             }
+
         }
     }
 }
 
 @ExperimentalComposeUiApi
 @Composable
-fun RoundTextField(padding: Dp, title: String, value: MutableState<String>) {
+fun RoundTextField(
+    padding: Dp,
+    title: String,
+    value: MutableState<String>,
+    isError: Boolean = false
+) {
     val keyboardController = LocalSoftwareKeyboardController.current
     val focusManager = LocalFocusManager.current
     Row(
@@ -121,7 +137,17 @@ fun RoundTextField(padding: Dp, title: String, value: MutableState<String>) {
             keyboardActions = KeyboardActions(onDone = {
                 keyboardController?.hide()
                 focusManager.clearFocus()
-            })
+            }),
+            colors = TextFieldDefaults.textFieldColors(
+                cursorColor = Color.White,
+                textColor = Color.White
+            ),
+            isError = isError,
+            trailingIcon = {
+                if (isError) {
+                    Icon(Icons.Default.Warning, "Login Error", tint = MaterialTheme.colors.error)
+                }
+            }
         )
     }
 
@@ -132,5 +158,5 @@ fun RoundTextField(padding: Dp, title: String, value: MutableState<String>) {
 @Preview(showBackground = true, showSystemUi = true)
 @Composable
 fun DefaultPreview() {
-    ContentView()
+    ContentView(LoginViewModel())
 }
