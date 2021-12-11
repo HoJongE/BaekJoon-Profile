@@ -22,12 +22,12 @@ class LoginViewModel : ViewModel() {
             val apiService = SolvedApiService.getInstance()
             try {
                 profileResponse.value = apiService.getUserInfo(id)
+                Log.d("profile", profileResponse.toString())
                 profileLoadingError = false
             } catch (e: Exception) {
                 profileLoadingError = true
                 e.printStackTrace()
             } finally {
-                Log.d("login", profileResponse.value?.toString() ?: "fail")
                 profileLoadingState = false
             }
         }

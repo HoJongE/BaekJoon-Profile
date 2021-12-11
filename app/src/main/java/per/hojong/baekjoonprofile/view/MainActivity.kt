@@ -45,8 +45,23 @@ class MainActivity : ComponentActivity() {
     @ExperimentalComposeUiApi
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        loginViewModel.getProfile("as00098")
         setContent {
-            ContentView(loginViewModel = loginViewModel)
+            BaekJoonProfileTheme {
+                // A surface container using the 'background' color from the theme
+                Surface(
+                    color = MaterialTheme.colors.background,
+                    modifier = Modifier.fillMaxSize()
+                ) {
+                    Scaffold {
+                        if (null == loginViewModel.profileResponse.value) {
+                            ContentView(loginViewModel = loginViewModel)
+                        } else {
+                            DetailInfoView(profile = loginViewModel.profileResponse.value!!)
+                        }
+                    }
+                }
+            }
         }
     }
 }
@@ -54,17 +69,10 @@ class MainActivity : ComponentActivity() {
 @ExperimentalComposeUiApi
 @Composable
 fun ContentView(loginViewModel: LoginViewModel) {
-    BaekJoonProfileTheme {
-        // A surface container using the 'background' color from the theme
-        Surface(
-            color = MaterialTheme.colors.background,
-            modifier = Modifier.fillMaxSize()
-        ) {
-            LoginView(loginViewModel = loginViewModel)
-        }
-    }
+    LoginView(loginViewModel = loginViewModel)
 
 }
+
 
 @ExperimentalComposeUiApi
 @Composable
@@ -73,34 +81,31 @@ fun LoginView(loginViewModel: LoginViewModel) {
         mutableStateOf("")
     }
 
-    Scaffold(
-    ) {
-        Column(
-            modifier = Modifier.fillMaxSize(),
-            horizontalAlignment = Alignment.CenterHorizontally
-        ) {
-            Spacer(modifier = Modifier.fillMaxHeight(0.05f))
-            TitleText(value = stringResource(id = R.string.all_title))
-            Spacer(modifier = Modifier.fillMaxHeight(0.05f))
-            Image(
-                painterResource(id = R.drawable.app_logo),
-                contentDescription = "App Logo",
-                contentScale = ContentScale.Crop,
-                modifier = Modifier.fillMaxHeight(0.25f)
-            )
-            Spacer(modifier = Modifier.fillMaxHeight(0.1f))
-            BodyText(value = stringResource(id = R.string.login_description))
-            RoundTextField(8.dp, "ID", id, isError = loginViewModel.profileLoadingError)
-            Spacer(modifier = Modifier.fillMaxHeight(0.1f))
-            RoundLoadingButton(
-                value = stringResource(id = R.string.login),
-                loading = loginViewModel.profileLoadingState,
-                backgroundColor = BackgroundColor,
-                disabledBackgroundColor = BackgroundColor
-            ) {
-                loginViewModel.getProfile(id = id.value)
-            }
 
+    Column(
+        modifier = Modifier.fillMaxSize(),
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        Spacer(modifier = Modifier.fillMaxHeight(0.05f))
+        TitleText(value = stringResource(id = R.string.all_title))
+        Spacer(modifier = Modifier.fillMaxHeight(0.05f))
+        Image(
+            painterResource(id = R.drawable.app_logo),
+            contentDescription = "App Logo",
+            contentScale = ContentScale.Crop,
+            modifier = Modifier.fillMaxHeight(0.25f)
+        )
+        Spacer(modifier = Modifier.fillMaxHeight(0.1f))
+        BodyText(value = stringResource(id = R.string.login_description))
+        RoundTextField(8.dp, "ID", id, isError = loginViewModel.profileLoadingError)
+        Spacer(modifier = Modifier.fillMaxHeight(0.1f))
+        RoundLoadingButton(
+            value = stringResource(id = R.string.login),
+            loading = loginViewModel.profileLoadingState,
+            backgroundColor = BackgroundColor,
+            disabledBackgroundColor = BackgroundColor
+        ) {
+            loginViewModel.getProfile(id = id.value)
         }
     }
 }
