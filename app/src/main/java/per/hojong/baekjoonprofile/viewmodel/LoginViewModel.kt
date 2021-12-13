@@ -14,6 +14,7 @@ import java.lang.Exception
 
 class LoginViewModel : ViewModel() {
     val profileResponse: MutableState<Profile?> = mutableStateOf(null)
+    var loginSuccess: Boolean by mutableStateOf(false)
     var profileLoadingState: Boolean by mutableStateOf(false)
     var profileLoadingError: Boolean by mutableStateOf(false)
     fun getProfile(id: String) {
@@ -24,8 +25,10 @@ class LoginViewModel : ViewModel() {
                 profileResponse.value = apiService.getUserInfo(id)
                 Log.d("profile", profileResponse.toString())
                 profileLoadingError = false
+                loginSuccess = true
             } catch (e: Exception) {
                 profileLoadingError = true
+                loginSuccess = false
                 e.printStackTrace()
             } finally {
                 profileLoadingState = false

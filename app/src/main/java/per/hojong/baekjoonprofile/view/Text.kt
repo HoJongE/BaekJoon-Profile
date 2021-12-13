@@ -1,13 +1,19 @@
 package per.hojong.baekjoonprofile.view
 
 import android.text.TextPaint
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import per.hojong.baekjoonprofile.R
 import per.hojong.baekjoonprofile.ui.theme.GMarketSansFamily
@@ -41,6 +47,24 @@ fun ProfileNameText(value: String) {
         color = Color.White,
         fontFamily = GMarketSansFamily,
         fontWeight = FontWeight.Bold,
-        fontSize = 18.sp
+        fontSize = 18.sp,
+        modifier = Modifier.padding(8.dp)
+    )
+}
+
+@Composable
+fun ProfileBio(value: String) {
+    val bioIsEmpty = value.isEmpty()
+    Text(
+        text = if (bioIsEmpty) stringResource(id = R.string.self_description_empty) else value,
+        Modifier
+            .background(Color.White, RoundedCornerShape(8.dp))
+            .fillMaxWidth(0.85f)
+            .padding(8.dp),
+        color = if (bioIsEmpty) Gray else Color.Black,
+        textAlign = TextAlign.Start,
+        fontFamily = GMarketSansFamily,
+        fontWeight = FontWeight.Medium,
+        fontSize = 14.sp
     )
 }

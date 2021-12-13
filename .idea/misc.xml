@@ -22,6 +22,29 @@
         <entry key="../../../../../layout/compose-model-1639227326788.xml" value="0.1" />
         <entry key="../../../../../layout/compose-model-1639228095394.xml" value="0.171875" />
         <entry key="../../../../../layout/compose-model-1639228496179.xml" value="0.1" />
+        <entry key="../../../../../layout/compose-model-1639302959802.xml" value="0.45" />
+        <entry key="../../../../../layout/compose-model-1639303145570.xml" value="0.1" />
+        <entry key="../../../../../layout/compose-model-1639304708584.xml" value="0.125" />
+        <entry key="../../../../../layout/compose-model-1639304973705.xml" value="0.5" />
+        <entry key="../../../../../layout/compose-model-1639305085200.xml" value="0.25" />
+        <entry key="../../../../../layout/compose-model-1639306056618.xml" value="0.18623310810810811" />
+        <entry key="../../../../../layout/compose-model-1639306420780.xml" value="0.375" />
+        <entry key="../../../../../layout/compose-model-1639357965155.xml" value="0.1" />
+        <entry key="../../../../../layout/compose-model-1639357978516.xml" value="0.1579391891891892" />
+        <entry key="../../../../../layout/compose-model-1639372689043.xml" value="0.10430743243243243" />
+        <entry key="../../../../../layout/compose-model-1639372781747.xml" value="0.1" />
+        <entry key="../../../../../layout/compose-model-1639380266023.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/app_logo.xml" value="0.19375" />
+        <entry key="app/src/main/res/drawable/profile_tier_badge.xml" value="0.19375" />
+        <entry key="app/src/main/res/drawable/profile_tier_bronze.xml" value="0.19375" />
+        <entry key="app/src/main/res/drawable/profile_tier_diamong.xml" value="0.19375" />
+        <entry key="app/src/main/res/drawable/profile_tier_gold.xml" value="0.19375" />
+        <entry key="app/src/main/res/drawable/profile_tier_platinum.xml" value="0.1578125" />
+        <entry key="app/src/main/res/drawable/profile_tier_ruby.xml" value="0.19375" />
+        <entry key="app/src/main/res/drawable/profile_tier_silver.xml" value="0.19375" />
+        <entry key="app/src/main/res/layout/widget_baekjoon_profile.xml" value="0.4451939291736931" />
+        <entry key="app/src/main/res/layout/widget_provider.xml" value="0.10208333333333333" />
+        <entry key="app/src/main/res/xml/xml.xml" value="0.10208333333333333" />
       </map>
     </option>
   </component>
