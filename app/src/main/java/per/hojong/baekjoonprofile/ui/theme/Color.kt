@@ -1,5 +1,6 @@
 package per.hojong.baekjoonprofile.ui.theme
 
+import androidx.annotation.ColorInt
 import androidx.compose.ui.graphics.Color
 
 val Purple200 = Color(0xFFBB86FC)

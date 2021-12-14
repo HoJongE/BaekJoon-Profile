@@ -1,10 +1,13 @@
 package per.hojong.baekjoonprofile.viewmodel
 
+import android.app.Application
+import android.content.Context
 import android.util.Log
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
+import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
@@ -12,7 +15,8 @@ import per.hojong.baekjoonprofile.model.Profile
 import per.hojong.baekjoonprofile.network.SolvedApiService
 import java.lang.Exception
 
-class LoginViewModel : ViewModel() {
+class LoginViewModel(application: Application) : AndroidViewModel(application) {
+
     val profileResponse: MutableState<Profile?> = mutableStateOf(null)
     var loginSuccess: Boolean by mutableStateOf(false)
     var profileLoadingState: Boolean by mutableStateOf(false)
@@ -23,6 +27,10 @@ class LoginViewModel : ViewModel() {
             val apiService = SolvedApiService.getInstance()
             try {
                 profileResponse.value = apiService.getUserInfo(id)
+                getApplication<Application>().getSharedPreferences("profile", Context.MODE_PRIVATE)
+                    .edit()
+                    .putString("name", profileResponse.value?.handle ?: "")
+                    .apply()
                 Log.d("profile", profileResponse.toString())
                 profileLoadingError = false
                 loginSuccess = true

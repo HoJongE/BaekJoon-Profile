@@ -1,7 +1,7 @@
 package per.hojong.baekjoonprofile.model
 
-import androidx.compose.ui.graphics.Color
 import com.google.gson.annotations.SerializedName
+import per.hojong.baekjoonprofile.R
 import per.hojong.baekjoonprofile.ui.theme.*
 
 data class Profile(
@@ -31,6 +31,23 @@ data class Profile(
             else -> "Master"
         }
 
+        fun getTierColor(tier: Int) = when (tier) {
+            in 1..5 -> Bronze
+            in 6..10 -> Silver
+            in 11..15 -> Gold
+            in 16..20 -> Platinum
+            in 21..25 -> Diamond
+            else -> Ruby
+        }
+
+        fun getTierColorId(tier: Int): Int = when (tier) {
+            in 1..5 -> R.color.bronze
+            in 6..10 -> R.color.silver
+            in 11..15 -> R.color.gold
+            in 16..20 -> R.color.platinum
+            in 21..25 -> R.color.diamond
+            else -> R.color.ruby
+        }
 
         fun getTierNumber(tier: Int) = if (tier % 5 == 0) 1 else 6 - (tier % 5)
     }

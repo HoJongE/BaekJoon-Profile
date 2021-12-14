@@ -8,4 +8,11 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="gray">#999999</color>
+    <color name="bronze">#A25b1f</color>
+    <color name="silver">#acacac</color>
+    <color name="gold">#e09e37</color>
+    <color name="platinum">#6cdfa9</color>
+    <color name="diamond">#50b2f6</color>
+    <color name="ruby">#ea3265</color>
+    <color name="master">#999999</color>
 </resources>

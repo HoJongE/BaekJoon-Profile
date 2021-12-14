@@ -1,5 +1,6 @@
 package per.hojong.baekjoonprofile.view
 
+import android.app.Application
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -20,6 +21,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.res.painterResource
@@ -166,5 +168,5 @@ fun RoundTextField(
 @Preview(showBackground = true, showSystemUi = true)
 @Composable
 fun DefaultPreview() {
-    ContentView(LoginViewModel())
+    ContentView(LoginViewModel(LocalContext.current as Application))
 }
