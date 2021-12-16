@@ -60,7 +60,7 @@ class MainActivity : ComponentActivity() {
                             ContentView(loginViewModel = loginViewModel)
                         } else {
                             DetailInfoView(
-                                profile = loginViewModel.profileResponse.value!!,
+                                profile = loginViewModel.profileResponse!!,
                                 loginViewModel = loginViewModel
                             )
                         }

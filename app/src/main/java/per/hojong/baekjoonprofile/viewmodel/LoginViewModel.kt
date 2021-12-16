@@ -11,27 +11,25 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
+import per.hojong.baekjoonprofile.data.putSolvedID
 import per.hojong.baekjoonprofile.model.Profile
 import per.hojong.baekjoonprofile.network.SolvedApiService
 import java.lang.Exception
 
 class LoginViewModel(application: Application) : AndroidViewModel(application) {
 
-    val profileResponse: MutableState<Profile?> = mutableStateOf(null)
+    var profileResponse: Profile? by mutableStateOf(null)
     var loginSuccess: Boolean by mutableStateOf(false)
     var profileLoadingState: Boolean by mutableStateOf(false)
     var profileLoadingError: Boolean by mutableStateOf(false)
+
     fun getProfile(id: String) {
         viewModelScope.launch {
             profileLoadingState = true
             val apiService = SolvedApiService.getInstance()
             try {
-                profileResponse.value = apiService.getUserInfo(id)
-                getApplication<Application>().getSharedPreferences("profile", Context.MODE_PRIVATE)
-                    .edit()
-                    .putString("name", profileResponse.value?.handle ?: "")
-                    .apply()
-                Log.d("profile", profileResponse.toString())
+                profileResponse = apiService.getUserInfo(id)
+                putSolvedID(getApplication(), profileResponse?.handle ?: "")
                 profileLoadingError = false
                 loginSuccess = true
             } catch (e: Exception) {

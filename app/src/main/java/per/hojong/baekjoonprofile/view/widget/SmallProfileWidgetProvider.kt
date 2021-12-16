@@ -9,11 +9,9 @@ import android.graphics.Color
 import android.view.View
 import android.widget.RemoteViews
 import androidx.annotation.ColorInt
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
+import kotlinx.coroutines.*
 import per.hojong.baekjoonprofile.R
+import per.hojong.baekjoonprofile.data.getSolvedID
 import per.hojong.baekjoonprofile.model.Profile
 import per.hojong.baekjoonprofile.network.SolvedApiService
 import per.hojong.baekjoonprofile.view.MainActivity
@@ -27,24 +25,25 @@ class SmallProfileWidgetProvider : AppWidgetProvider() {
         appWidgetManager: AppWidgetManager?,
         appWidgetIds: IntArray?
     ) {
-        val profileName = context?.getSharedPreferences("profile", Context.MODE_PRIVATE)
-            ?.getString("name", "ldu2175")
+        context?.let {
+            val profileName = getSolvedID(context = context)
 
-        appWidgetIds?.forEach {
-            val pendingIntent: PendingIntent =
-                Intent(context, MainActivity::class.java).let { intent ->
-                    PendingIntent.getActivity(context, 0, intent, PendingIntent.FLAG_IMMUTABLE)
+            appWidgetIds?.forEach {
+                val pendingIntent: PendingIntent =
+                    Intent(context, MainActivity::class.java).let { intent ->
+                        PendingIntent.getActivity(context, 0, intent, PendingIntent.FLAG_IMMUTABLE)
+                    }
+
+                val views: RemoteViews = RemoteViews(
+                    context.packageName,
+                    R.layout.small_widget_baekjoon_profile
+                ).apply {
+                    setOnClickPendingIntent(R.id.linear_widget_container, pendingIntent)
                 }
-
-            val views: RemoteViews = RemoteViews(
-                context?.packageName,
-                R.layout.small_widget_baekjoon_profile
-            ).apply {
-                setOnClickPendingIntent(R.id.linear_widget_container, pendingIntent)
+                appWidgetManager?.updateAppWidget(it, views)
             }
-            appWidgetManager?.updateAppWidget(it, views)
+            getRecentData(context, appWidgetManager, appWidgetIds, profileName)
         }
-        getRecentData(context, appWidgetManager, appWidgetIds, profileName!!)
         super.onUpdate(context, appWidgetManager, appWidgetIds)
     }
 
@@ -54,7 +53,8 @@ class SmallProfileWidgetProvider : AppWidgetProvider() {
         appWidgetIds: IntArray?,
         name: String
     ) {
-        GlobalScope.launch(Dispatchers.IO) {
+        val scope = CoroutineScope(Dispatchers.IO)
+        scope.launch(Dispatchers.IO) {
             val apiService = SolvedApiService.getInstance()
             try {
                 val profile: Profile = apiService.getUserInfo(name)
