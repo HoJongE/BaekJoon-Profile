@@ -41,10 +41,16 @@
         <entry key="../../../../../layout/compose-model-1639562115345.xml" value="0.23986486486486486" />
         <entry key="../../../../../layout/compose-model-1639562156539.xml" value="0.1" />
         <entry key="../../../../../layout/compose-model-1639562163787.xml" value="0.23986486486486486" />
+        <entry key="../../../../../layout/compose-model-1639662652359.xml" value="0.1" />
+        <entry key="../../../../../layout/compose-model-1639662683291.xml" value="0.31672297297297297" />
+        <entry key="../../../../../layout/compose-model-1639721287132.xml" value="0.24070945945945946" />
+        <entry key="../../../../../layout/compose-model-1639721571873.xml" value="0.375" />
+        <entry key="../../../../../layout/compose-model-1639727933513.xml" value="0.23986486486486486" />
         <entry key="app/src/main/res/drawable/app_logo.xml" value="0.19375" />
         <entry key="app/src/main/res/drawable/platinum.xml" value="0.2203125" />
         <entry key="app/src/main/res/drawable/profile_tier_badge.xml" value="0.19375" />
         <entry key="app/src/main/res/drawable/profile_tier_bronze.xml" value="0.19375" />
+        <entry key="app/src/main/res/drawable/profile_tier_diamond.xml" value="0.2864583333333333" />
         <entry key="app/src/main/res/drawable/profile_tier_diamong.xml" value="0.19375" />
         <entry key="app/src/main/res/drawable/profile_tier_gold.xml" value="0.19375" />
         <entry key="app/src/main/res/drawable/profile_tier_platinum.xml" value="0.1578125" />

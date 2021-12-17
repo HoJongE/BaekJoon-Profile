@@ -67,6 +67,10 @@ class MediumProfileWidgetProvider : AppWidgetProvider() {
                             context?.packageName, R.layout.widget_baekjoon_profile
                         ).apply {
                             setViewVisibility(R.id.textview_profile_update_error, View.GONE)
+                            if (profile.tier == 31) setViewVisibility(
+                                R.id.textview_tier_number,
+                                View.GONE
+                            )
                             setTextViewText(R.id.textview_widget_profile_name, profile.handle)
                             setTextViewText(R.id.textview_max_streak, profile.maxStreak.toString())
                             setTextViewText(R.id.textview_ranking, profile.rank.toString())

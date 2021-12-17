@@ -47,7 +47,7 @@ class MainActivity : ComponentActivity() {
     @ExperimentalComposeUiApi
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        loginViewModel.getProfile("kiss5489")
+        loginViewModel.getProfile("as00098")
         setContent {
             BaekJoonProfileTheme {
                 // A surface container using the 'background' color from the theme

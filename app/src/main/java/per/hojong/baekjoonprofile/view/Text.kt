@@ -30,6 +30,24 @@ fun TitleText(value: String) {
 }
 
 @Composable
+fun ProfileDetailBody(
+    value: String,
+    modifier: Modifier = Modifier,
+    textColor: Color = Color.White,
+    textAlign: TextAlign = TextAlign.Center
+) {
+    Text(
+        modifier = modifier,
+        text = value,
+        color = textColor,
+        fontSize = 18.sp,
+        fontFamily = GMarketSansFamily,
+        fontWeight = FontWeight.Medium,
+        textAlign = textAlign,
+    )
+}
+
+@Composable
 fun BodyText(value: String) {
     Text(
         text = value,
@@ -68,3 +86,4 @@ fun ProfileBio(value: String) {
         fontSize = 14.sp
     )
 }
+
