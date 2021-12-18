@@ -3,9 +3,7 @@ package per.hojong.baekjoonprofile.view.profile
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -17,7 +15,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import per.hojong.baekjoonprofile.R
 import per.hojong.baekjoonprofile.model.Profile
-import per.hojong.baekjoonprofile.ui.theme.*
+import per.hojong.baekjoonprofile.ui.theme.GMarketSansFamily
 
 
 @Composable

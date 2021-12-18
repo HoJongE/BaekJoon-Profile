@@ -1,6 +1,5 @@
 package per.hojong.baekjoonprofile.view
 
-import android.text.TextPaint
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -84,6 +83,19 @@ fun ProfileBio(value: String) {
         fontFamily = GMarketSansFamily,
         fontWeight = FontWeight.Medium,
         fontSize = 14.sp
+    )
+}
+
+@Composable
+fun ErrorText(error: String) {
+    Text(
+        modifier = Modifier.padding(8.dp),
+        text = error,
+        color = Color.Red,
+        textAlign = TextAlign.Center,
+        fontFamily = GMarketSansFamily,
+        fontWeight = FontWeight.Light,
+        fontSize = 13.sp
     )
 }
 

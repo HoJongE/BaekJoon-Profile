@@ -1,7 +1,8 @@
 <resources>
-    <string name="app_name">BaekJoonProfile</string>
-    <string name="all_title">BaekJoon\nProfile</string>
+    <string name="app_name">solved.ac Profile</string>
+    <string name="all_title">solved.ac\nProfile</string>
     <string name="login_description">solved.ac 아이디를\n입력해주세요</string>
-    <string name="login">로그인</string>
+    <string name="profile_view">프로필 조회</string>
     <string name="self_description_empty">자기소개가 없습니다.</string>
+    <string name="solved_ac_description">위젯에 사용할 solved.ac\n아이디를 입력하세요</string>
 </resources>

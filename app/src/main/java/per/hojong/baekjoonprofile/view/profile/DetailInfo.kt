@@ -1,6 +1,5 @@
 package per.hojong.baekjoonprofile.view
 
-import android.app.Application
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
@@ -26,10 +25,7 @@ import coil.transform.CircleCropTransformation
 import per.hojong.baekjoonprofile.R
 import per.hojong.baekjoonprofile.constant.CLASS_IMAGE_POSTFIX
 import per.hojong.baekjoonprofile.constant.CLASS_IMAGE_PREFIX
-import per.hojong.baekjoonprofile.model.Background
-import per.hojong.baekjoonprofile.model.Badge
 import per.hojong.baekjoonprofile.model.Profile
-import per.hojong.baekjoonprofile.ui.theme.BaekJoonProfileTheme
 import per.hojong.baekjoonprofile.ui.theme.GMarketSansFamily
 import per.hojong.baekjoonprofile.ui.theme.Gray
 import per.hojong.baekjoonprofile.view.profile.TierBadge
