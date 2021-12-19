@@ -35,6 +35,7 @@ import per.hojong.baekjoonprofile.ui.theme.BackgroundColor
 import per.hojong.baekjoonprofile.ui.theme.BaekJoonProfileTheme
 import per.hojong.baekjoonprofile.ui.theme.Gray
 import per.hojong.baekjoonprofile.viewmodel.LoginViewModel
+import java.lang.Exception
 
 class MainActivity : ComponentActivity() {
     val loginViewModel: LoginViewModel by lazy {

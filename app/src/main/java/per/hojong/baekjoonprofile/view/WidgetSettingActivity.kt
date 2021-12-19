@@ -1,9 +1,8 @@
 package per.hojong.baekjoonprofile.view
 
-import android.app.PendingIntent
 import android.appwidget.AppWidgetManager
-import android.content.Intent
 import android.os.Bundle
+import android.view.inputmethod.InputMethodManager
 import android.widget.Button
 import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
@@ -27,7 +26,16 @@ class WidgetSettingActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_widget_setting)
         setTextChangeListener()
+        requestFocus()
         initData()
+    }
+
+    private fun requestFocus() {
+        editText.post {
+            val imm: InputMethodManager? =
+                getSystemService(INPUT_METHOD_SERVICE) as? InputMethodManager
+            imm?.showSoftInput(editText, 0)
+        }
     }
 
     private fun setTextChangeListener() {
@@ -48,25 +56,12 @@ class WidgetSettingActivity : AppCompatActivity() {
             AppWidgetManager.EXTRA_APPWIDGET_ID,
             AppWidgetManager.INVALID_APPWIDGET_ID
         ) ?: AppWidgetManager.INVALID_APPWIDGET_ID
-
+        if (appWidgetId == AppWidgetManager.INVALID_APPWIDGET_ID) {
+            finish()
+        }
         val button = findViewById<Button>(R.id.button_widget_create)
         button.setOnClickListener {
             createAppWidget(editText.text.toString())
-        }
-    }
-
-    private fun getPendingIntent(id: String): PendingIntent {
-        return Intent(this, MainActivity::class.java).apply {
-            val bundle = Bundle()
-            bundle.putString("id", id)
-            putExtras(bundle)
-        }.let { intent ->
-            PendingIntent.getActivity(
-                this,
-                appWidgetId,
-                intent,
-                PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
-            )
         }
     }
 
@@ -80,7 +75,8 @@ class WidgetSettingActivity : AppCompatActivity() {
                 withContext(Dispatchers.Main) {
                     WidgetBuilder(this@WidgetSettingActivity, appWidgetId).Builder()
                         .profile(profile = profile)
-                        .pendingIntent(getPendingIntent(id))
+                        .setActivityPendingIntent()
+                        .setReloadPendingIntent()
                         .build(true)
                 }
             } catch (e: Exception) {

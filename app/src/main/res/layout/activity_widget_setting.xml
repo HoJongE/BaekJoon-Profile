@@ -22,7 +22,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.35" />
+        app:layout_constraintVertical_bias="0.1" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textinputlayout"
@@ -34,6 +34,7 @@
         app:layout_constraintHeight_percent="0.1"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.2"
         app:layout_constraintWidth_percent="0.8">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -44,7 +45,8 @@
             android:fontFamily="@font/gmarket_medium"
             android:imeOptions="actionDone"
             android:includeFontPadding="false"
-            android:maxLines="1" />
+            android:maxLines="1"
+            android:textColor="@color/black" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.button.MaterialButton
@@ -61,6 +63,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/textinputlayout"
-        app:layout_constraintVertical_bias="0.2" />
+        app:layout_constraintVertical_bias="0.15" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -48,13 +48,14 @@ data class Profile(
             else -> Ruby
         }
 
-        fun getTierColorId(tier: Int): Int = when (tier) {
-            in 1..5 -> R.color.bronze
-            in 6..10 -> R.color.silver
-            in 11..15 -> R.color.gold
-            in 16..20 -> R.color.platinum
-            in 21..25 -> R.color.diamond
-            else -> R.color.ruby
+        fun getTierBackgroundId(tier: Int): Int = when (tier) {
+            in 1..5 -> R.drawable.round_corner_shape_bronze
+            in 6..10 -> R.drawable.round_corner_shape_silver
+            in 11..15 -> R.drawable.round_corner_shape_gold
+            in 16..20 -> R.drawable.round_corner_shape_platinum
+            in 21..25 -> R.drawable.round_corner_shape_diamond
+            in 26..30 -> R.drawable.round_corner_shape_ruby
+            else -> R.drawable.round_corner_shape_master
         }
 
         fun getTierNumber(tier: Int) = if (tier % 5 == 0) 1 else 6 - (tier % 5)
