@@ -13,6 +13,7 @@ import kotlinx.coroutines.withContext
 import per.hojong.baekjoonprofile.data.getSolvedID
 import per.hojong.baekjoonprofile.model.Profile
 import per.hojong.baekjoonprofile.network.SolvedApiService
+import per.hojong.baekjoonprofile.utility.NetworkCoroutine
 
 class MediumProfileWidgetProvider : AppWidgetProvider() {
     companion object {
@@ -43,7 +44,6 @@ class MediumProfileWidgetProvider : AppWidgetProvider() {
         context?.let {
             appWidgetIds?.forEach {
                 getRecentData(context, it)
-                Log.d("widget", "update")
             }
         }
         super.onUpdate(context, appWidgetManager, appWidgetIds)
@@ -54,23 +54,17 @@ class MediumProfileWidgetProvider : AppWidgetProvider() {
         context: Context,
         appWidgetId: Int
     ) {
-        val scope = CoroutineScope(Dispatchers.IO)
-
-        scope.launch {
+        val networkCoroutine = NetworkCoroutine()
+        networkCoroutine.getCoroutineScope().launch {
             val apiService = SolvedApiService.getInstance()
-            try {
-                val profile: Profile =
-                    apiService.getUserInfo(getSolvedID(context = context, appWidgetId))
-                Log.d("widget", profile.handle)
-                withContext(Dispatchers.Main) {
-                    WidgetBuilder(context = context, appWidgetId = appWidgetId).Builder()
-                        .profile(profile = profile)
-                        .setActivityPendingIntent()
-                        .setReloadPendingIntent()
-                        .build(false)
-                }
-            } catch (e: Exception) {
-                e.printStackTrace()
+            val profile: Profile =
+                apiService.getUserInfo(getSolvedID(context = context, appWidgetId))
+            withContext(networkCoroutine.uiDispatcher) {
+                WidgetBuilder(context = context, appWidgetId = appWidgetId).Builder()
+                    .profile(profile = profile)
+                    .setActivityPendingIntent()
+                    .setReloadPendingIntent()
+                    .build(false)
             }
         }
     }

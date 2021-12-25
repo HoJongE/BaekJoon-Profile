@@ -26,6 +26,7 @@ import per.hojong.baekjoonprofile.R
 import per.hojong.baekjoonprofile.constant.CLASS_IMAGE_POSTFIX
 import per.hojong.baekjoonprofile.constant.CLASS_IMAGE_PREFIX
 import per.hojong.baekjoonprofile.model.Profile
+import per.hojong.baekjoonprofile.network.ProfileLoadingState
 import per.hojong.baekjoonprofile.ui.theme.GMarketSansFamily
 import per.hojong.baekjoonprofile.ui.theme.Gray
 import per.hojong.baekjoonprofile.view.profile.TierBadge
@@ -47,7 +48,9 @@ fun DetailInfoView(profile: Profile, loginViewModel: LoginViewModel) {
             },
             navigationIcon = {
                 Button(
-                    onClick = { loginViewModel.loginSuccess = false },
+                    onClick = {
+                        loginViewModel.logout()
+                    },
                     colors = ButtonDefaults.buttonColors(
                         backgroundColor = Color.Black
                     )
@@ -76,7 +79,7 @@ fun DetailInfoView(profile: Profile, loginViewModel: LoginViewModel) {
         )
         ProfileDetailInfo(
             title = "Rank",
-            content = Profile.getTierName(profile.tier) + " " + Profile.getTierNumber(profile.tier) + " " + profile.rank.toString(),
+            content = "${profile.rank} 등",
             profile = profile
         )
     }
@@ -193,7 +196,7 @@ fun ProfileDetailView(profile: Profile) {
         ) {
             ProfileDetailBody(value = "STREAK")
             Box(modifier = Modifier.height(50.dp), contentAlignment = Alignment.Center) {
-                ProfileDetailBody(value = profile.maxStreak.toString())
+                ProfileDetailBody(value = "${profile.maxStreak}일\n연속")
             }
         }
     }

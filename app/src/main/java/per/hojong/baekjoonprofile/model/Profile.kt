@@ -21,7 +21,7 @@ data class Profile(
     val maxStreak: Int, //최대 연속 문제 풀이일 수
     val rank: Int, //사용자의 순위
 ) {
-    companion object Tier {
+    companion object  {
         fun dummyProfile() = Profile(
             "as00098", "",
             Badge("grass_05", "", "", ""),

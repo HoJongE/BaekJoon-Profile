@@ -5,6 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.activity.viewModels
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.text.KeyboardActions
@@ -12,10 +13,7 @@ import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Warning
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.MutableState
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
@@ -30,38 +28,42 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.ViewModelProvider
+import dagger.hilt.android.AndroidEntryPoint
 import per.hojong.baekjoonprofile.R
+import per.hojong.baekjoonprofile.data.ProfileRepository
+import per.hojong.baekjoonprofile.network.ProfileLoadingState
 import per.hojong.baekjoonprofile.ui.theme.BackgroundColor
 import per.hojong.baekjoonprofile.ui.theme.BaekJoonProfileTheme
+import per.hojong.baekjoonprofile.ui.theme.Diamond
 import per.hojong.baekjoonprofile.ui.theme.Gray
 import per.hojong.baekjoonprofile.viewmodel.LoginViewModel
 import java.lang.Exception
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
-    val loginViewModel: LoginViewModel by lazy {
-        ViewModelProvider(this).get(LoginViewModel::class.java)
-    }
+    private val loginViewModel: LoginViewModel by viewModels()
 
     @ExperimentalComposeUiApi
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        intent.extras?.let {
-            val id = it.get("id").toString()
-            loginViewModel.getProfile(id)
-        }
+        loadBundle(intent = intent)
         setContent {
             BaekJoonProfileTheme {
+                val profileLoadingState: ProfileLoadingState by
+                loginViewModel.profileLoadingState.collectAsState()
                 // A surface container using the 'background' color from the theme
                 Surface(
                     color = MaterialTheme.colors.background,
                     modifier = Modifier.fillMaxSize()
                 ) {
                     Scaffold {
-                        if (!loginViewModel.loginSuccess) {
-                            ContentView(loginViewModel = loginViewModel)
-                        } else {
-                            DetailInfoView(
-                                profile = loginViewModel.profileResponse!!,
+                        when (profileLoadingState) {
+                            is ProfileLoadingState.Empty, is ProfileLoadingState.Loading, is ProfileLoadingState.Error -> ContentView(
+                                profileLoadingState = profileLoadingState,
+                                loginViewModel = loginViewModel
+                            )
+                            is ProfileLoadingState.Success -> DetailInfoView(
+                                profile = (profileLoadingState as ProfileLoadingState.Success).profile,
                                 loginViewModel = loginViewModel
                             )
                         }
@@ -73,6 +75,16 @@ class MainActivity : ComponentActivity() {
 
     override fun onNewIntent(intent: Intent?) {
         super.onNewIntent(intent)
+        loadBundle(intent = intent)
+    }
+
+    /**
+     * if intent is not null, get id from bundle
+     * and login automatically
+     *
+     * @param intent intent
+     */
+    private fun loadBundle(intent: Intent?) {
         intent?.extras?.let {
             val id = it.get("id").toString()
             loginViewModel.getProfile(id)
@@ -82,15 +94,15 @@ class MainActivity : ComponentActivity() {
 
 @ExperimentalComposeUiApi
 @Composable
-fun ContentView(loginViewModel: LoginViewModel) {
-    LoginView(loginViewModel = loginViewModel)
+fun ContentView(profileLoadingState: ProfileLoadingState, loginViewModel: LoginViewModel) {
+    LoginView(profileLoadingState = profileLoadingState, loginViewModel)
 
 }
 
 
 @ExperimentalComposeUiApi
 @Composable
-fun LoginView(loginViewModel: LoginViewModel) {
+fun LoginView(profileLoadingState: ProfileLoadingState, loginViewModel: LoginViewModel) {
     val id = remember {
         mutableStateOf("")
     }
@@ -113,19 +125,20 @@ fun LoginView(loginViewModel: LoginViewModel) {
             8.dp,
             "ID",
             id,
-            isError = loginViewModel.profileLoadingError,
-            enable = !loginViewModel.profileLoadingState
+            isError = profileLoadingState is ProfileLoadingState.Error,
+            enable = profileLoadingState !is ProfileLoadingState.Loading
         )
         Spacer(modifier = Modifier.fillMaxHeight(0.1f))
         RoundLoadingButton(
             value = stringResource(id = R.string.profile_view),
-            loading = loginViewModel.profileLoadingState,
+            loading = profileLoadingState is ProfileLoadingState.Loading,
             backgroundColor = BackgroundColor,
-            disabledBackgroundColor = BackgroundColor
+            disabledBackgroundColor = BackgroundColor,
+            textColor = Diamond
         ) {
             loginViewModel.getProfile(id = id.value)
         }
-        if (loginViewModel.profileLoadingError) {
+        if (profileLoadingState is ProfileLoadingState.Error) {
             ErrorText(error = "아이디 혹은 인터넷 연결 상태를 확인해주세요")
         }
     }
@@ -187,5 +200,9 @@ fun RoundTextField(
 @Composable
 fun DefaultPreview() {
     val application = Application()
-    ContentView(LoginViewModel(application = application))
+    val viewModel = LoginViewModel(ProfileRepository())
+    ContentView(
+        profileLoadingState = ProfileLoadingState.Loading,
+        viewModel
+    )
 }

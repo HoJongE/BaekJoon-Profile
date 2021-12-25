@@ -5,8 +5,11 @@ import android.os.Bundle
 import android.view.inputmethod.InputMethodManager
 import android.widget.Button
 import android.widget.EditText
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.widget.addTextChangedListener
+import androidx.lifecycle.ViewModelProvider
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -14,12 +17,20 @@ import kotlinx.coroutines.withContext
 import per.hojong.baekjoonprofile.R
 import per.hojong.baekjoonprofile.model.Profile
 import per.hojong.baekjoonprofile.network.SolvedApiService
+import per.hojong.baekjoonprofile.utility.NetworkCoroutine
 import per.hojong.baekjoonprofile.view.widget.WidgetBuilder
+import per.hojong.baekjoonprofile.viewmodel.LoginViewModel
 
+@AndroidEntryPoint
 class WidgetSettingActivity : AppCompatActivity() {
     private var appWidgetId: Int = AppWidgetManager.INVALID_APPWIDGET_ID
-    private lateinit var editText: EditText
-    private lateinit var button: Button
+    private val loginViewModel: LoginViewModel by viewModels()
+    private val editText: EditText by lazy {
+        findViewById(R.id.edittext_widget_profile_id)
+    }
+    private val button: Button by lazy {
+        findViewById(R.id.button_widget_create)
+    }
     private lateinit var appWidgetManager: AppWidgetManager
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -39,8 +50,6 @@ class WidgetSettingActivity : AppCompatActivity() {
     }
 
     private fun setTextChangeListener() {
-        editText = findViewById(R.id.edittext_widget_profile_id)
-        button = findViewById(R.id.button_widget_create)
         editText.addTextChangedListener {
             if (it?.length == 0) {
                 button.isEnabled = false
@@ -66,23 +75,12 @@ class WidgetSettingActivity : AppCompatActivity() {
     }
 
     private fun createAppWidget(id: String) {
-        val scope = CoroutineScope(Dispatchers.IO)
-        scope.launch {
-            val apiService = SolvedApiService.getInstance()
-            try {
-                val profile: Profile =
-                    apiService.getUserInfo(id)
-                withContext(Dispatchers.Main) {
-                    WidgetBuilder(this@WidgetSettingActivity, appWidgetId).Builder()
-                        .profile(profile = profile)
-                        .setActivityPendingIntent()
-                        .setReloadPendingIntent()
-                        .build(true)
-                }
-            } catch (e: Exception) {
-                e.printStackTrace()
-            }
+        loginViewModel.getProfile(id) {
+            WidgetBuilder(this@WidgetSettingActivity, appWidgetId).Builder()
+                .profile(it)
+                .setActivityPendingIntent()
+                .setReloadPendingIntent()
+                .build(true)
         }
     }
-
 }

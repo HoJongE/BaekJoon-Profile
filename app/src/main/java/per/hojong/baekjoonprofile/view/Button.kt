@@ -38,7 +38,8 @@ fun RoundLoadingButton(
     loading: Boolean,
     backgroundColor: Color = Color.Black,
     disabledBackgroundColor: Color = Color.Black,
-    onClick: () -> Unit
+    textColor: Color = Color.White,
+    onClick: () -> Unit,
 ) {
     Button(
         onClick = onClick,
@@ -59,7 +60,7 @@ fun RoundLoadingButton(
             Text(
                 text = value,
                 style = MaterialTheme.typography.body1,
-                color = Color.White,
+                color = textColor,
                 textAlign = TextAlign.Center
             )
         }
