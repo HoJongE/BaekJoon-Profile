@@ -26,15 +26,13 @@ import per.hojong.baekjoonprofile.R
 import per.hojong.baekjoonprofile.constant.CLASS_IMAGE_POSTFIX
 import per.hojong.baekjoonprofile.constant.CLASS_IMAGE_PREFIX
 import per.hojong.baekjoonprofile.model.Profile
-import per.hojong.baekjoonprofile.network.ProfileLoadingState
 import per.hojong.baekjoonprofile.ui.theme.GMarketSansFamily
 import per.hojong.baekjoonprofile.ui.theme.Gray
 import per.hojong.baekjoonprofile.view.profile.TierBadge
-import per.hojong.baekjoonprofile.viewmodel.LoginViewModel
 
 
 @Composable
-fun DetailInfoView(profile: Profile, loginViewModel: LoginViewModel) {
+fun DetailInfoView(profile: Profile, logout: () -> Unit) {
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
         modifier = Modifier.fillMaxSize()
@@ -49,7 +47,7 @@ fun DetailInfoView(profile: Profile, loginViewModel: LoginViewModel) {
             navigationIcon = {
                 Button(
                     onClick = {
-                        loginViewModel.logout()
+                        logout()
                     },
                     colors = ButtonDefaults.buttonColors(
                         backgroundColor = Color.Black

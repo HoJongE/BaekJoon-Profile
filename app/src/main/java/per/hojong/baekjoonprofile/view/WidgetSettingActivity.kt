@@ -8,16 +8,8 @@ import android.widget.EditText
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.widget.addTextChangedListener
-import androidx.lifecycle.ViewModelProvider
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 import per.hojong.baekjoonprofile.R
-import per.hojong.baekjoonprofile.model.Profile
-import per.hojong.baekjoonprofile.network.SolvedApiService
-import per.hojong.baekjoonprofile.utility.NetworkCoroutine
 import per.hojong.baekjoonprofile.view.widget.WidgetBuilder
 import per.hojong.baekjoonprofile.viewmodel.LoginViewModel
 

@@ -15,12 +15,9 @@ import com.bumptech.glide.request.RequestOptions
 import com.bumptech.glide.request.target.AppWidgetTarget
 import com.bumptech.glide.request.transition.Transition
 import per.hojong.baekjoonprofile.R
-import per.hojong.baekjoonprofile.data.getSolvedID
 import per.hojong.baekjoonprofile.data.putSolvedID
 import per.hojong.baekjoonprofile.model.Profile
 import per.hojong.baekjoonprofile.view.MainActivity
-import per.hojong.baekjoonprofile.view.profile.getTierImage
-import java.lang.Exception
 
 class WidgetBuilder(
     private val context: Context,

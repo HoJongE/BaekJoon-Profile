@@ -6,8 +6,6 @@ import android.content.Context
 import android.content.Intent
 import android.util.Log
 import android.widget.Toast
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import per.hojong.baekjoonprofile.data.getSolvedID
@@ -27,7 +25,11 @@ class MediumProfileWidgetProvider : AppWidgetProvider() {
                     val appWidgetId =
                         it.getIntExtra("appWidgetId", AppWidgetManager.INVALID_APPWIDGET_ID)
                     if (appWidgetId != AppWidgetManager.INVALID_APPWIDGET_ID) {
-                        getRecentData(context = context, appWidgetId = appWidgetId)
+                        getRecentData(
+                            context = context,
+                            appWidgetId = appWidgetId,
+                            makeToast = true
+                        )
                         Log.d("widget", "receive Update")
                     }
                 }
@@ -52,7 +54,8 @@ class MediumProfileWidgetProvider : AppWidgetProvider() {
 
     private fun getRecentData(
         context: Context,
-        appWidgetId: Int
+        appWidgetId: Int,
+        makeToast: Boolean = false
     ) {
         val networkCoroutine = NetworkCoroutine()
         networkCoroutine.getCoroutineScope().launch {
@@ -65,6 +68,9 @@ class MediumProfileWidgetProvider : AppWidgetProvider() {
                     .setActivityPendingIntent()
                     .setReloadPendingIntent()
                     .build(false)
+                if (makeToast) {
+                    Toast.makeText(context, "${profile.handle} 업데이트 완료!", Toast.LENGTH_SHORT).show()
+                }
             }
         }
     }
