@@ -3,10 +3,10 @@
     android:configure="per.hojong.baekjoonprofile.view.WidgetSettingActivity"
     android:initialKeyguardLayout="@layout/widget_baekjoon_profile"
     android:initialLayout="@layout/widget_baekjoon_profile"
-    android:minWidth="300dp"
+    android:minWidth="200dp"
     android:minHeight="40dp"
     android:previewImage="@drawable/medium_widget_preview"
-    android:resizeMode="none"
+    android:resizeMode="horizontal |vertical"
     android:updatePeriodMillis="1800000"
     android:widgetCategory="keyguard|home_screen" />
 

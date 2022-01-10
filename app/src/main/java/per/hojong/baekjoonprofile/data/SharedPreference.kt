@@ -12,4 +12,3 @@ fun putSolvedID(context: Context, ID: String, widgetId: Int) {
 fun getSolvedID(context: Context, widgetId: Int): String =
     context.getSharedPreferences("profile", Context.MODE_PRIVATE)
         .getString(widgetId.toString(), "as00098")!!
-

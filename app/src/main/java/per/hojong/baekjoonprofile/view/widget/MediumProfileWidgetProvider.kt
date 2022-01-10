@@ -10,7 +10,7 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import per.hojong.baekjoonprofile.data.getSolvedID
 import per.hojong.baekjoonprofile.model.Profile
-import per.hojong.baekjoonprofile.network.SolvedApiService
+import per.hojong.baekjoonprofile.data.source.ProfileRemoteSource
 import per.hojong.baekjoonprofile.utility.NetworkCoroutine
 
 class MediumProfileWidgetProvider : AppWidgetProvider() {
@@ -59,7 +59,7 @@ class MediumProfileWidgetProvider : AppWidgetProvider() {
     ) {
         val networkCoroutine = NetworkCoroutine()
         networkCoroutine.getCoroutineScope().launch {
-            val apiService = SolvedApiService.getInstance()
+            val apiService = ProfileRemoteSource.getInstance()
             val profile: Profile =
                 apiService.getUserInfo(getSolvedID(context = context, appWidgetId))
             withContext(networkCoroutine.uiDispatcher) {

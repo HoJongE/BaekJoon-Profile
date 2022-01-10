@@ -1,13 +1,11 @@
 package per.hojong.baekjoonprofile.data
 
 import per.hojong.baekjoonprofile.model.Profile
-import per.hojong.baekjoonprofile.network.SolvedApiService
+import per.hojong.baekjoonprofile.data.source.ProfileRemoteSource
 import javax.inject.Singleton
 
 @Singleton
-class ProfileRepository {
-
-    private val remoteSource = SolvedApiService.getInstance()
+class ProfileRepository(private val remoteSource: ProfileRemoteSource) {
 
     /**
      * load Profile with given ID String

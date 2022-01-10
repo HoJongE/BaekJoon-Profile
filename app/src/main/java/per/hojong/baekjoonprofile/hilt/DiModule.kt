@@ -5,6 +5,7 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import per.hojong.baekjoonprofile.data.ProfileRepository
+import per.hojong.baekjoonprofile.data.source.ProfileRemoteSource
 import javax.inject.Singleton
 
 @Module
@@ -12,5 +13,7 @@ import javax.inject.Singleton
 class DiModule {
     @Singleton
     @Provides
-    fun provideProfileRepository() = ProfileRepository()
+    fun provideProfileRepository() =
+        ProfileRepository(remoteSource = ProfileRemoteSource.getInstance())
 }
+

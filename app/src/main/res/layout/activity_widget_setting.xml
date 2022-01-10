@@ -16,6 +16,7 @@
         android:gravity="center"
         android:includeFontPadding="false"
         android:text="@string/solved_ac_description"
+        android:lineSpacingExtra="4dp"
         android:textColor="@color/white"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -27,14 +28,14 @@
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textinputlayout"
         android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:hint="solved.ac ID"
+        android:layout_height="wrap_content"
+        app:errorEnabled="true"
+        android:hint="solved.ac 아이디를 입력해주세요"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHeight_percent="0.1"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.2"
+        app:layout_constraintVertical_bias="0.25"
         app:layout_constraintWidth_percent="0.8">
 
         <com.google.android.material.textfield.TextInputEditText
