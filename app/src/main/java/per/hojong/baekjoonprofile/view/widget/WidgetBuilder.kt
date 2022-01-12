@@ -15,6 +15,8 @@ import com.bumptech.glide.request.RequestOptions
 import com.bumptech.glide.request.target.AppWidgetTarget
 import com.bumptech.glide.request.transition.Transition
 import per.hojong.baekjoonprofile.R
+import per.hojong.baekjoonprofile.data.getDefaultSolvedID
+import per.hojong.baekjoonprofile.data.putDefaultSolvedID
 import per.hojong.baekjoonprofile.data.putSolvedID
 import per.hojong.baekjoonprofile.model.Profile
 import per.hojong.baekjoonprofile.view.MainActivity
@@ -25,9 +27,11 @@ class WidgetBuilder(
 ) {
     private var pendingIntent: PendingIntent? = null
     private var reloadPendingIntent: PendingIntent? = null
+
+
     private lateinit var profile: Profile
     private lateinit var appWidgetManager: AppWidgetManager
-    fun Builder(): WidgetBuilder = apply {
+    fun builder(): WidgetBuilder = apply {
         appWidgetManager = AppWidgetManager.getInstance(context)
     }
 
@@ -38,6 +42,7 @@ class WidgetBuilder(
 
 
     fun build(initial: Boolean) {
+        putDefaultSolvedID()
         RemoteViews(context.packageName, R.layout.widget_baekjoon_profile).apply {
             setInt(
                 R.id.linear_widget_container,
@@ -115,15 +120,6 @@ class WidgetBuilder(
         }
     }
 
-    fun errorWidgetBuild(e: Exception) {
-        RemoteViews(context.packageName, R.layout.widget_baekjoon_profile).apply {
-            setViewVisibility(R.id.textview_profile_error, View.VISIBLE)
-            setTextViewText(R.id.textview_profile_tier, e.localizedMessage)
-        }.also {
-            appWidgetManager.updateAppWidget(appWidgetId, it)
-        }
-    }
-
     fun setActivityPendingIntent(): WidgetBuilder = apply {
         val pendingIntent: PendingIntent =
             Intent(context, MainActivity::class.java).apply {
@@ -131,6 +127,7 @@ class WidgetBuilder(
                 val bundle = Bundle()
                 bundle.putString("id", profileID)
                 this.putExtras(bundle)
+                setFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
             }.let { intent ->
                 PendingIntent.getActivity(
                     context,
@@ -157,4 +154,11 @@ class WidgetBuilder(
             }
         this.reloadPendingIntent = pendingIntent
     }
+
+    private fun putDefaultSolvedID() {
+        if (getDefaultSolvedID(context).isEmpty()) {
+            putDefaultSolvedID(context, profile.handle)
+        }
+    }
+
 }

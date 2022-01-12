@@ -17,6 +17,7 @@ import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import per.hojong.baekjoonprofile.R
 import per.hojong.baekjoonprofile.network.ProfileLoadingState
+import per.hojong.baekjoonprofile.view.widget.DefaultAlarmManager
 import per.hojong.baekjoonprofile.view.widget.WidgetBuilder
 import per.hojong.baekjoonprofile.viewmodel.LoginViewModel
 
@@ -103,7 +104,7 @@ class WidgetSettingActivity : AppCompatActivity() {
 
     private fun createAppWidget(id: String) {
         mLoginViewModel.getProfile(id) {
-            WidgetBuilder(this@WidgetSettingActivity, appWidgetId).Builder()
+            WidgetBuilder(this@WidgetSettingActivity, appWidgetId).builder()
                 .profile(it)
                 .setActivityPendingIntent()
                 .setReloadPendingIntent()
