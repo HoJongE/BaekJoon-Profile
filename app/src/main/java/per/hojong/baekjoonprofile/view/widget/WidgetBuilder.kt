@@ -127,7 +127,7 @@ class WidgetBuilder(
                 val bundle = Bundle()
                 bundle.putString("id", profileID)
                 this.putExtras(bundle)
-                setFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                flags = Intent.FLAG_ACTIVITY_NEW_TASK
             }.let { intent ->
                 PendingIntent.getActivity(
                     context,

@@ -74,6 +74,8 @@
         <entry key="../../../../../layout/compose-model-1641901854209.xml" value="0.1" />
         <entry key="../../../../../layout/compose-model-1641903351965.xml" value="0.1" />
         <entry key="../../../../../layout/compose-model-1641974405603.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/all_error.xml" value="0.1234375" />
+        <entry key="app/src/main/res/drawable/all_person.xml" value="0.1234375" />
         <entry key="app/src/main/res/drawable/app_logo.xml" value="0.19375" />
         <entry key="app/src/main/res/drawable/platinum.xml" value="0.2203125" />
         <entry key="app/src/main/res/drawable/profile_tier_badge.xml" value="0.19375" />
@@ -96,6 +98,9 @@
         <entry key="app/src/main/res/layout/small_widget_baekjoon_profile.xml" value="0.25" />
         <entry key="app/src/main/res/layout/widget_baekjoon_profile.xml" value="0.375" />
         <entry key="app/src/main/res/layout/widget_provider.xml" value="0.10208333333333333" />
+        <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.1234375" />
+        <entry key="app/src/main/res/mipmap-anydpi-v26/logo.xml" value="0.1234375" />
+        <entry key="app/src/main/res/mipmap-anydpi-v26/logo_round.xml" value="0.1234375" />
         <entry key="app/src/main/res/xml/small_widget_provider.xml" value="0.3640625" />
         <entry key="app/src/main/res/xml/xml.xml" value="0.10208333333333333" />
       </map>

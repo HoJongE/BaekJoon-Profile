@@ -12,10 +12,10 @@ android {
 
     defaultConfig {
         applicationId "per.hojong.baekjoonprofile"
-        minSdk 26
+        minSdk 24
         targetSdk 31
-        versionCode 220110
-        versionName "1.1.0"
+        versionCode 220113
+        versionName "1.2.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
@@ -91,6 +91,7 @@ dependencies {
     implementation "io.reactivex.rxjava2:rxkotlin:2.4.0"
     implementation "androidx.work:work-runtime-ktx:$work_version"
     androidTestImplementation "androidx.work:work-testing:$work_version"
+
 
 //For using viewModelScope
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.0"

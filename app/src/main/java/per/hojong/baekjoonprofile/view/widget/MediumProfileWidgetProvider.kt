@@ -1,30 +1,19 @@
 package per.hojong.baekjoonprofile.view.widget
 
-import android.app.AlarmManager
-import android.app.PendingIntent
 import android.appwidget.AppWidgetManager
 import android.appwidget.AppWidgetProvider
 import android.content.Context
 import android.content.Intent
-import android.content.SharedPreferences
-import android.os.Build
-import android.os.Bundle
-import android.os.SystemClock
-import android.util.Log
 import android.widget.Toast
-import androidx.work.OneTimeWorkRequest
-import androidx.work.PeriodicWorkRequest
-import androidx.work.PeriodicWorkRequestBuilder
-import androidx.work.WorkManager
 import com.google.firebase.analytics.FirebaseAnalytics
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import per.hojong.baekjoonprofile.data.*
 import per.hojong.baekjoonprofile.model.Profile
 import per.hojong.baekjoonprofile.data.source.ProfileRemoteSource
+import per.hojong.baekjoonprofile.utility.DefaultAlarmManager
+import per.hojong.baekjoonprofile.utility.DefaultNotificationManager
 import per.hojong.baekjoonprofile.utility.NetworkCoroutine
-import java.time.Duration
-import java.util.*
 
 class MediumProfileWidgetProvider : AppWidgetProvider() {
     private lateinit var firebaseAnalytics: FirebaseAnalytics
@@ -67,11 +56,12 @@ class MediumProfileWidgetProvider : AppWidgetProvider() {
                             solvedID = getDefaultSolvedID(it)
                         ) { profile ->
                             if (getTodaySolvedCount(it) == profile.solvedCount) {
-                                Toast.makeText(
-                                    it,
-                                    "어제 푼 문제 : ${getTodaySolvedCount(it)}\n오늘 푼 문제: ${profile.solvedCount}\n문제를 푸셔야겠습니다..",
-                                    Toast.LENGTH_SHORT
-                                ).show()
+                                DefaultNotificationManager(it)
+                                    .showNotification(
+                                        profile.handle,
+                                        "${profile.handle}님,오늘 문제를 풀지 않았습니다!",
+                                        "스트릭이 끊기기 전에 문제를 풀어주세요!"
+                                    )
                             }
                         }
                         setAlarm(it)
