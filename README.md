@@ -1,12 +1,13 @@
 # 백준 프로필
 
 
-<img src = "https://user-images.githubusercontent.com/57793298/151350389-f067258c-c05c-4806-8a9c-c80eefedefec.png" align = "left" width = "200" hspace ="10" vspace = "10">
+<img src = "https://user-images.githubusercontent.com/57793298/151350389-f067258c-c05c-4806-8a9c-c80eefedefec.png" align = "left" width = "250" hspace ="10" vspace = "10">
 
 -  **개인 프로젝트**
 
 -  **Jetpack Compose 공부를 위해 개발한 어플리케이션 입니다. Widget 생성을 통해 Pending Intent와 Broadcast Receiver에 대한 자세한 내용을 공부했고, Alarm Manager 를 통한 문제 풀이 알림을 구현했습니다.**
 
+-  **[🔗 플레이 스토어](https://play.google.com/store/apps/details?id=per.hojong.baekjoonprofile)**
 <br>
 <br>
 <br>
@@ -28,11 +29,17 @@
 휴대폰에 **프로필 위젯을 설치해서 매일매일 성장해가는 나를 보며 성취감**을 느끼면 어떨까? 라는 생각으로 어플리케이션을 개발하게 되었습니다.
 
 <br>
+<div class = "leftdiv">
+  <h2>ℹ️ 정보</h2>
+   <br>
+  <p>- [solved.ac](http://solved.ac) (백준과 연동한 프로필 관리 사이트)<br>프로필 조회 & 위젯 생성 어플리케이션<br>- 깃젯 , 깃허브 같은 개발자 어플리케이션에서 착안</p>
+  </div>
 
-|ℹ️ 정보|🔗 플레이 스토어|🛠  개발 환경 및 기술 스택|
-|:---|:---|:---|
-|- [solved.ac](http://solved.ac) (백준과 연동한 프로필 관리 사이트)<br>프로필 조회 & 위젯 생성 어플리케이션<br>- 깃젯 , 깃허브 같은 개발자 어플리케이션에서 착안|[백준 프로필<br>플레이 스토어](https://play.google.com/store/apps/details?id=per.hojong.baekjoonprofile)|- Android Studio(Kotlin)<br>- MVVM<br>- Jetpack Compose<br>- Hilt<br>- Retrofit|
-
+<div>
+  <h2>🛠  개발 환경 및 기술 스택</h2>
+  <br>
+  - Android Studio(Kotlin)<br>- MVVM<br>- Jetpack Compose<br>- Hilt<br>- Retrofit
+  </div>
 
 ## 스크린샷
 
