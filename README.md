@@ -24,22 +24,18 @@
 </p>
 
 
-연속해서 푸는 일수가 점점 올라 갈수록 높은 단계의 위젯을 얻게 됩니다. 그래서 28일 동안 연속으로 풀고 있었는데,<br> 주말 하루를 논다고 문제 푸는 걸 까먹어서 스트릭이 깨졌습니다.<br> 
-너무 화가나서 **하루동안 문제를 풀지 않았으면 알림**을 보내주는 어플리케이션을 만들면 어떨까?<br>
+연속해서 푸는 일수가 점점 올라 갈수록 높은 단계의 위젯을 얻게 됩니다. 그래서 28일 동안 연속으로 풀고 있었는데, 주말 하루를 논다고 문제 푸는 걸 까먹어서 스트릭이 깨졌습니다.
+너무 화가나서 **하루동안 문제를 풀지 않았으면 알림**을 보내주는 어플리케이션을 만들면 어떨까?
 휴대폰에 **프로필 위젯을 설치해서 매일매일 성장해가는 나를 보며 성취감**을 느끼면 어떨까? 라는 생각으로 어플리케이션을 개발하게 되었습니다.
 
 <br>
-<div class = "leftdiv">
-  <h2>ℹ️ 정보</h2>
-   <br>
-  <p>- [solved.ac](http://solved.ac) (백준과 연동한 프로필 관리 사이트)<br>프로필 조회 & 위젯 생성 어플리케이션<br>- 깃젯 , 깃허브 같은 개발자 어플리케이션에서 착안</p>
-  </div>
 
-<div>
-  <h2>🛠  개발 환경 및 기술 스택</h2>
-  <br>
-  - Android Studio(Kotlin)<br>- MVVM<br>- Jetpack Compose<br>- Hilt<br>- Retrofit
-  </div>
+<h2>🛠 프로젝트 주제 및 스택</h2>
+
+  |정보&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;|개발 환경 및 기술 스택&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;|
+  |:---|:---|
+  |<p>- [solved.ac](http://solved.ac) (백준과 연동한 프로필 관리 사이트)<br>프로필 조회 & 위젯 생성 어플리케이션<br>- 깃젯 , 깃허브 같은 개발자 어플리케이션에서 착안</p>|- Android Studio(Kotlin)<br>- MVVM<br>- Jetpack Compose<br>- Hilt<br>- Retrofit
+  
 
 ## 스크린샷
 
