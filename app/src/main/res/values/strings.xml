@@ -1,6 +1,6 @@
 <resources>
-    <string name="app_name">solved.ac Profile</string>
-    <string name="all_title">solved.ac\nProfile</string>
+    <string name="app_name">백준 프로필</string>
+    <string name="all_title">백준\n프로필</string>
     <string name="login_description">solved.ac 아이디를\n입력해주세요</string>
     <string name="profile_view">프로필 조회</string>
     <string name="self_description_empty">자기소개가 없습니다.</string>

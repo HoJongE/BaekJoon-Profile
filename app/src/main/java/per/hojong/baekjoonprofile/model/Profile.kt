@@ -3,6 +3,7 @@ package per.hojong.baekjoonprofile.model
 import com.google.gson.annotations.SerializedName
 import per.hojong.baekjoonprofile.R
 import per.hojong.baekjoonprofile.ui.theme.*
+import java.io.Serializable
 
 data class Profile(
     val handle: String, //사용자 명
@@ -20,8 +21,8 @@ data class Profile(
     val rating: Int, //사용자의 레이팅
     val maxStreak: Int, //최대 연속 문제 풀이일 수
     val rank: Int, //사용자의 순위
-) {
-    companion object  {
+) : Serializable {
+    companion object {
         fun dummyProfile() = Profile(
             "as00098", "",
             Badge("grass_05", "", "", ""),
@@ -68,12 +69,12 @@ data class Badge(
     val badgeImageUrl: String?,
     val displayName: String?,
     val displayDescription: String?
-)
+) : Serializable
 
 data class Background(
     val backgroundImageUrl: String?,
     val author: String?,
     val displayName: String?,
     val displayDescription: String?
-)
+) : Serializable
 

@@ -5,16 +5,20 @@ import android.appwidget.AppWidgetProvider
 import android.content.Context
 import android.content.Intent
 import android.widget.Toast
+import androidx.compose.animation.ExperimentalAnimationApi
+import androidx.compose.ui.ExperimentalComposeUiApi
 import com.google.firebase.analytics.FirebaseAnalytics
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import per.hojong.baekjoonprofile.data.*
-import per.hojong.baekjoonprofile.model.Profile
 import per.hojong.baekjoonprofile.data.source.ProfileRemoteSource
+import per.hojong.baekjoonprofile.model.Profile
 import per.hojong.baekjoonprofile.utility.DefaultAlarmManager
 import per.hojong.baekjoonprofile.utility.DefaultNotificationManager
 import per.hojong.baekjoonprofile.utility.NetworkCoroutine
 
+@ExperimentalAnimationApi
+@ExperimentalComposeUiApi
 class MediumProfileWidgetProvider : AppWidgetProvider() {
     private lateinit var firebaseAnalytics: FirebaseAnalytics
 
@@ -23,6 +27,7 @@ class MediumProfileWidgetProvider : AppWidgetProvider() {
         const val DAY_CHANGE_ALARM = "DAY_CHANGE_ALARM"
         const val CHECK_SOLVED_COUNT = "CHECK_SOLVE_COUNT"
     }
+
 
     override fun onReceive(context: Context?, intent: Intent?) {
         context?.let {

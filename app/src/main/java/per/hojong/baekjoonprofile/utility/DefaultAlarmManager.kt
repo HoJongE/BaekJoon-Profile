@@ -4,10 +4,13 @@ import android.app.AlarmManager
 import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
-import android.widget.Toast
+import androidx.compose.animation.ExperimentalAnimationApi
+import androidx.compose.ui.ExperimentalComposeUiApi
 import per.hojong.baekjoonprofile.view.widget.MediumProfileWidgetProvider
 import java.util.*
 
+@ExperimentalComposeUiApi
+@ExperimentalAnimationApi
 class DefaultAlarmManager(
     private val context: Context,
 ) {
@@ -19,6 +22,7 @@ class DefaultAlarmManager(
         const val DAY_CHANGE_CODE = 8888
         const val CHECK_SOLVED_CODE = 9999
     }
+
 
     fun setDayChangeAlarm(): DefaultAlarmManager = apply {
         val alarmIntent = Intent(context, MediumProfileWidgetProvider::class.java).let { intent ->
