@@ -1,7 +1,7 @@
 package per.hojong.baekjoonprofile.data
 
-import per.hojong.baekjoonprofile.model.Profile
 import per.hojong.baekjoonprofile.data.source.ProfileRemoteSource
+import per.hojong.baekjoonprofile.model.Profile
 import javax.inject.Singleton
 
 @Singleton

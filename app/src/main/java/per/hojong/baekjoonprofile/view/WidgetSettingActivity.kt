@@ -7,6 +7,8 @@ import android.widget.Button
 import android.widget.EditText
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.compose.animation.ExperimentalAnimationApi
+import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.core.widget.addTextChangedListener
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.flowWithLifecycle
@@ -20,6 +22,8 @@ import per.hojong.baekjoonprofile.network.ProfileLoadingState
 import per.hojong.baekjoonprofile.view.widget.WidgetBuilder
 import per.hojong.baekjoonprofile.viewmodel.LoginViewModel
 
+@ExperimentalComposeUiApi
+@ExperimentalAnimationApi
 @AndroidEntryPoint
 class WidgetSettingActivity : AppCompatActivity() {
     private var appWidgetId: Int = AppWidgetManager.INVALID_APPWIDGET_ID
@@ -100,6 +104,7 @@ class WidgetSettingActivity : AppCompatActivity() {
             createAppWidget(editText.text.toString())
         }
     }
+
 
     private fun createAppWidget(id: String) {
         mLoginViewModel.getProfile(id) {

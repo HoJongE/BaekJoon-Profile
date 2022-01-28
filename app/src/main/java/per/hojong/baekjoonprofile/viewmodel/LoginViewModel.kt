@@ -46,10 +46,6 @@ class LoginViewModel @Inject constructor(
         }
     }
 
-
-    /**
-     * logout
-     */
     fun logout() {
         _profileLoadingState.value = ProfileLoadingState.Empty
     }

@@ -1,11 +1,14 @@
 package per.hojong.baekjoonprofile.view.login
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.material.Surface
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
@@ -17,6 +20,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import per.hojong.baekjoonprofile.R
+import per.hojong.baekjoonprofile.model.Profile
 import per.hojong.baekjoonprofile.network.ProfileLoadingState
 import per.hojong.baekjoonprofile.ui.theme.BackgroundColor
 import per.hojong.baekjoonprofile.ui.theme.Diamond
@@ -26,6 +30,7 @@ import per.hojong.baekjoonprofile.view.*
 @Composable
 fun LoginView(
     profileLoadingState: ProfileLoadingState,
+    navigateToDetail: (Profile) -> Unit,
     profileProvider: (String) -> Unit
 ) {
     val id = remember {
@@ -67,13 +72,27 @@ fun LoginView(
             ErrorText(error = "아이디 혹은 인터넷 연결 상태를 확인해주세요")
         }
     }
+    if (profileLoadingState is ProfileLoadingState.Success) {
+        LaunchedEffect(profileLoadingState) {
+            navigateToDetail(profileLoadingState.profile)
+        }
+    }
 }
 
 @ExperimentalComposeUiApi
-@Preview(showBackground = true, showSystemUi = true)
+@Preview(showBackground = true)
 @Composable
 fun DefaultPreview() {
-    LoginView(profileLoadingState = ProfileLoadingState.Loading) {
+    Surface(
+        modifier = Modifier
+            .fillMaxSize()
+            .background(
+                BackgroundColor
+            )
+    ) {
+        LoginView(profileLoadingState = ProfileLoadingState.Loading, navigateToDetail = {}) {
 
+        }
     }
+
 }

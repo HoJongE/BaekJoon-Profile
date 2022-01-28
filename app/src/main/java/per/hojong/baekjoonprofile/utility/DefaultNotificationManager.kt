@@ -8,6 +8,8 @@ import android.content.Intent
 import android.graphics.Bitmap
 import android.os.Build
 import android.os.Bundle
+import androidx.compose.animation.ExperimentalAnimationApi
+import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import per.hojong.baekjoonprofile.R
@@ -29,6 +31,8 @@ class DefaultNotificationManager(private val context: Context) {
         createNotificationChannel()
     }
 
+    @ExperimentalComposeUiApi
+    @ExperimentalAnimationApi
     fun showNotification(id: String, title: String, content: String, largeIcon: Bitmap? = null) {
         val dateFormat = SimpleDateFormat("MMddHHmmss")
         val notiId = Integer.parseInt(dateFormat.format(Date()))
@@ -45,8 +49,13 @@ class DefaultNotificationManager(private val context: Context) {
         }
     }
 
+    @ExperimentalAnimationApi
+    @ExperimentalComposeUiApi
     private fun createPendingIntent(id: String): PendingIntent =
-        Intent(context, MainActivity::class.java).apply {
+        Intent(
+            context,
+            MainActivity::class.java
+        ).apply {
             val bundle = Bundle()
             bundle.putString("id", id)
             this.putExtras(bundle)

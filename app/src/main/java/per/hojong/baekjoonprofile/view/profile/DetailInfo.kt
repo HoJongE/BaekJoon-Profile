@@ -32,7 +32,7 @@ import per.hojong.baekjoonprofile.view.profile.TierBadge
 
 
 @Composable
-fun DetailInfoView(profile: Profile, logout: () -> Unit) {
+fun DetailInfoView(profile: Profile, navigateToLogin: () -> Unit) {
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
         modifier = Modifier.fillMaxSize()
@@ -47,7 +47,7 @@ fun DetailInfoView(profile: Profile, logout: () -> Unit) {
             navigationIcon = {
                 Button(
                     onClick = {
-                        logout()
+                        navigateToLogin()
                     },
                     colors = ButtonDefaults.buttonColors(
                         backgroundColor = Color.Black

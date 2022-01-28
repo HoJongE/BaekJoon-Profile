@@ -10,6 +10,8 @@ import android.os.Bundle
 import android.view.View
 import android.widget.RemoteViews
 import androidx.appcompat.app.AppCompatActivity
+import androidx.compose.animation.ExperimentalAnimationApi
+import androidx.compose.ui.ExperimentalComposeUiApi
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.bumptech.glide.request.target.AppWidgetTarget
@@ -21,6 +23,8 @@ import per.hojong.baekjoonprofile.data.putSolvedID
 import per.hojong.baekjoonprofile.model.Profile
 import per.hojong.baekjoonprofile.view.MainActivity
 
+@ExperimentalAnimationApi
+@ExperimentalComposeUiApi
 class WidgetBuilder(
     private val context: Context,
     private val appWidgetId: Int,
@@ -120,6 +124,7 @@ class WidgetBuilder(
         }
     }
 
+
     fun setActivityPendingIntent(): WidgetBuilder = apply {
         val pendingIntent: PendingIntent =
             Intent(context, MainActivity::class.java).apply {
@@ -127,7 +132,6 @@ class WidgetBuilder(
                 val bundle = Bundle()
                 bundle.putString("id", profileID)
                 this.putExtras(bundle)
-                flags = Intent.FLAG_ACTIVITY_NEW_TASK
             }.let { intent ->
                 PendingIntent.getActivity(
                     context,
