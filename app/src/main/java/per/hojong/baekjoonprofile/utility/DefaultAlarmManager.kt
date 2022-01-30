@@ -31,7 +31,7 @@ class DefaultAlarmManager(
                 context,
                 DAY_CHANGE_CODE,
                 intent,
-                PendingIntent.FLAG_CANCEL_CURRENT
+                PendingIntent.FLAG_CANCEL_CURRENT or PendingIntent.FLAG_IMMUTABLE
             )
         }
         val calendar = Calendar.getInstance()
@@ -56,7 +56,7 @@ class DefaultAlarmManager(
                 context,
                 DAY_CHANGE_CODE,
                 intent,
-                PendingIntent.FLAG_CANCEL_CURRENT
+                PendingIntent.FLAG_CANCEL_CURRENT or PendingIntent.FLAG_IMMUTABLE
             )
         }
         alarmIntent.cancel()
@@ -70,7 +70,7 @@ class DefaultAlarmManager(
                 context,
                 CHECK_SOLVED_CODE,
                 intent,
-                PendingIntent.FLAG_CANCEL_CURRENT
+                PendingIntent.FLAG_CANCEL_CURRENT or PendingIntent.FLAG_IMMUTABLE
             )
         }
 
@@ -96,7 +96,7 @@ class DefaultAlarmManager(
                 context,
                 CHECK_SOLVED_CODE,
                 intent,
-                PendingIntent.FLAG_CANCEL_CURRENT
+                PendingIntent.FLAG_CANCEL_CURRENT or PendingIntent.FLAG_IMMUTABLE
             )
         }
         alarmIntent.cancel()
