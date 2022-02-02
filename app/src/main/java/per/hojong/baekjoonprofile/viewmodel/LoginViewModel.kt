@@ -20,6 +20,7 @@ class LoginViewModel @Inject constructor(
 ) : ViewModel() {
     private val _profileLoadingState =
         MutableStateFlow<ProfileLoadingState>(ProfileLoadingState.Empty)
+
     val profileLoadingState = _profileLoadingState.asStateFlow()
 
 
@@ -39,10 +40,8 @@ class LoginViewModel @Inject constructor(
         viewModelScope.launch(ioDispatchers) {
             _profileLoadingState.value = ProfileLoadingState.Loading
             val profile = repository.loadProfile(id)
-            withContext(uiDispatchers) {
-                _profileLoadingState.value = ProfileLoadingState.Success(profile)
-                onSuccess?.invoke(profile)
-            }
+            _profileLoadingState.value = ProfileLoadingState.Success(profile)
+            onSuccess?.invoke(profile)
         }
     }
 

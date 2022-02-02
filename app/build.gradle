@@ -14,8 +14,8 @@ android {
         applicationId "per.hojong.baekjoonprofile"
         minSdk 24
         targetSdk 31
-        versionCode 220114
-        versionName "1.2.1"
+        versionCode 220130
+        versionName "1.2.2"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
@@ -42,7 +42,7 @@ android {
     }
     composeOptions {
         kotlinCompilerExtensionVersion compose_version
-        kotlinCompilerVersion '1.3.11'
+        kotlinCompilerVersion '1.5.31'
     }
     packagingOptions {
         resources {

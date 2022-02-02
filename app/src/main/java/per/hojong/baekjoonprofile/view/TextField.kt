@@ -26,7 +26,8 @@ import per.hojong.baekjoonprofile.ui.theme.Gray
 fun RoundTextField(
     padding: Dp,
     title: String,
-    value: MutableState<String>,
+    value: String,
+    onValueChange: (String) -> Unit,
     isError: Boolean = false,
     enable: Boolean = true
 ) {
@@ -44,8 +45,8 @@ fun RoundTextField(
             color = Gray
         )
         TextField(
-            value = value.value,
-            onValueChange = { value.value = it },
+            value = value,
+            onValueChange = onValueChange,
             modifier = Modifier
                 .padding(12.dp)
                 .fillMaxWidth(),

@@ -56,8 +56,5 @@ fun getTierImage(tier: Int) =
 @Composable
 @Preview
 fun TierBadgePreview() {
-    androidx.compose.material.Surface(modifier = Modifier.fillMaxSize()) {
-        TierBadge(28)
-
-    }
+    TierBadge(28)
 }

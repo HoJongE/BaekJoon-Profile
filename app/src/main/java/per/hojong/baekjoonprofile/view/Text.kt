@@ -1,10 +1,12 @@
 package per.hojong.baekjoonprofile.view
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.MaterialTheme
+import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -89,9 +91,11 @@ fun ProfileBio(value: String) {
 @Composable
 fun ErrorText(error: String) {
     Text(
-        modifier = Modifier.padding(8.dp),
+        modifier = Modifier
+            .fillMaxWidth()
+            .fillMaxHeight(0.15f),
         text = error,
-        color = Color.Red,
+        color = MaterialTheme.colors.error,
         textAlign = TextAlign.Center,
         fontFamily = GMarketSansFamily,
         fontWeight = FontWeight.Light,
