@@ -10,30 +10,29 @@ import androidx.compose.ui.graphics.Color
 private val DarkColorPalette = darkColors(
     primary = Color.Black,
     primaryVariant = Color.Black,
+    onPrimary = Color.White,
     secondary = Color.Black,
     background = BackgroundColor,
+    onBackground = Color.White,
+    error = Ruby,
+    onError = Color.White
 )
 
 private val LightColorPalette = lightColors(
     primary = Color.Black,
+    onPrimary = Color.White,
     primaryVariant = Color.Black,
     secondary = Color.Black,
-    background = BackgroundColor
-
-    /* Other default colors to override
-    background = Color.White,
-    surface = Color.White,
-    onPrimary = Color.White,
-    onSecondary = Color.Black,
-    onBackground = Color.Black,
-    onSurface = Color.Black,
-    */
+    background = BackgroundColor,
+    onBackground = Color.White,
+    error = Ruby,
+    onError = Color.White
 )
 
 @Composable
 fun BaekJoonProfileTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
-    content: @Composable() () -> Unit
+    content: @Composable () -> Unit
 ) {
     val colors = if (darkTheme) {
         DarkColorPalette

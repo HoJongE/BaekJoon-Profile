@@ -100,30 +100,3 @@ fun ContentView(loginViewModel: LoginViewModel, navHostController: NavHostContro
         }
     }
 }
-
-
-@Preview(showBackground = true, name = "테스트")
-@Composable
-fun Test() {
-    ComposeExample()
-}
-
-@Composable
-fun ComposeExample() {
-    var name = rememberSaveable { mutableStateOf("") }
-    var isClicked = remember { mutableStateOf(false) }
-    val padding = animateDpAsState(if (isClicked.value) 32.dp else 16.dp)
-    Column {
-        Text("${name.value} 님 안녕하세요")
-        TextField(value = name.value, onValueChange = { name.value = it })
-        Button(
-            modifier = Modifier.padding(padding.value),
-            onClick = { isClicked.value = !isClicked.value }) {
-            Text(text = "버튼 ")
-        }
-    }
-
-}
-
-
-

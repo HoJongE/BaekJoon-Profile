@@ -1,5 +1,6 @@
 package per.hojong.baekjoonprofile.view.login
 
+import android.content.res.Configuration.UI_MODE_NIGHT_YES
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
@@ -7,10 +8,8 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material.Surface
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
+import androidx.compose.runtime.*
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
@@ -23,6 +22,7 @@ import per.hojong.baekjoonprofile.R
 import per.hojong.baekjoonprofile.model.Profile
 import per.hojong.baekjoonprofile.network.ProfileLoadingState
 import per.hojong.baekjoonprofile.ui.theme.BackgroundColor
+import per.hojong.baekjoonprofile.ui.theme.BaekJoonProfileTheme
 import per.hojong.baekjoonprofile.ui.theme.Diamond
 import per.hojong.baekjoonprofile.view.*
 
@@ -33,7 +33,7 @@ fun LoginView(
     navigateToDetail: (Profile) -> Unit,
     profileProvider: (String) -> Unit
 ) {
-    val id = remember {
+    var id by rememberSaveable {
         mutableStateOf("")
     }
     Column(
@@ -55,10 +55,15 @@ fun LoginView(
             8.dp,
             "ID",
             id,
+            onValueChange = { id = it },
             isError = profileLoadingState is ProfileLoadingState.Error,
             enable = profileLoadingState !is ProfileLoadingState.Loading
         )
-        Spacer(modifier = Modifier.fillMaxHeight(0.1f))
+        if (profileLoadingState is ProfileLoadingState.Error) {
+            ErrorText(error = "아이디 혹은 인터넷 연결 상태를 확인해주세요")
+        } else {
+            Spacer(modifier = Modifier.fillMaxHeight(0.15f))
+        }
         RoundLoadingButton(
             value = stringResource(id = R.string.profile_view),
             loading = profileLoadingState is ProfileLoadingState.Loading,
@@ -66,11 +71,9 @@ fun LoginView(
             disabledBackgroundColor = BackgroundColor,
             textColor = Diamond
         ) {
-            profileProvider(id.value)
+            profileProvider(id)
         }
-        if (profileLoadingState is ProfileLoadingState.Error) {
-            ErrorText(error = "아이디 혹은 인터넷 연결 상태를 확인해주세요")
-        }
+
     }
     if (profileLoadingState is ProfileLoadingState.Success) {
         LaunchedEffect(profileLoadingState) {
@@ -81,18 +84,19 @@ fun LoginView(
 
 @ExperimentalComposeUiApi
 @Preview(showBackground = true)
+@Preview(showBackground = true, uiMode = UI_MODE_NIGHT_YES)
 @Composable
 fun DefaultPreview() {
-    Surface(
-        modifier = Modifier
-            .fillMaxSize()
-            .background(
-                BackgroundColor
-            )
-    ) {
-        LoginView(profileLoadingState = ProfileLoadingState.Loading, navigateToDetail = {}) {
-
+    BaekJoonProfileTheme {
+        Surface(
+            modifier = Modifier
+                .fillMaxSize()
+                .background(
+                    BackgroundColor
+                )
+        ) {
+            LoginView(profileLoadingState = ProfileLoadingState.Loading, navigateToDetail = {}) {
+            }
         }
     }
-
 }
