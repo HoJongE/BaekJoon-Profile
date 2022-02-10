@@ -1,0 +1,17 @@
+<component name="libraryTable">
+  <library name="Gradle: com.google.dagger:hilt-android-testing:2.39.1@aar">
+    <CLASSES>
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/154ea00da9e00c6391e8b2ce5ce6a33c/transformed/jetified-hilt-android-testing-2.39.1/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/3d406a58864ae494b43ba9fb96098638/transformed/jetified-hilt-android-testing-2.39.1/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/65aa556b4fcca15f12014f679a3323b9/transformed/jetified-hilt-android-testing-2.39.1/AndroidManifest.xml" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/65aa556b4fcca15f12014f679a3323b9/transformed/jetified-hilt-android-testing-2.39.1/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/65aa556b4fcca15f12014f679a3323b9/transformed/jetified-hilt-android-testing-2.39.1/res" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.google.dagger/hilt-android-testing/2.39.1/673d27fed9c144b25abfb073b22bef184e636433/hilt-android-testing-2.39.1-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.google.dagger/hilt-android-testing/2.39.1/8714458e0043eebb7861e990fedb901cbdfd6661/hilt-android-testing-2.39.1-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
