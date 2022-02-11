@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		930E9D8227B62BE30027B21B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 930E9D8427B62BE30027B21B /* InfoPlist.strings */; };
 		938536F527B52E0700D5A400 /* BaekJoonProfileApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 938536F427B52E0700D5A400 /* BaekJoonProfileApp.swift */; };
 		938536F727B52E0700D5A400 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 938536F627B52E0700D5A400 /* ContentView.swift */; };
 		938536F927B52E0900D5A400 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 938536F827B52E0900D5A400 /* Assets.xcassets */; };
@@ -14,6 +15,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		930E9D8327B62BE30027B21B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		930E9D8527B62BE60027B21B /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		938536F127B52E0700D5A400 /* BaekJoonProfile.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BaekJoonProfile.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		938536F427B52E0700D5A400 /* BaekJoonProfileApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaekJoonProfileApp.swift; sourceTree = "<group>"; };
 		938536F627B52E0700D5A400 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -35,6 +38,7 @@
 		938536E827B52E0700D5A400 = {
 			isa = PBXGroup;
 			children = (
+				930E9D8427B62BE30027B21B /* InfoPlist.strings */,
 				938536F327B52E0700D5A400 /* BaekJoonProfile */,
 				938536F227B52E0700D5A400 /* Products */,
 			);
@@ -109,6 +113,7 @@
 			knownRegions = (
 				en,
 				Base,
+				ko,
 			);
 			mainGroup = 938536E827B52E0700D5A400;
 			productRefGroup = 938536F227B52E0700D5A400 /* Products */;
@@ -126,6 +131,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				938536FC27B52E0900D5A400 /* Preview Assets.xcassets in Resources */,
+				930E9D8227B62BE30027B21B /* InfoPlist.strings in Resources */,
 				938536F927B52E0900D5A400 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -143,6 +149,18 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		930E9D8427B62BE30027B21B /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				930E9D8327B62BE30027B21B /* en */,
+				930E9D8527B62BE60027B21B /* ko */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		938536FD27B52E0900D5A400 /* Debug */ = {
@@ -196,7 +214,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -251,7 +269,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -277,6 +295,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -306,6 +325,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
