@@ -8,20 +8,35 @@
 
 /* Begin PBXBuildFile section */
 		930E9D8227B62BE30027B21B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 930E9D8427B62BE30027B21B /* InfoPlist.strings */; };
+		931E63EE27B6A52F0056F60D /* BasicTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 931E63ED27B6A52F0056F60D /* BasicTextField.swift */; };
 		938536F527B52E0700D5A400 /* BaekJoonProfileApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 938536F427B52E0700D5A400 /* BaekJoonProfileApp.swift */; };
 		938536F727B52E0700D5A400 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 938536F627B52E0700D5A400 /* ContentView.swift */; };
 		938536F927B52E0900D5A400 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 938536F827B52E0900D5A400 /* Assets.xcassets */; };
 		938536FC27B52E0900D5A400 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 938536FB27B52E0900D5A400 /* Preview Assets.xcassets */; };
+		9389C14427B7C1B700A94E2D /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9389C14327B7C1B700A94E2D /* NetworkError.swift */; };
+		93BD996E27B72ACF00922E96 /* Text.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93BD996D27B72ACF00922E96 /* Text.swift */; };
+		93BD997127B72B9700922E96 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93BD997027B72B9700922E96 /* Color.swift */; };
+		93BD997627B7340100922E96 /* GmarketSansTTFLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 93BD997327B7340100922E96 /* GmarketSansTTFLight.ttf */; };
+		93BD997727B7340100922E96 /* GmarketSansTTFBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 93BD997427B7340100922E96 /* GmarketSansTTFBold.ttf */; };
+		93BD997827B7340100922E96 /* GmarketSansTTFMedium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 93BD997527B7340100922E96 /* GmarketSansTTFMedium.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		930E9D8327B62BE30027B21B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		930E9D8527B62BE60027B21B /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		931E63EB27B69BF90056F60D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		931E63ED27B6A52F0056F60D /* BasicTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicTextField.swift; sourceTree = "<group>"; };
 		938536F127B52E0700D5A400 /* BaekJoonProfile.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BaekJoonProfile.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		938536F427B52E0700D5A400 /* BaekJoonProfileApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaekJoonProfileApp.swift; sourceTree = "<group>"; };
 		938536F627B52E0700D5A400 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		938536F827B52E0900D5A400 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		938536FB27B52E0900D5A400 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		9389C14327B7C1B700A94E2D /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
+		93BD996D27B72ACF00922E96 /* Text.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Text.swift; sourceTree = "<group>"; };
+		93BD997027B72B9700922E96 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
+		93BD997327B7340100922E96 /* GmarketSansTTFLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = GmarketSansTTFLight.ttf; path = font/GmarketSansTTFLight.ttf; sourceTree = SOURCE_ROOT; };
+		93BD997427B7340100922E96 /* GmarketSansTTFBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = GmarketSansTTFBold.ttf; path = font/GmarketSansTTFBold.ttf; sourceTree = SOURCE_ROOT; };
+		93BD997527B7340100922E96 /* GmarketSansTTFMedium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = GmarketSansTTFMedium.ttf; path = font/GmarketSansTTFMedium.ttf; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -35,9 +50,31 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		931E63E427B69AB20056F60D /* font */ = {
+			isa = PBXGroup;
+			children = (
+				93BD997427B7340100922E96 /* GmarketSansTTFBold.ttf */,
+				93BD997327B7340100922E96 /* GmarketSansTTFLight.ttf */,
+				93BD997527B7340100922E96 /* GmarketSansTTFMedium.ttf */,
+			);
+			name = font;
+			path = "래ㅜㅅ";
+			sourceTree = "<group>";
+		};
+		931E63EC27B6A51B0056F60D /* View */ = {
+			isa = PBXGroup;
+			children = (
+				938536F627B52E0700D5A400 /* ContentView.swift */,
+				931E63ED27B6A52F0056F60D /* BasicTextField.swift */,
+				93BD996D27B72ACF00922E96 /* Text.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		938536E827B52E0700D5A400 = {
 			isa = PBXGroup;
 			children = (
+				931E63E427B69AB20056F60D /* font */,
 				930E9D8427B62BE30027B21B /* InfoPlist.strings */,
 				938536F327B52E0700D5A400 /* BaekJoonProfile */,
 				938536F227B52E0700D5A400 /* Products */,
@@ -55,8 +92,12 @@
 		938536F327B52E0700D5A400 /* BaekJoonProfile */ = {
 			isa = PBXGroup;
 			children = (
+				9389C14227B7C1A400A94E2D /* Model */,
+				93BD997227B72C3E00922E96 /* ViewModel */,
+				93BD996F27B72B8B00922E96 /* Color */,
+				931E63EC27B6A51B0056F60D /* View */,
+				931E63EB27B69BF90056F60D /* Info.plist */,
 				938536F427B52E0700D5A400 /* BaekJoonProfileApp.swift */,
-				938536F627B52E0700D5A400 /* ContentView.swift */,
 				938536F827B52E0900D5A400 /* Assets.xcassets */,
 				938536FA27B52E0900D5A400 /* Preview Content */,
 			);
@@ -69,6 +110,29 @@
 				938536FB27B52E0900D5A400 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		9389C14227B7C1A400A94E2D /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				9389C14327B7C1B700A94E2D /* NetworkError.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		93BD996F27B72B8B00922E96 /* Color */ = {
+			isa = PBXGroup;
+			children = (
+				93BD997027B72B9700922E96 /* Color.swift */,
+			);
+			path = Color;
+			sourceTree = "<group>";
+		};
+		93BD997227B72C3E00922E96 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -131,8 +195,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				938536FC27B52E0900D5A400 /* Preview Assets.xcassets in Resources */,
+				93BD997627B7340100922E96 /* GmarketSansTTFLight.ttf in Resources */,
 				930E9D8227B62BE30027B21B /* InfoPlist.strings in Resources */,
 				938536F927B52E0900D5A400 /* Assets.xcassets in Resources */,
+				93BD997727B7340100922E96 /* GmarketSansTTFBold.ttf in Resources */,
+				93BD997827B7340100922E96 /* GmarketSansTTFMedium.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -143,7 +210,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				931E63EE27B6A52F0056F60D /* BasicTextField.swift in Sources */,
 				938536F727B52E0700D5A400 /* ContentView.swift in Sources */,
+				93BD996E27B72ACF00922E96 /* Text.swift in Sources */,
+				9389C14427B7C1B700A94E2D /* NetworkError.swift in Sources */,
+				93BD997127B72B9700922E96 /* Color.swift in Sources */,
 				938536F527B52E0700D5A400 /* BaekJoonProfileApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -290,6 +361,7 @@
 				DEVELOPMENT_TEAM = 44RS35G3C5;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = BaekJoonProfile/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -320,6 +392,7 @@
 				DEVELOPMENT_TEAM = 44RS35G3C5;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = BaekJoonProfile/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
