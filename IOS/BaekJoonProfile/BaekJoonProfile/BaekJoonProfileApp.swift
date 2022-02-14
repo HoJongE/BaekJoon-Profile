@@ -9,8 +9,10 @@ import SwiftUI
 
 @main
 struct BaekJoonProfileApp: App {
+    
     var body: some Scene {
-        WindowGroup {
+        
+        return WindowGroup {
             ContentView()
         }
     }
