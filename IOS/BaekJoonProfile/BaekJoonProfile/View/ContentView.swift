@@ -15,7 +15,7 @@ struct ContentView: View {
     var body: some View {
        
         VStack(alignment:.center) {
-            
+            Spacer().frame(height:80)
             Text("백준\n프로필")
                 .modifier(LargeTitle())
                 .frame(maxWidth:.infinity)
@@ -27,7 +27,9 @@ struct ContentView: View {
                 .multilineTextAlignment(.center)
             BasicTextField(error: false, placeHolderText: "아이디", value: $id)
                 .padding(.vertical,24)
-            
+            TextButton(text: "프로필 조회", onClick: {})
+                .padding(24)
+            Spacer()
         }
         .frame(maxHeight:.infinity)
         .background(Color.backgroundColor)
@@ -43,8 +45,8 @@ struct ContentView_Previews: PreviewProvider {
                 .previewDevice(PreviewDevice(rawValue: "iPhone 12 Pro"))
                 .previewDisplayName("iPhone 12 pro")
             ContentView()
-                .previewDevice(PreviewDevice(rawValue: "iPhone 12 Pro"))
-                .previewDisplayName("iPhone 12 pro")
+                .previewDevice(PreviewDevice(rawValue: "iPhone 8"))
+                .previewDisplayName("iPhone 8")
                 .environment(\.colorScheme, .dark)
         }
     }

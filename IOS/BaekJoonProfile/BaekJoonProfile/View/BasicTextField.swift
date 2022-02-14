@@ -23,7 +23,7 @@ struct BasicTextField: View {
             }
             VStack{
                 Spacer()
-                Divider().frame(height:2).background(error ? Color.white : Color.errorColor)
+                Divider().frame(height:2).background(error ? Color.errorColor : Color.white)
             }
         }
         .frame(height:60)

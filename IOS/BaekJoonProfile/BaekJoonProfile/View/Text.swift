@@ -26,3 +26,11 @@ struct BodyText : ViewModifier {
             .foregroundColor(textColor)
     }
 }
+
+struct ButtonText : ViewModifier {
+    func body(content: Content) -> some View {
+        content
+            .font(.custom("GMarketSansTTFMedium", size: 18))
+            .foregroundColor(.blue)
+    }
+}
