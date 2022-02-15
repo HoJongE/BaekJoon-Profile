@@ -27,6 +27,15 @@ struct BodyText : ViewModifier {
     }
 }
 
+struct CaptionText : ViewModifier {
+    func body(content: Content) -> some View {
+        content
+            .font(.custom("GMarketSansTTFMedium", size: 14))
+            .lineSpacing(4)
+            .foregroundColor(.black)
+            .multilineTextAlignment(.leading)
+    }
+}
 struct ButtonText : ViewModifier {
     func body(content: Content) -> some View {
         content
