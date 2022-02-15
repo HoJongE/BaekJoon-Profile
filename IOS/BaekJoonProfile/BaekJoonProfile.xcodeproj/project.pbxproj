@@ -22,9 +22,11 @@
 		93BD997627B7340100922E96 /* GmarketSansTTFLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 93BD997327B7340100922E96 /* GmarketSansTTFLight.ttf */; };
 		93BD997727B7340100922E96 /* GmarketSansTTFBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 93BD997427B7340100922E96 /* GmarketSansTTFBold.ttf */; };
 		93BD997827B7340100922E96 /* GmarketSansTTFMedium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 93BD997527B7340100922E96 /* GmarketSansTTFMedium.ttf */; };
+		DEA005B56858E30AFC7390BC /* Pods_BaekJoonProfile.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DFB5326B5256595858619C8 /* Pods_BaekJoonProfile.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4DFB5326B5256595858619C8 /* Pods_BaekJoonProfile.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BaekJoonProfile.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		930E9D8327B62BE30027B21B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		930E9D8527B62BE60027B21B /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		931E63EB27B69BF90056F60D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
@@ -43,6 +45,8 @@
 		93BD997327B7340100922E96 /* GmarketSansTTFLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = GmarketSansTTFLight.ttf; path = font/GmarketSansTTFLight.ttf; sourceTree = SOURCE_ROOT; };
 		93BD997427B7340100922E96 /* GmarketSansTTFBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = GmarketSansTTFBold.ttf; path = font/GmarketSansTTFBold.ttf; sourceTree = SOURCE_ROOT; };
 		93BD997527B7340100922E96 /* GmarketSansTTFMedium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = GmarketSansTTFMedium.ttf; path = font/GmarketSansTTFMedium.ttf; sourceTree = SOURCE_ROOT; };
+		DA981348D4CFFA19CB82CDF1 /* Pods-BaekJoonProfile.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BaekJoonProfile.release.xcconfig"; path = "Target Support Files/Pods-BaekJoonProfile/Pods-BaekJoonProfile.release.xcconfig"; sourceTree = "<group>"; };
+		EDAF5E536BFCF6313AB2CC98 /* Pods-BaekJoonProfile.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BaekJoonProfile.debug.xcconfig"; path = "Target Support Files/Pods-BaekJoonProfile/Pods-BaekJoonProfile.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -50,12 +54,23 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DEA005B56858E30AFC7390BC /* Pods_BaekJoonProfile.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6C94CCF9A94F5C6EA95EDCAB /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				EDAF5E536BFCF6313AB2CC98 /* Pods-BaekJoonProfile.debug.xcconfig */,
+				DA981348D4CFFA19CB82CDF1 /* Pods-BaekJoonProfile.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		931E63E427B69AB20056F60D /* font */ = {
 			isa = PBXGroup;
 			children = (
@@ -86,6 +101,8 @@
 				930E9D8427B62BE30027B21B /* InfoPlist.strings */,
 				938536F327B52E0700D5A400 /* BaekJoonProfile */,
 				938536F227B52E0700D5A400 /* Products */,
+				6C94CCF9A94F5C6EA95EDCAB /* Pods */,
+				EC8C31ACAB2F1F652DDD6A49 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -144,6 +161,14 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
+		EC8C31ACAB2F1F652DDD6A49 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4DFB5326B5256595858619C8 /* Pods_BaekJoonProfile.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -151,9 +176,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 938536FF27B52E0900D5A400 /* Build configuration list for PBXNativeTarget "BaekJoonProfile" */;
 			buildPhases = (
+				91EB726437A0BD784DDF282D /* [CP] Check Pods Manifest.lock */,
 				938536ED27B52E0700D5A400 /* Sources */,
 				938536EE27B52E0700D5A400 /* Frameworks */,
 				938536EF27B52E0700D5A400 /* Resources */,
+				31AF103BEBD00531BC4F22B7 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -213,6 +240,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		31AF103BEBD00531BC4F22B7 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-BaekJoonProfile/Pods-BaekJoonProfile-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-BaekJoonProfile/Pods-BaekJoonProfile-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-BaekJoonProfile/Pods-BaekJoonProfile-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		91EB726437A0BD784DDF282D /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-BaekJoonProfile-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		938536ED27B52E0700D5A400 /* Sources */ = {
@@ -364,6 +433,7 @@
 		};
 		9385370027B52E0900D5A400 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = EDAF5E536BFCF6313AB2CC98 /* Pods-BaekJoonProfile.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -395,6 +465,7 @@
 		};
 		9385370127B52E0900D5A400 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DA981348D4CFFA19CB82CDF1 /* Pods-BaekJoonProfile.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
