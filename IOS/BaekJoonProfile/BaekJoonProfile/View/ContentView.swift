@@ -27,7 +27,18 @@ struct ContentView: View {
                 .multilineTextAlignment(.center)
             BasicTextField(error: false, placeHolderText: "아이디", value: $id)
                 .padding(.vertical,24)
-            TextButton(text: "프로필 조회", onClick: {})
+            TextButton(text: "프로필 조회", onClick: {
+                SolvedACService.shared.getProfile(id: id,completion: { result in
+                    switch result {
+                    case .Error(let error):
+                        print(error.localizedDescription)
+                    case .Success(data: let data):
+                        print(data.description)
+                    default:
+                        print("뭐야?")
+                    }
+                })
+            })
                 .padding(24)
             Spacer()
         }

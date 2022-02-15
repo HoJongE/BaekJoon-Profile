@@ -6,13 +6,15 @@
 //
 
 import SwiftUI
+import SDWebImageSwiftUI
 
 struct ProfileView: View {
+    
     var body: some View {
         GeometryReader { geo in
             VStack(alignment:.center){
                 BackgroundView(height: geo.size.height/5)
-                CircleImageView(width: geo.size.width/3)
+                CircleImage(url : "https://static.solved.ac/uploads/profile/360x360/2dbfa96246ee0c02cf13a756d5ddd0ffb0ef978e.png",width: geo.size.width/3)
                     .offset(y:-70)
                     .padding(.bottom,-56)
                 Text("as00098")
@@ -49,27 +51,23 @@ struct ProfileDescription : View {
         
     }
 }
-struct CircleImageView : View {
-    let width : CGFloat
-    var body: some View {
-        Circle()
-            .aspectRatio(1, contentMode: .fit)
-            .frame(width: width)
-    }
-}
 
 struct BackgroundView : View {
     let height : CGFloat
     var body: some View {
-        Rectangle()
-            .foregroundColor(.blue)
-            .frame(width: .infinity, height: height)
+        WebImage(url: URL(string :"https://solved.ac/_next/image?url=https%3A%2F%2Fstatic.solved.ac%2Fprofile_bg%2F_season2020%2Fs2020-gold4.png&w=3840&q=75"))
+            .resizable()
+            .indicator(.activity)
+            .scaledToFit()
+            .aspectRatio(3, contentMode: .fit)
+            .frame(maxWidth:.infinity)
         
     }
 }
 struct ProfileView_Previews: PreviewProvider {
     static var previews: some View {
         ProfileView()
+            .previewDevice(PreviewDevice(rawValue: "iPhone 12 Pro"))
         ProfileView()
             .previewDevice(PreviewDevice(rawValue: "iPhone 8"))
     }
@@ -82,16 +80,22 @@ struct ClassBadgeStreakView : View {
             VStack{
                 Text("CLASS")
                     .modifier(BodyText(textColor: .white))
+                SquareImage(url: "https://static.solved.ac/class/c5.svg")
             }
             .frame(width:width*0.33)
             VStack {
                 Text("BADGE")
                     .modifier(BodyText(textColor: .white))
+                SquareImage(url: "https://static.solved.ac/class/c5.svg")
             }
             .frame(width:width*0.33)
             VStack {
                 Text("STREAK")
                     .modifier(BodyText(textColor: .white))
+                Text("32")
+                    .modifier(BodyText(textColor: .white))
+                    .frame(width:width*0.33,height:width*0.33)
+                    
             }
             .frame(width:width*0.33)
         }
