@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		930E9D8227B62BE30027B21B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 930E9D8427B62BE30027B21B /* InfoPlist.strings */; };
 		931E63EE27B6A52F0056F60D /* BasicTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 931E63ED27B6A52F0056F60D /* BasicTextField.swift */; };
+		9326AAD227BB59B800B24F95 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9326AAD127BB59B800B24F95 /* ProfileView.swift */; };
+		9326AAD427BB5C9900B24F95 /* DataState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9326AAD327BB5C9900B24F95 /* DataState.swift */; };
 		9353518827BA558F00A30A4D /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9353518727BA558F00A30A4D /* Button.swift */; };
 		938536F527B52E0700D5A400 /* BaekJoonProfileApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 938536F427B52E0700D5A400 /* BaekJoonProfileApp.swift */; };
 		938536F727B52E0700D5A400 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 938536F627B52E0700D5A400 /* ContentView.swift */; };
@@ -27,6 +29,8 @@
 		930E9D8527B62BE60027B21B /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		931E63EB27B69BF90056F60D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		931E63ED27B6A52F0056F60D /* BasicTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicTextField.swift; sourceTree = "<group>"; };
+		9326AAD127BB59B800B24F95 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		9326AAD327BB5C9900B24F95 /* DataState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataState.swift; sourceTree = "<group>"; };
 		9353518727BA558F00A30A4D /* Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
 		938536F127B52E0700D5A400 /* BaekJoonProfile.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BaekJoonProfile.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		938536F427B52E0700D5A400 /* BaekJoonProfileApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaekJoonProfileApp.swift; sourceTree = "<group>"; };
@@ -70,6 +74,7 @@
 				931E63ED27B6A52F0056F60D /* BasicTextField.swift */,
 				93BD996D27B72ACF00922E96 /* Text.swift */,
 				9353518727BA558F00A30A4D /* Button.swift */,
+				9326AAD127BB59B800B24F95 /* ProfileView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -119,6 +124,7 @@
 			isa = PBXGroup;
 			children = (
 				9389C14327B7C1B700A94E2D /* NetworkError.swift */,
+				9326AAD327BB5C9900B24F95 /* DataState.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -213,8 +219,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9326AAD227BB59B800B24F95 /* ProfileView.swift in Sources */,
 				9353518827BA558F00A30A4D /* Button.swift in Sources */,
 				931E63EE27B6A52F0056F60D /* BasicTextField.swift in Sources */,
+				9326AAD427BB5C9900B24F95 /* DataState.swift in Sources */,
 				938536F727B52E0700D5A400 /* ContentView.swift in Sources */,
 				93BD996E27B72ACF00922E96 /* Text.swift in Sources */,
 				9389C14427B7C1B700A94E2D /* NetworkError.swift in Sources */,
