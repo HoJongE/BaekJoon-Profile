@@ -7,5 +7,6 @@ target 'BaekJoonProfile' do
 
   # Pods for BaekJoonProfile
  pod 'SDWebImageSwiftUI'
+ pod 'SDWebImageSVGCoder'
  pod 'Alamofire'
 end

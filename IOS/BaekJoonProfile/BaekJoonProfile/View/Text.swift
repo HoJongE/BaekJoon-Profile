@@ -28,11 +28,12 @@ struct BodyText : ViewModifier {
 }
 
 struct CaptionText : ViewModifier {
+    var color  = Color.black
     func body(content: Content) -> some View {
         content
             .font(.custom("GMarketSansTTFMedium", size: 14))
             .lineSpacing(4)
-            .foregroundColor(.black)
+            .foregroundColor(color)
             .multilineTextAlignment(.leading)
     }
 }
