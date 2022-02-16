@@ -17,5 +17,6 @@ extension Const {
         static let USER_SHOW = "user/show"
         static let CLASS_IMAGE_PREFIX = "https://static.solved.ac/class/c"
         static let CLASS_IMAGE_POSTFIX = ".svg"
+        static let DEFAULT_PROFILE = "https://static.solved.ac/misc/360x360/default_profile.png"
     }
 }

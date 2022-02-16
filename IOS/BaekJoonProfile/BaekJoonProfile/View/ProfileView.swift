@@ -9,28 +9,53 @@ import SwiftUI
 import SDWebImageSwiftUI
 
 struct ProfileView: View {
-    
+    let profile : Profile?
+    let logout:()->()
+    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+
     var body: some View {
-        GeometryReader { geo in
-            VStack(alignment:.center){
-                BackgroundView(height: geo.size.height/5)
-                CircleImage(url : "https://static.solved.ac/uploads/profile/360x360/2dbfa96246ee0c02cf13a756d5ddd0ffb0ef978e.png",width: geo.size.width/3)
-                    .offset(y:-70)
-                    .padding(.bottom,-56)
-                Text("as00098")
-                    .modifier(BodyText(textColor: .white))
-                ProfileDescription(text: "안녕하세\ndd\ndddd")
-                ClassBadgeStreakView(width: geo.size.width-32)
-                    .padding(8)
-                VerticalInfoView(solved: 517, rating: 1908, rank: 4987,width: geo.size.width-32,tier: 3)
-                Spacer()
-                
+        let backgroundImageUrl : String = {
+            if let url = profile?.background?.backgroundImageUrl {
+                return url
+            } else {
+                return ""
             }
+        }()
+        
+        if let profile = profile {
+            GeometryReader { geo in
+                VStack(alignment:.center){
+                    TopBar {
+                        logout()
+                        self.presentationMode.wrappedValue.dismiss()
+                    }
+                    BackgroundView(height: geo.size.height/5,url: backgroundImageUrl,width: geo.size.width)
+                    
+                    CircleImage(url : profile.profileImageUrl == nil ? Const.URL.DEFAULT_PROFILE : profile.profileImageUrl!,width: geo.size.width/3)
+                        .offset(y:-70)
+                        .padding(.bottom,-56)
+                    
+                    Text(profile.handle)
+                        .modifier(BodyText(textColor: .white))
+                    
+                    ProfileDescription(text: profile.bio)
+                    
+                    ClassBadgeStreakView(width: geo.size.width-32, profile: profile)
+                        .padding(8)
+                    
+                    VerticalInfoView(solved: profile.solvedCount, rating: profile.rating, rank: profile.rank ,width: geo.size.width-32, textColor: profile.getTierColor())
+                    
+                    Spacer()
+                    
+                }
+            }
+            .navigationBarHidden(true)
+            .navigationBarBackButtonHidden(true)
             .frame(maxWidth:.infinity,maxHeight: .infinity)
-            .background(Color.backgroundColor)
-            .edgesIgnoringSafeArea(.all)
+            .background(Color.backgroundColor.edgesIgnoringSafeArea(.all))
             .preferredColorScheme(.dark)
-            
+        } else {
+            EmptyView()
         }
         
     }
@@ -54,48 +79,61 @@ struct ProfileDescription : View {
 
 struct BackgroundView : View {
     let height : CGFloat
+    let url : String
+    let width: CGFloat
     var body: some View {
-        WebImage(url: URL(string :"https://solved.ac/_next/image?url=https%3A%2F%2Fstatic.solved.ac%2Fprofile_bg%2F_season2020%2Fs2020-gold4.png&w=3840&q=75"))
+        WebImage(url: URL(string : url))
             .resizable()
             .indicator(.activity)
             .scaledToFit()
-            .aspectRatio(3, contentMode: .fit)
-            .frame(maxWidth:.infinity)
+            .frame(width: width,height: width * 0.33)
         
     }
 }
 struct ProfileView_Previews: PreviewProvider {
     static var previews: some View {
-        ProfileView()
-            .previewDevice(PreviewDevice(rawValue: "iPhone 12 Pro"))
-        ProfileView()
-            .previewDevice(PreviewDevice(rawValue: "iPhone 8"))
+        ProfileView(profile: Profile.provideDummyData()){}
+        .previewDevice(PreviewDevice(rawValue: "iPhone 12 Pro"))
+        ProfileView(profile: Profile.provideDummyData()){}
+        .previewDevice(PreviewDevice(rawValue: "iPhone 8"))
     }
 }
 
 struct ClassBadgeStreakView : View {
     let width : CGFloat
+    let profile : Profile
     var body: some View {
-        HStack(alignment:.top) {
+        let classImage : String = {
+            if profile.classDecoration == "none" {
+                return "\(Const.URL.CLASS_IMAGE_PREFIX)\(profile.Class)\(Const.URL.CLASS_IMAGE_POSTFIX)"
+            } else {
+                return "\(Const.URL.CLASS_IMAGE_PREFIX)\(profile.Class)\(profile.classDecoration.startIndex)\(Const.URL.CLASS_IMAGE_POSTFIX)"
+            }
+        }()
+        return HStack(alignment:.top) {
             VStack{
                 Text("CLASS")
                     .modifier(BodyText(textColor: .white))
-                SquareImage(url: "https://static.solved.ac/class/c5.svg")
+                SquareImage(url: classImage)
+                    .padding(.horizontal,24)
             }
             .frame(width:width*0.33)
             VStack {
                 Text("BADGE")
                     .modifier(BodyText(textColor: .white))
-                SquareImage(url: "https://static.solved.ac/class/c5.svg")
+                if let badgeImageUrl = profile.badge?.badgeImageUrl {
+                    SquareImage(url: badgeImageUrl)
+                        .padding(.horizontal,24)
+                }
             }
             .frame(width:width*0.33)
             VStack {
                 Text("STREAK")
                     .modifier(BodyText(textColor: .white))
-                Text("32")
-                    .modifier(BodyText(textColor: .white))
-                    .frame(width:width*0.33,height:width*0.33)
-                    
+                Text(String(profile.maxStreak))
+                    .modifier(BodyText(textColor: profile.getTierColor()))
+                    .frame(width:width*0.33,height:width*0.33 - 48)
+                
             }
             .frame(width:width*0.33)
         }
@@ -108,27 +146,53 @@ struct VerticalInfoView : View {
     let rating : Int
     let rank : Int
     let width : CGFloat
-    let tier : Int
-    let colors = Color.tierColors
+    let textColor : Color
     var body: some View {
         VStack(alignment:.leading,spacing: 12) {
             Text("Solved")
                 .modifier(BodyText(textColor: .white))
             Text(String(solved))
-                .modifier(BodyText(textColor: colors[tier]))
+                .modifier(BodyText(textColor: textColor))
                 .padding(.bottom)
             Text("AC Rating")
                 .modifier(BodyText(textColor: .white))
+            
             Text(String(rating))
-                .modifier(BodyText(textColor: colors[tier]))
+                .modifier(BodyText(textColor: textColor))
                 .padding(.bottom)
-            Text("AC Rating")
+            Text("Rank")
                 .modifier(BodyText(textColor: .white))
-            Text(String(rating))
-                .modifier(BodyText(textColor: colors[tier]))
+            Text(String(rank))
+                .modifier(BodyText(textColor: textColor))
         }
+        
         .frame(width:width,alignment: .leading)
         .padding(.leading,32)
         
+    }
+}
+
+struct TopBar : View {
+    let logout: () -> ()
+    
+    var body: some View {
+        Button(action: logout){
+            HStack(alignment:.lastTextBaseline){
+                Image(systemName: "arrow.backward")
+                    .foregroundColor(.white)
+                    .padding(.init(top: 16, leading: 16, bottom: 8, trailing: 8))
+                Text("뒤로 가기")
+                    .modifier(BodyText(textColor: .white))
+                Spacer()
+            }
+        }
+    }
+}
+
+struct TopBarPreview : PreviewProvider {
+    static var previews: some View {
+        TopBar {
+            
+        }.background(Color.black)
     }
 }
