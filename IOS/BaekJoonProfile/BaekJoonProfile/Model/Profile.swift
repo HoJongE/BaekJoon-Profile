@@ -67,8 +67,8 @@ extension Profile {
         Profile(handle: "as00098", bio: "안녕하세요\n하하하", badge: nil, background: Background(backgroundImageUrl:"https://static.solved.ac/profile_bg/_season2020/s2020-gold4.png"), profileImageUrl: nil, Class: 4, classDecoration: "gold", solvedCount: 571, voteCount: 21, exp: 102391209, tier: 26, rating: 1908, maxStreak: 72, rank: 1700)
     }
     
-    func getTierName() -> String {
-        switch self.tier {
+    static func getTierName(tier: Int) -> String {
+        switch tier {
         case 1...5: return "Bronze"
         case 6...10: return "Silver"
         case 11...15: return "Gold"
@@ -79,8 +79,8 @@ extension Profile {
         }
     }
     
-    func getTierColor() -> Color {
-        switch self.tier {
+    static func getTierColor(tier : Int) -> Color {
+        switch tier {
         case 1...5: return .bronze
         case 6...10: return .silver
         case 11...15: return .gold
@@ -91,7 +91,7 @@ extension Profile {
         }
     }
     
-    func getTierNumber() -> Int {
+    static func getTierNumber(tier : Int) -> Int {
         tier % 5 == 0 ? 1 : 6 - (tier % 5)
     }
 }
