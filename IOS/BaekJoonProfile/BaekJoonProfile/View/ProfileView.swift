@@ -31,7 +31,7 @@ struct ProfileView: View {
                     }
                     BackgroundView(height: geo.size.height/5,url: backgroundImageUrl,width: geo.size.width)
                     
-                    CircleImage(url : profile.profileImageUrl == nil ? Const.URL.DEFAULT_PROFILE : profile.profileImageUrl!,width: geo.size.width/3)
+                    ProfileImage(url : profile.profileImageUrl == nil ? Const.URL.DEFAULT_PROFILE : profile.profileImageUrl!, tier: profile.tier ,width: geo.size.width/3)
                         .offset(y:-70)
                         .padding(.bottom,-56)
                     
@@ -43,7 +43,7 @@ struct ProfileView: View {
                     ClassBadgeStreakView(width: geo.size.width-32, profile: profile)
                         .padding(8)
                     
-                    VerticalInfoView(solved: profile.solvedCount, rating: profile.rating, rank: profile.rank ,width: geo.size.width-32, textColor: profile.getTierColor())
+                    VerticalInfoView(solved: profile.solvedCount, rating: profile.rating, rank: profile.rank ,width: geo.size.width-32, textColor: Profile.getTierColor(tier: profile.tier))
                     
                     Spacer()
                     
@@ -131,7 +131,7 @@ struct ClassBadgeStreakView : View {
                 Text("STREAK")
                     .modifier(BodyText(textColor: .white))
                 Text(String(profile.maxStreak))
-                    .modifier(BodyText(textColor: profile.getTierColor()))
+                    .modifier(BodyText(textColor: Profile.getTierColor(tier: profile.tier)))
                     .frame(width:width*0.33,height:width*0.33 - 48)
                 
             }
@@ -194,5 +194,18 @@ struct TopBarPreview : PreviewProvider {
         TopBar {
             
         }.background(Color.black)
+    }
+}
+
+struct ProfileImage : View {
+    let url : String
+    let tier : Int
+    let width : CGFloat
+    var body: some View {
+        ZStack(alignment:.bottom) {
+            CircleImage(url: url, width: width)
+            TierBadge(width: width/5, tier: tier)
+                .offset(y:5)
+        }
     }
 }
