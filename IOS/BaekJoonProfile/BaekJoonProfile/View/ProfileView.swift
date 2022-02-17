@@ -9,20 +9,22 @@ import SwiftUI
 import SDWebImageSwiftUI
 
 struct ProfileView: View {
-    let profile : Profile?
     let logout:()->()
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
-
+    @EnvironmentObject var profileViewModel : ProfileViewModel
+    
     var body: some View {
-        let backgroundImageUrl : String = {
-            if let url = profile?.background?.backgroundImageUrl {
-                return url
-            } else {
-                return ""
-            }
-        }()
         
-        if let profile = profile {
+        if case DataState.Success(data: let profile) = profileViewModel.profileState {
+            
+            let backgroundImageUrl : String = {
+                if let url = profile.background?.backgroundImageUrl {
+                    return url
+                } else {
+                    return ""
+                }
+            }()
+            
             GeometryReader { geo in
                 VStack(alignment:.center){
                     TopBar {
@@ -57,7 +59,6 @@ struct ProfileView: View {
         } else {
             EmptyView()
         }
-        
     }
 }
 
@@ -92,10 +93,12 @@ struct BackgroundView : View {
 }
 struct ProfileView_Previews: PreviewProvider {
     static var previews: some View {
-        ProfileView(profile: Profile.provideDummyData()){}
+        ProfileView(){}
         .previewDevice(PreviewDevice(rawValue: "iPhone 12 Pro"))
-        ProfileView(profile: Profile.provideDummyData()){}
+        .environmentObject(ProfileViewModel(dataState: DataState.Success(data: Profile.provideDummyData())))
+        ProfileView(){}
         .previewDevice(PreviewDevice(rawValue: "iPhone 8"))
+        .environmentObject(ProfileViewModel(dataState: DataState.Success(data: Profile.provideDummyData())))
     }
 }
 
@@ -107,7 +110,7 @@ struct ClassBadgeStreakView : View {
             if profile.classDecoration == "none" {
                 return "\(Const.URL.CLASS_IMAGE_PREFIX)\(profile.Class)\(Const.URL.CLASS_IMAGE_POSTFIX)"
             } else {
-                return "\(Const.URL.CLASS_IMAGE_PREFIX)\(profile.Class)\(profile.classDecoration.startIndex)\(Const.URL.CLASS_IMAGE_POSTFIX)"
+                return "\(Const.URL.CLASS_IMAGE_PREFIX)\(profile.Class)\(profile.classDecoration[profile.classDecoration.startIndex])\(Const.URL.CLASS_IMAGE_POSTFIX)"
             }
         }()
         return HStack(alignment:.top) {
