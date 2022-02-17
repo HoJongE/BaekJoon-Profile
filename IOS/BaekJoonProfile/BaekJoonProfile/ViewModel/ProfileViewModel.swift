@@ -11,19 +11,22 @@ class ProfileViewModel : ObservableObject {
     @Published public private (set) var profileState : DataState<Profile> = .Empty
     @Published public var login = false
     
-    public private(set) var profile : Profile? = nil
     
     private let profileRepository : ProfileRepository
     
-    init(profileRepository : ProfileRepository){
+    init(profileRepository : ProfileRepository = DefaultProfileRepository.shared){
         self.profileRepository = profileRepository
+    }
+    
+    init(profileRepository : ProfileRepository = DefaultProfileRepository.shared ,dataState : DataState<Profile>){
+        self.profileRepository = profileRepository
+        profileState = dataState
     }
     
     public func getProfile(id:String) {
         profileRepository.getProfile(id: id){ result in
             self.profileState = result
-            if case DataState.Success(data: let data) = self.profileState {
-                self.profile = data
+            if case DataState.Success(data: _) = self.profileState {
                 self.login = true
             }
         }

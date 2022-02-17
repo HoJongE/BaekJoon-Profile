@@ -39,7 +39,7 @@ struct LoginView: View {
                         .modifier(CaptionText(color: .backgroundColor))
                 }
                 
-                NavigationLink(destination: ProfileView(profile: profileViewModel.profile, logout: profileViewModel.logout),isActive: $profileViewModel.login){
+                NavigationLink(destination: ProfileView(logout: profileViewModel.logout),isActive: $profileViewModel.login){
                     TextButton(text: "프로필 조회",loading: profileViewModel.profileState == DataState.Loading , onClick: {
                         profileViewModel.getProfile(id: id)
                     })
@@ -58,5 +58,6 @@ struct LoginView: View {
 struct LoingView_Previews: PreviewProvider {
     static var previews: some View {
         LoginView()
+            .environmentObject(ProfileViewModel())
     }
 }

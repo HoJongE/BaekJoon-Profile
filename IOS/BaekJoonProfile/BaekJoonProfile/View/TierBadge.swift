@@ -67,7 +67,7 @@ fileprivate struct TierBadgeMask : Shape {
         return path
     }
 }
-private struct TierBadge_Previews: PreviewProvider {
+struct TierBadge_Previews: PreviewProvider {
     static var previews: some View {
         TierBadge(width: 40,tier : 24)
     }
