@@ -17,23 +17,15 @@ struct ProfileView: View {
         
         if case DataState.Success(data: let profile) = profileViewModel.profileState {
             
-            let backgroundImageUrl : String = {
-                if let url = profile.background?.backgroundImageUrl {
-                    return url
-                } else {
-                    return ""
-                }
-            }()
-            
             GeometryReader { geo in
                 VStack(alignment:.center){
                     TopBar {
                         logout()
                         self.presentationMode.wrappedValue.dismiss()
                     }
-                    BackgroundView(height: geo.size.height/5,url: backgroundImageUrl,width: geo.size.width)
+                    BackgroundView(height: geo.size.height/5,url: profile.backgroundImage ,width: geo.size.width)
                     
-                    ProfileImage(url : profile.profileImageUrl == nil ? Const.URL.DEFAULT_PROFILE : profile.profileImageUrl!, tier: profile.tier ,width: geo.size.width/3)
+                    ProfileImage(url : profile.profileImage , tier: profile.tier ,width: geo.size.width/3)
                         .offset(y:-70)
                         .padding(.bottom,-56)
                     
@@ -106,28 +98,21 @@ struct ClassBadgeStreakView : View {
     let width : CGFloat
     let profile : Profile
     var body: some View {
-        let classImage : String = {
-            if profile.classDecoration == "none" {
-                return "\(Const.URL.CLASS_IMAGE_PREFIX)\(profile.Class)\(Const.URL.CLASS_IMAGE_POSTFIX)"
-            } else {
-                return "\(Const.URL.CLASS_IMAGE_PREFIX)\(profile.Class)\(profile.classDecoration[profile.classDecoration.startIndex])\(Const.URL.CLASS_IMAGE_POSTFIX)"
-            }
-        }()
+        
         return HStack(alignment:.top) {
             VStack{
                 Text("CLASS")
                     .modifier(BodyText(textColor: .white))
-                SquareImage(url: classImage)
+                SquareImage(url: profile.classUrl)
                     .padding(.horizontal,24)
             }
             .frame(width:width*0.33)
             VStack {
                 Text("BADGE")
                     .modifier(BodyText(textColor: .white))
-                if let badgeImageUrl = profile.badge?.badgeImageUrl {
-                    SquareImage(url: badgeImageUrl)
-                        .padding(.horizontal,24)
-                }
+                SquareImage(url: profile.badgeImage)
+                    .padding(.horizontal,24)
+                
             }
             .frame(width:width*0.33)
             VStack {
