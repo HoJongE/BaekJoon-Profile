@@ -8,12 +8,8 @@
 import Foundation
 import SwiftUI
 
-struct Profile: Codable, CustomStringConvertible {
-    var description: String {
-        get {
-            "아이디: \(handle) 자기소개: \(bio) 클래스: \(Class) 푼 문제: \(solvedCount) 등수: \(rank)"
-        }
-    }
+struct Profile: Codable {
+    
     
     var handle: String
     var bio : String
@@ -62,7 +58,7 @@ struct Background : Codable{
     var displayDescription:String?
 }
 
-extension Profile {
+extension Profile : CustomStringConvertible{
     static func provideDummyData() -> Profile {
         Profile(handle: "as00098", bio: "안녕하세요\n하하하", badge: nil, background: Background(backgroundImageUrl:"https://static.solved.ac/profile_bg/_season2020/s2020-gold4.png"), profileImageUrl: nil, Class: 4, classDecoration: "gold", solvedCount: 571, voteCount: 21, exp: 102391209, tier: 26, rating: 1908, maxStreak: 72, rank: 1700)
     }
@@ -94,4 +90,30 @@ extension Profile {
     static func getTierNumber(tier : Int) -> Int {
         tier % 5 == 0 ? 1 : 6 - (tier % 5)
     }
+    
+    var description: String {
+        get {
+            "아이디: \(handle) 자기소개: \(bio) 클래스: \(Class) 푼 문제: \(solvedCount) 등수: \(rank)"
+        }
+    }
+    
+    var backgroundImage : String {
+        self.background?.backgroundImageUrl ?? ""
+    }
+    
+    var profileImage : String {
+        self.profileImageUrl ?? Const.URL.DEFAULT_PROFILE
+    }
+    var classUrl: String {
+        if self.classDecoration == "none" {
+            return "\(Const.URL.CLASS_IMAGE_PREFIX)\(self.Class)\(Const.URL.CLASS_IMAGE_POSTFIX)"
+        } else {
+            return "\(Const.URL.CLASS_IMAGE_PREFIX)\(self.Class)\(self.classDecoration[self.classDecoration.startIndex])\(Const.URL.CLASS_IMAGE_POSTFIX)"
+        }
+    }
+    
+    var badgeImage : String {
+        self.badge?.badgeImageUrl ?? ""
+    }
+    
 }
