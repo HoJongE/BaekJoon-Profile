@@ -22,8 +22,7 @@ struct TierBadge: View {
 
             Text(String(Profile.getTierNumber(tier:tier)))
                 .fontWeight(.bold)
-                .font(.system(size: 100))
-                .minimumScaleFactor(0.0001)
+                .font(.system(size: width * 0.8))
                 .foregroundColor(.white)
                 .frame(width: width, height: width, alignment: .center)
         }
@@ -69,6 +68,6 @@ fileprivate struct TierBadgeMask : Shape {
 }
 struct TierBadge_Previews: PreviewProvider {
     static var previews: some View {
-        TierBadge(width: 40,tier : 24)
+        TierBadge(width: 50,tier : 24)
     }
 }

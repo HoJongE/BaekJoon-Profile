@@ -9,4 +9,8 @@ target 'BaekJoonProfile' do
  pod 'SDWebImageSwiftUI'
  pod 'SDWebImageSVGCoder'
  pod 'Alamofire'
+ target 'ProfileWidgetExtension' do
+ pod 'Alamofire'
+ pod 'SDWebImageSwiftUI'
+ end
 end

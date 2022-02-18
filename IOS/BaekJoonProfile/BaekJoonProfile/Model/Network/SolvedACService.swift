@@ -32,8 +32,7 @@ struct SolvedACService{
                 completion(networkResult)
                 
             case .failure(let error):
-                print(error.localizedDescription)
-                completion(.Error(error: ProfileError.DefaultError))
+                completion(.Error(error: error))
             }
         }
     }

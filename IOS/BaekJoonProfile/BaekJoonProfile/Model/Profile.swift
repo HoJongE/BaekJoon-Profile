@@ -65,12 +65,12 @@ extension Profile : CustomStringConvertible{
     
     static func getTierName(tier: Int) -> String {
         switch tier {
-        case 1...5: return "Bronze"
-        case 6...10: return "Silver"
-        case 11...15: return "Gold"
-        case 16...20: return "Platinum"
-        case 21...25: return "Diamond"
-        case 26...30: return "Ruby"
+        case 1...5: return "Bronze \(getTierNumber(tier: tier))"
+        case 6...10: return "Silver \(getTierNumber(tier: tier))"
+        case 11...15: return "Gold \(getTierNumber(tier: tier))"
+        case 16...20: return "Platinum \(getTierNumber(tier: tier))"
+        case 21...25: return "Diamond \(getTierNumber(tier: tier))"
+        case 26...30: return "Ruby \(getTierNumber(tier: tier))"
         default: return "Master"
         }
     }
