@@ -18,7 +18,6 @@ struct Provider: IntentTimelineProvider {
     typealias Intent = ProfileIDIntent
     typealias Entry = ProfileEntry
     
-    private let UPDATE_INTERVAL = 1
     func placeholder(in context: Context) -> ProfileEntry {
         ProfileEntry(date: Date(),profile: DataState.Success(data: Profile.provideDummyData()))
     }
@@ -36,10 +35,11 @@ struct Provider: IntentTimelineProvider {
      */
     func getTimeline(for configuration:ProfileIDIntent ,in context: Context, completion: @escaping (Timeline<Entry>) -> ()) {
         let id = configuration.id ?? ""
+        let updateInterval = configuration.updateInterval ?? 60
         let date = Date()
       
         // Generate a timeline consisting of five entries an hour apart, starting from the current date.
-        let nextUpdateDate = Calendar.current.date(byAdding: .minute,value: UPDATE_INTERVAL, to: date)!
+        let nextUpdateDate = Calendar.current.date(byAdding: .minute,value: updateInterval.intValue , to: date)!
         
         
         SolvedACService.shared.getProfile(id: id){ result in
@@ -69,7 +69,7 @@ struct ProfileWidget: Widget {
             ProfileWidgetEntryView(profileState:entry.profile)
         }
         .configurationDisplayName("백준 프로필")
-        .description("자동으로 업데이트되는 프로필 위젯입니다.")
+        .description("자동으로 업데이트되는 프로필 위젯입니다.\n위젯 편집에서 아이디와 업데이트 간격을 설정해주세요!")
         .supportedFamilies([.systemMedium])
     }
 }

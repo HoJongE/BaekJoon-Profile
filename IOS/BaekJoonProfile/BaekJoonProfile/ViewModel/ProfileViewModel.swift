@@ -6,11 +6,10 @@
 //
 
 import Foundation
+import SwiftUI
 
 class ProfileViewModel : ObservableObject {
     @Published public private (set) var profileState : DataState<Profile> = .Empty
-    @Published public var login = false
-    
     
     private let profileRepository : ProfileRepository
     
@@ -24,17 +23,20 @@ class ProfileViewModel : ObservableObject {
     }
     
     public func getProfile(id:String) {
+        withAnimation {
+            profileState = DataState.Loading
+        }
         profileRepository.getProfile(id: id){ result in
-            self.profileState = result
-            if case DataState.Success(data: _) = self.profileState {
-                self.login = true
+            withAnimation {
+                self.profileState = result
             }
         }
     }
     
     public func logout() {
-        self.profileState = DataState.Empty
-        login = false
+        withAnimation {
+            self.profileState = DataState.Empty
+        }
     }
     
 }

@@ -11,7 +11,7 @@ import SDWebImageSVGCoder
 
 @main
 struct BaekJoonProfileApp: App {
-    let profileViewModel = ProfileViewModel(profileRepository: DefaultProfileRepository.shared)
+    @StateObject var profileViewModel = ProfileViewModel(profileRepository: DefaultProfileRepository.shared)
     
     init(){
         SDImageCodersManager.shared.addCoder(SDImageSVGCoder.shared)
@@ -19,8 +19,12 @@ struct BaekJoonProfileApp: App {
     var body: some Scene {
         
         return WindowGroup {
-            ContentView()
-                .environmentObject(profileViewModel)
+            if case DataState.Success(data: let profile) = profileViewModel.profileState {
+                ProfileView(profile: profile, logout: profileViewModel.logout)
+            } else {
+                LoginView()
+                    .environmentObject(profileViewModel)
+            }
         }
     }
 }

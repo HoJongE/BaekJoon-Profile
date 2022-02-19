@@ -9,48 +9,39 @@ import SwiftUI
 import SDWebImageSwiftUI
 
 struct ProfileView: View {
+    let profile : Profile
     let logout:()->()
-    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
-    @EnvironmentObject var profileViewModel : ProfileViewModel
     
     var body: some View {
         
-        if case DataState.Success(data: let profile) = profileViewModel.profileState {
+        GeometryReader { geo in
             
-            GeometryReader { geo in
-                VStack(alignment:.center){
-                    TopBar {
-                        logout()
-                        self.presentationMode.wrappedValue.dismiss()
-                    }
-                    BackgroundView(height: geo.size.height/5,url: profile.backgroundImage ,width: geo.size.width)
-                    
-                    ProfileImage(url : profile.profileImage , tier: profile.tier ,width: geo.size.width/3)
-                        .offset(y:-70)
-                        .padding(.bottom,-56)
-                    
-                    Text(profile.handle)
-                        .modifier(BodyText(textColor: .white))
-                    
-                    ProfileDescription(text: profile.bio)
-                    
-                    ClassBadgeStreakView(width: geo.size.width-32, profile: profile)
-                        .padding(8)
-                    
-                    VerticalInfoView(solved: profile.solvedCount, rating: profile.rating, rank: profile.rank ,width: geo.size.width-32, textColor: Profile.getTierColor(tier: profile.tier))
-                    
-                    Spacer()
-                    
+            VStack(alignment:.center){
+                TopBar {
+                    logout()
                 }
+                BackgroundView(height: geo.size.height/5,url: profile.backgroundImage ,width: geo.size.width)
+                
+                ProfileImage(url : profile.profileImage , tier: profile.tier ,width: geo.size.width/3)
+                    .offset(y:-70)
+                    .padding(.bottom,-56)
+                
+                Text(profile.handle)
+                    .modifier(BodyText(textColor: .white))
+                
+                ProfileDescription(text: profile.bio)
+                
+                ClassBadgeStreakView(width: geo.size.width-32, profile: profile)
+                    .padding(8)
+                
+                VerticalInfoView(solved: profile.solvedCount, rating: profile.rating, rank: profile.rank ,width: geo.size.width-32, textColor: Profile.getTierColor(tier: profile.tier))
+                
+                Spacer()
             }
-            .navigationBarHidden(true)
-            .navigationBarBackButtonHidden(true)
-            .frame(maxWidth:.infinity,maxHeight: .infinity)
-            .background(Color.backgroundColor.edgesIgnoringSafeArea(.all))
-            .preferredColorScheme(.dark)
-        } else {
-            EmptyView()
         }
+        .frame(maxWidth:.infinity,maxHeight: .infinity)
+        .background(Color.backgroundColor.edgesIgnoringSafeArea(.all))
+        .preferredColorScheme(.dark)
     }
 }
 
@@ -85,12 +76,12 @@ struct BackgroundView : View {
 }
 struct ProfileView_Previews: PreviewProvider {
     static var previews: some View {
-        ProfileView(){}
+        ProfileView(profile : Profile.provideDummyData()){}
         .previewDevice(PreviewDevice(rawValue: "iPhone 12 Pro"))
-        .environmentObject(ProfileViewModel(dataState: DataState.Success(data: Profile.provideDummyData())))
-        ProfileView(){}
+      
+        ProfileView(profile : Profile.provideDummyData()){}
         .previewDevice(PreviewDevice(rawValue: "iPhone 8"))
-        .environmentObject(ProfileViewModel(dataState: DataState.Success(data: Profile.provideDummyData())))
+        
     }
 }
 
@@ -168,7 +159,7 @@ struct TopBar : View {
             HStack(alignment:.lastTextBaseline){
                 Image(systemName: "arrow.backward")
                     .foregroundColor(.white)
-                    .padding(.init(top: 16, leading: 16, bottom: 8, trailing: 8))
+                    .padding(.init(top: 0, leading: 16, bottom: 8, trailing: 8))
                 Text("뒤로 가기")
                     .modifier(BodyText(textColor: .white))
                 Spacer()
