@@ -18,13 +18,22 @@ struct BaekJoonProfileApp: App {
     }
     var body: some Scene {
         
-        return WindowGroup {
-            if case DataState.Success(data: let profile) = profileViewModel.profileState {
-                ProfileView(profile: profile, logout: profileViewModel.logout)
-            } else {
-                LoginView()
-                    .environmentObject(profileViewModel)
-            }
+        WindowGroup {
+            RootView()
+                .environmentObject(profileViewModel)
+                .onOpenURL { url in
+                    parseURL(url: url)
+                }
         }
+    }
+    
+    private func parseURL(url : URL) {
+        guard url.absoluteString.starts(with: Const.URL.WIDGET_ACTION) else {
+            return
+        }
+        guard let urlComponents = URLComponents(string: url.absoluteString) else {return}
+        guard let id = urlComponents.queryItems?.first(where: {$0.name == "id"})?.value else {return}
+        profileViewModel.logout()
+        profileViewModel.getProfile(id: id)
     }
 }

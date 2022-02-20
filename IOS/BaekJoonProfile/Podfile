@@ -9,6 +9,7 @@ target 'BaekJoonProfile' do
  pod 'SDWebImageSwiftUI'
  pod 'SDWebImageSVGCoder'
  pod 'Alamofire'
+ pod 'BottomSheet', :git => 'https://github.com/weitieda/bottom-sheet.git'
  target 'ProfileWidgetExtension' do
  pod 'Alamofire'
  pod 'SDWebImageSwiftUI'
