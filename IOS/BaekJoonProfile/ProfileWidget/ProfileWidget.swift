@@ -70,7 +70,7 @@ struct ProfileWidget: Widget {
         }
         .configurationDisplayName("백준 프로필")
         .description("자동으로 업데이트되는 프로필 위젯입니다.\n위젯 편집에서 아이디와 업데이트 간격을 설정해주세요!")
-        .supportedFamilies([.systemMedium])
+        .supportedFamilies([.systemSmall,.systemMedium])
     }
 }
 

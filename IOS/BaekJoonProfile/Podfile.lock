@@ -1,5 +1,6 @@
 PODS:
   - Alamofire (5.5.0)
+  - BottomSheet (1.0.6)
   - SDWebImage (5.12.3):
     - SDWebImage/Core (= 5.12.3)
   - SDWebImage/Core (5.12.3)
@@ -10,6 +11,7 @@ PODS:
 
 DEPENDENCIES:
   - Alamofire
+  - BottomSheet (from `https://github.com/weitieda/bottom-sheet.git`)
   - SDWebImageSVGCoder
   - SDWebImageSwiftUI
 
@@ -20,12 +22,22 @@ SPEC REPOS:
     - SDWebImageSVGCoder
     - SDWebImageSwiftUI
 
+EXTERNAL SOURCES:
+  BottomSheet:
+    :git: https://github.com/weitieda/bottom-sheet.git
+
+CHECKOUT OPTIONS:
+  BottomSheet:
+    :commit: 0eb23336119ee048fb48da52f5be4f28fd5431fb
+    :git: https://github.com/weitieda/bottom-sheet.git
+
 SPEC CHECKSUMS:
   Alamofire: 1c4fb5369c3fe93d2857c780d8bbe09f06f97e7c
+  BottomSheet: 0a164143e34470cc332db0ce4e55d6da202d7ac6
   SDWebImage: 53179a2dba77246efa8a9b85f5c5b21f8f43e38f
   SDWebImageSVGCoder: 6fc109f9c2a82ab44510fff410b88b1a6c271ee8
   SDWebImageSwiftUI: 8a3923c95108312b03a599ec1498754af55a6819
 
-PODFILE CHECKSUM: a36bde0cd8cbde9eb7675ded0ce7dfeec4ee0f78
+PODFILE CHECKSUM: 3ca16e8be539825dfad2c8a44613a0e86e362f2f
 
 COCOAPODS: 1.11.2

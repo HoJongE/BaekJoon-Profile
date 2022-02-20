@@ -9,22 +9,39 @@ import SwiftUI
 import WidgetKit
 
 struct ProfileWidgetEntryView : View {
+    @Environment(\.widgetFamily) var family : WidgetFamily
     var profileState : DataState<Profile>
     var body: some View {
         switch profileState {
-        case .Empty:
-            ErrorView(error: ProfileError.DefaultError)
-        case .Loading:
-            ErrorView(error: ProfileError.DefaultError)
-        case .Error(error: let error):
-            ErrorView(error: error)
-        case .Success(data: let data):
-            ProfileView(profile: data)
+            case .Empty:
+                ErrorView(error: ProfileError.DefaultError)
+            case .Loading:
+                ErrorView(error: ProfileError.DefaultError)
+            case .Error(error: let error):
+                ErrorView(error: error)
+            case .Success(data: let data):
+                if case WidgetFamily.systemSmall = family {
+                    SmallProfileView(profile: data)
+                } else {
+                    ProfileView(profile: data)
+                }
         }
         
     }
 }
 
+
+struct SmallProfileView : View {
+    let profile : Profile
+    var body: some View {
+        
+        GeometryReader { geo in
+            Link(destination: URL(string: "\(Const.URL.WIDGET_ACTION)?id=\(profile.handle)")!){
+                ProfileImage(url: profile.profileImage, width: geo.size.width*0.8, tier: profile.tier)
+            }
+        }
+    }
+}
 struct ProfileView : View {
     let profile : Profile
     var body: some View {
@@ -35,7 +52,7 @@ struct ProfileView : View {
                 Spacer()
             }
             .frame(width: geo.size.width, height: geo.size.height, alignment: .center)
-            .background(Profile.getTierColor(tier: profile.tier))
+            .background(Color.backgroundColor)
         }
     }
 }
@@ -46,15 +63,15 @@ struct ProfileDescriptionView : View {
             HStack (spacing: 16){
                 Text(profile.handle)
                     .font(.custom("GmarketSansTTFBold", size: 16))
-                    .foregroundColor(.white)
                     .shadow(radius: 3)
                 Text(Profile.getTierName(tier: profile.tier))
                     .font(.system(size: 16))
-                    .foregroundColor(.white)
+                    .foregroundColor(Profile.getTierColor(tier: profile.tier))
                     .italic()
                     .shadow(radius: 3)
                 Spacer()
             }
+            .foregroundColor(.white)
             
             HStack(spacing:16) {
                 DescriptionText(title: "풀이 수", content: String(profile.solvedCount))
@@ -73,12 +90,12 @@ struct DescriptionText : View {
         VStack {
             Text(title)
                 .font(.custom("GmarketSansTTFBold", size: 16))
-                .foregroundColor(.white)
                 .padding(.bottom,4)
             Text(content)
                 .font(.custom("GmarketSansTTFMedium", size: 15))
-                .foregroundColor(.white)
+            
         }
+        .foregroundColor(.white)
     }
 }
 struct ProfileImage: View {
@@ -101,6 +118,7 @@ struct ErrorView : View{
             Text(error.localizedDescription)
                 .modifier(BodyText(textColor: .white))
         }
+        .multilineTextAlignment(.center)
         .frame(maxWidth:.infinity,maxHeight: .infinity,alignment: .center)
         .background(Color.backgroundColor)
     }
@@ -113,8 +131,16 @@ struct ProfileWidget_Previews: PreviewProvider {
         
         ProfileWidgetEntryView(profileState: DataState.Error(error: ProfileError.DefaultError))
             .previewContext(WidgetPreviewContext(family: .systemMedium))
+        ProfileWidgetEntryView(profileState: DataState.Success(data: Profile.provideDummyData()))
+            .previewContext(WidgetPreviewContext(family: .systemSmall))
+        
+        ProfileWidgetEntryView(profileState: DataState.Error(error: ProfileError.DefaultError))
+            .previewContext(WidgetPreviewContext(family: .systemSmall))
     }
+    
 }
+
+
 
 struct NetworkImage: View {
     let width : CGFloat
