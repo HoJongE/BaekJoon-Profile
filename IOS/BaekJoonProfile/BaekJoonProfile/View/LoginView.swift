@@ -58,3 +58,4 @@ struct LoingView_Previews: PreviewProvider {
             .environmentObject(ProfileViewModel())
     }
 }
+
