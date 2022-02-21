@@ -36,23 +36,24 @@ struct SmallProfileView : View {
     var body: some View {
         
         GeometryReader { geo in
-            Link(destination: URL(string: "\(Const.URL.WIDGET_ACTION)?id=\(profile.handle)")!){
-                ProfileImage(url: profile.profileImage, width: geo.size.width*0.8, tier: profile.tier)
-            }
+            ProfileImage(url: profile.profileImage, width: geo.size.width*0.8, tier: profile.tier)
         }
+        .widgetURL(URL(string: Const.URL.widgetURL(id: profile.handle))!)
     }
 }
 struct ProfileView : View {
     let profile : Profile
     var body: some View {
         GeometryReader { geo in
-            HStack(alignment:.center) {
-                ProfileImage(url: profile.profileImage ,width: geo.size.width*0.25, tier: profile.tier)
-                ProfileDescriptionView(profile: profile)
-                Spacer()
+            Link(destination: URL(string: Const.URL.widgetURL(id: profile.handle))!){
+                HStack(alignment:.center) {
+                    ProfileImage(url: profile.profileImage ,width: geo.size.width*0.25, tier: profile.tier)
+                    ProfileDescriptionView(profile: profile)
+                    Spacer()
+                }
+                .frame(width: geo.size.width, height: geo.size.height, alignment: .center)
+                .background(Color.backgroundColor)
             }
-            .frame(width: geo.size.width, height: geo.size.height, alignment: .center)
-            .background(Color.backgroundColor)
         }
     }
 }
