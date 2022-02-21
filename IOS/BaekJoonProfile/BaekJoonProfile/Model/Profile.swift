@@ -60,7 +60,7 @@ struct Background : Codable{
 
 extension Profile : CustomStringConvertible{
     static func provideDummyData() -> Profile {
-        Profile(handle: "as00098", bio: "안녕하세요\n하하하", badge: nil, background: Background(backgroundImageUrl:"https://static.solved.ac/profile_bg/_season2020/s2020-gold4.png"), profileImageUrl: nil, Class: 4, classDecoration: "gold", solvedCount: 571, voteCount: 21, exp: 102391209, tier: 26, rating: 1908, maxStreak: 72, rank: 1700)
+        Profile(handle: "as00098", bio: "안녕하세요\n하하하\n12312312\n12312321\n123123123", badge: nil, background: Background(backgroundImageUrl:"https://static.solved.ac/profile_bg/_season2020/s2020-gold4.png"), profileImageUrl: nil, Class: 4, classDecoration: "gold", solvedCount: 571, voteCount: 21, exp: 102391209, tier: 26, rating: 1908, maxStreak: 72, rank: 1700)
     }
     
     static func getTierName(tier: Int) -> String {
@@ -116,4 +116,7 @@ extension Profile : CustomStringConvertible{
         self.badge?.badgeImageUrl ?? ""
     }
     
+    var selfDescription : String {
+        self.bio.isEmpty ? "자기소개가 없습니다" : self.bio
+    }
 }

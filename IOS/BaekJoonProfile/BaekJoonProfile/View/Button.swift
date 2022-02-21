@@ -16,10 +16,10 @@ struct TextButton: View {
         Button(action: onClick){
             if loading {
                 ProgressView()
-                    .foregroundColor(.white)
+                    .foregroundColor(.blue)
             } else {
                 Text(text)
-                    .modifier(ButtonText())
+                    .buttonText(textColor: .blue)
             }
         }
     }
@@ -38,7 +38,7 @@ struct RecentIdButton : View {
                     .padding(.init(top: 8, leading: 4, bottom: 8, trailing: 8))
                 Text("최근 조회내역")
                     .foregroundColor(.white)
-                    .modifier(CaptionText())
+                    .captionText(textColor: .white)
             }
         }
     }
@@ -58,7 +58,7 @@ struct GuideButton : View {
                     .padding(.init(top: 8, leading: 4, bottom: 8, trailing: 8))
                 Text("위젯 추가 안내")
                     .foregroundColor(.white)
-                    .modifier(CaptionText())
+                    .captionText(textColor: .white)
             }
         }
     }
