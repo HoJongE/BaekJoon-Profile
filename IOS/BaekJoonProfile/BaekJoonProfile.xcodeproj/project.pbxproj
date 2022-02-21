@@ -49,6 +49,7 @@
 		93BEE56227C21BA30029A1C3 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93BEE56127C21BA30029A1C3 /* RootView.swift */; };
 		93BEE56427C24EBE0029A1C3 /* GuideView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93BEE56327C24EBD0029A1C3 /* GuideView.swift */; };
 		93C7DA3827BCC99100D2E0E2 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93C7DA3727BCC99100D2E0E2 /* LoginView.swift */; };
+		93DD8EB827C34B88004640D7 /* IdListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93DD8EB727C34B88004640D7 /* IdListView.swift */; };
 		93F2015427BBCEA400802391 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93F2015327BBCEA400802391 /* Profile.swift */; };
 		93F2015627BBD2E300802391 /* Const.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93F2015527BBD2E300802391 /* Const.swift */; };
 		93F2015927BBD3F600802391 /* SolvedACService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93F2015827BBD3F600802391 /* SolvedACService.swift */; };
@@ -113,6 +114,7 @@
 		93BEE56127C21BA30029A1C3 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
 		93BEE56327C24EBD0029A1C3 /* GuideView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuideView.swift; sourceTree = "<group>"; };
 		93C7DA3727BCC99100D2E0E2 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		93DD8EB727C34B88004640D7 /* IdListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdListView.swift; sourceTree = "<group>"; };
 		93F2015327BBCEA400802391 /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
 		93F2015527BBD2E300802391 /* Const.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Const.swift; sourceTree = "<group>"; };
 		93F2015827BBD3F600802391 /* SolvedACService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SolvedACService.swift; sourceTree = "<group>"; };
@@ -187,6 +189,7 @@
 				9317444927BE0F0600C60297 /* TierBadge.swift */,
 				93BEE56127C21BA30029A1C3 /* RootView.swift */,
 				93BEE56327C24EBD0029A1C3 /* GuideView.swift */,
+				93DD8EB727C34B88004640D7 /* IdListView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -510,6 +513,7 @@
 				93C7DA3827BCC99100D2E0E2 /* LoginView.swift in Sources */,
 				937AFE4527BF7A95008262F5 /* WidgetIntents.intentdefinition in Sources */,
 				9319742A27BB75D200431024 /* Image.swift in Sources */,
+				93DD8EB827C34B88004640D7 /* IdListView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

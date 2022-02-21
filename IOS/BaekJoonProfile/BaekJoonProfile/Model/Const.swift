@@ -23,6 +23,10 @@ extension Const {
         static func widgetURL(id:String) -> String {
             "\(Const.URL.WIDGET_ACTION)?id=\(id)"
         }
-        
     }
+    
+    struct UserDefaultsKey {
+        static let ID_LIST = "profile_id_list"
+    }
+    
 }

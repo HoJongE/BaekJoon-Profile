@@ -25,22 +25,40 @@ struct TextButton: View {
     }
 }
 
+struct RecentIdButton : View {
+    let onClick : () -> Void
+    
+    var body: some View {
+        Button(action:onClick) {
+            HStack {
+                Image(systemName: "person.crop.rectangle.stack.fill")
+                    .foregroundColor(.white)
+                    .imageScale(.large)
+                    .frame(width: 30, height: 30, alignment: .center)
+                    .padding(.init(top: 8, leading: 4, bottom: 8, trailing: 8))
+                Text("최근 조회내역")
+                    .foregroundColor(.white)
+                    .modifier(CaptionText())
+            }
+        }
+    }
+}
+
 struct GuideButton : View {
     let onClick : () -> Void
     
     var body: some View {
         Button(action:onClick){
             HStack{
-                Text("위젯 추가 안내")
-                    .foregroundColor(.white)
-                    .modifier(CaptionText())
                 Image(systemName: "questionmark.circle.fill")
                     .foregroundColor(.white)
                     .imageScale(.large)
                     .frame(width: 30, height: 30, alignment: .center)
                     .overlay(Circle().stroke(Color.white, lineWidth: 3))
                     .padding(.init(top: 8, leading: 4, bottom: 8, trailing: 8))
-                
+                Text("위젯 추가 안내")
+                    .foregroundColor(.white)
+                    .modifier(CaptionText())
             }
         }
     }
@@ -57,7 +75,7 @@ struct CloseButton : View {
                 .imageScale(.large)
                 .padding(8)
         }
-    
+        
         
     }
 }
@@ -73,7 +91,9 @@ struct ButtonPreview : PreviewProvider {
             GuideButton{}
             .padding()
             CloseButton{}
-                .padding()
+            .padding()
+            RecentIdButton{}
+            .padding()
         }
         .frame(maxWidth:.infinity,maxHeight: .infinity)
         .background(Color.backgroundColor)
