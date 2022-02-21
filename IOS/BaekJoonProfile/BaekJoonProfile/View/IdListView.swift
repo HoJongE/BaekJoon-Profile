@@ -15,12 +15,14 @@ struct IdListView: View {
     var body: some View {
         VStack{
             EditButton()
-                .modifier(CaptionText(color: .white))
+                .font(.custom("GmarketSansTTFMedium", size: 14))
+                .foregroundColor(.white)
+
             List {
                 ForEach(idList,id: \.self){ id in
                     Button(action:{onIdClick(id)}){
                         Text(id)
-                            .modifier(BodyText(textColor: .white))
+                            .bodyText(textColor: .white)
                             .listRowBackground(Color.backgroundColor)
                     }
                 }

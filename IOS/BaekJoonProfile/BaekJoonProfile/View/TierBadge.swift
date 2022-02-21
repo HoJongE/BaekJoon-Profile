@@ -28,7 +28,7 @@ struct TierBadge: View {
         }
     }
 }
-fileprivate struct TierBadgeShape : Shape {
+struct TierBadgeShape : Shape {
     
     func path(in rect: CGRect) -> Path {
         let path = Path { path in
@@ -48,7 +48,7 @@ fileprivate struct TierBadgeShape : Shape {
     }
 }
 
-fileprivate struct TierBadgeMask : Shape {
+struct TierBadgeMask : Shape {
     func path(in rect: CGRect) -> Path {
         let bottomOfRect : CGFloat = rect.width * 1.09 //직사각형의 바닥 좌표
         let height = bottomOfRect * 0.1 //V 자 모양의 높이

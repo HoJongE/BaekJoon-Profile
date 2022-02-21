@@ -7,9 +7,10 @@
 
 import SwiftUI
 
-struct LargeTitle: ViewModifier {
+struct LargeTitleModifier: ViewModifier {
     var textColor : Color = Color.firstTextColor
     func body(content: Content) -> some View {
+        
         content
             .font(.custom("GMarketSansTTFBold", size: 40))
             .lineSpacing(8)
@@ -17,7 +18,7 @@ struct LargeTitle: ViewModifier {
     }
 }
 
-struct BodyText : ViewModifier {
+struct BodyTextModifier : ViewModifier {
     var textColor : Color = Color.firstTextColor
     func body(content: Content) -> some View {
         content
@@ -27,7 +28,7 @@ struct BodyText : ViewModifier {
     }
 }
 
-struct CaptionText : ViewModifier {
+struct CaptionTextModifier : ViewModifier {
     var color  = Color.black
     func body(content: Content) -> some View {
         content
@@ -37,10 +38,49 @@ struct CaptionText : ViewModifier {
             .multilineTextAlignment(.leading)
     }
 }
-struct ButtonText : ViewModifier {
+struct ButtonTextModifier : ViewModifier {
+    var color = Color.black
     func body(content: Content) -> some View {
         content
             .font(.custom("GMarketSansTTFMedium", size: 18))
-            .foregroundColor(.blue)
+            .foregroundColor(color)
+    }
+}
+
+struct Text_Previews : PreviewProvider {
+    static var previews: some View {
+        VStack {
+            Text("LargeTitle")
+                .largeTitle(textColor: .black)
+            Text("BodyText")
+                .bodyText(textColor: .black)
+            Text("CaptionText")
+                .captionText(textColor: .black)
+            Text("ButtonText")
+                .buttonText(textColor: .black)
+        }
+    }
+}
+
+extension Text {
+    
+    func largeTitle(textColor:Color) -> some View {
+        self
+            .baselineOffset(8)
+            .modifier(LargeTitleModifier(textColor: textColor))
+    }
+    
+    func captionText(textColor:Color) -> some View {
+        self.baselineOffset(2.5)
+            .modifier(CaptionTextModifier(color: textColor))
+    }
+    func bodyText(textColor:Color) -> some View {
+        self.baselineOffset(2.5)
+            .modifier(BodyTextModifier(textColor: textColor))
+    }
+    
+    func buttonText(textColor:Color) -> some View {
+        self.baselineOffset(2.5)
+            .modifier(ButtonTextModifier(color: textColor))
     }
 }

@@ -16,10 +16,10 @@ struct BasicTextField: View {
             ZStack{
                 HStack{
                     Text(placeHolderText)
-                        .modifier(BodyText())
+                        .bodyText(textColor: .white)
                         .padding(.leading,16)
                     TextField("",text: $value)
-                        .modifier(BodyText(textColor: Color.white))
+                        .modifier(BodyTextModifier(textColor: Color.white))
                         .padding(.leading,8)
                 }
                 VStack{
@@ -38,10 +38,10 @@ struct BasicTextField: View {
             ZStack{
                 HStack{
                     Text(placeHolderText)
-                        .modifier(BodyText())
+                        .bodyText(textColor: .white)
                         .padding(.leading,16)
                     TextField("",text: $value)
-                        .modifier(BodyText(textColor: Color.white))
+                        .modifier(BodyTextModifier(textColor: Color.white))
                         .padding(.leading,8)
                 }
                 VStack{

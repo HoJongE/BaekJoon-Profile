@@ -27,7 +27,7 @@ struct BottomSheetContainer<Content:View>: View {
             
             HStack{
                 Text(title)
-                    .modifier(BodyText(textColor: .white))
+                    .bodyText(textColor: .white)
                     .padding()
                 Spacer()
                 CloseButton {
@@ -74,9 +74,10 @@ struct GuideInfoView : View {
             }
             HStack{
             Text(description)
+                .captionText(textColor: .white)
                 .multilineTextAlignment(.leading)
                 .padding(.horizontal)
-                .modifier(CaptionText(color: .white))
+                
                 Spacer()
             }
             Image(imageString)

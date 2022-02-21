@@ -20,28 +20,31 @@ struct ProfileView: View {
                 TopBar {
                     logout()
                 }
-                BackgroundView(height: geo.size.height/5,url: profile.backgroundImage ,width: geo.size.width)
-                
-                ProfileImage(url : profile.profileImage , tier: profile.tier ,width: geo.size.width/3)
-                    .offset(y:-70)
-                    .padding(.bottom,-56)
-                
-                Text(profile.handle)
-                    .modifier(BodyText(textColor: .white))
-                
-                ProfileDescription(text: profile.bio)
-                
-                ClassBadgeStreakView(width: geo.size.width-32, profile: profile)
-                    .padding(8)
-                
-                VerticalInfoView(solved: profile.solvedCount, rating: profile.rating, rank: profile.rank ,width: geo.size.width-32, textColor: Profile.getTierColor(tier: profile.tier))
-                
-                Spacer()
+                ScrollView(.vertical, showsIndicators: false){
+                    BackgroundView(height: geo.size.height/5,url: profile.backgroundImage ,width: geo.size.width)
+                    
+                    ProfileImage(url : profile.profileImage , tier: profile.tier ,width: geo.size.width/3)
+                        .offset(y:-70)
+                        .padding(.bottom,-56)
+                    
+                    Text(profile.handle)
+                        .bodyText(textColor: .white)
+                    
+                    ProfileDescription(text: profile.selfDescription)
+                    
+                    ClassBadgeStreakView(width: geo.size.width-32, profile: profile)
+                        .padding(8)
+                    
+                    VerticalInfoView(solved: profile.solvedCount, rating: profile.rating, rank: profile.rank ,width: geo.size.width-32, textColor: Profile.getTierColor(tier: profile.tier))
+                    
+                    Spacer()
+                }
             }
         }
         .frame(maxWidth:.infinity,maxHeight: .infinity)
         .background(Color.backgroundColor.edgesIgnoringSafeArea(.all))
         .preferredColorScheme(.dark)
+        
     }
 }
 
@@ -50,8 +53,8 @@ struct ProfileDescription : View {
     var body: some View {
         
         Text(text)
+            .captionText(textColor: .black)
             .frame(maxWidth:.infinity,alignment: .leading)
-            .modifier(CaptionText())
             .padding()
             .background(Color.white)
             .cornerRadius(8)
@@ -78,7 +81,7 @@ struct ProfileView_Previews: PreviewProvider {
     static var previews: some View {
         ProfileView(profile : Profile.provideDummyData()){}
         .previewDevice(PreviewDevice(rawValue: "iPhone 12 Pro"))
-      
+        
         ProfileView(profile : Profile.provideDummyData()){}
         .previewDevice(PreviewDevice(rawValue: "iPhone 8"))
         
@@ -93,14 +96,14 @@ struct ClassBadgeStreakView : View {
         return HStack(alignment:.top) {
             VStack{
                 Text("CLASS")
-                    .modifier(BodyText(textColor: .white))
+                    .bodyText(textColor: .white)
                 SquareImage(url: profile.classUrl)
                     .padding(.horizontal,24)
             }
             .frame(width:width*0.33)
             VStack {
                 Text("BADGE")
-                    .modifier(BodyText(textColor: .white))
+                    .bodyText(textColor: .white)
                 SquareImage(url: profile.badgeImage)
                     .padding(.horizontal,24)
                 
@@ -108,9 +111,9 @@ struct ClassBadgeStreakView : View {
             .frame(width:width*0.33)
             VStack {
                 Text("STREAK")
-                    .modifier(BodyText(textColor: .white))
+                    .bodyText(textColor: .white)
                 Text(String(profile.maxStreak))
-                    .modifier(BodyText(textColor: Profile.getTierColor(tier: profile.tier)))
+                    .bodyText(textColor: Profile.getTierColor(tier: profile.tier))
                     .frame(width:width*0.33,height:width*0.33 - 48)
                 
             }
@@ -129,20 +132,20 @@ struct VerticalInfoView : View {
     var body: some View {
         VStack(alignment:.leading,spacing: 12) {
             Text("Solved")
-                .modifier(BodyText(textColor: .white))
+                .bodyText(textColor: .white)
             Text(String(solved))
-                .modifier(BodyText(textColor: textColor))
+                .bodyText(textColor: textColor)
                 .padding(.bottom)
             Text("AC Rating")
-                .modifier(BodyText(textColor: .white))
+                .bodyText(textColor: .white)
             
             Text(String(rating))
-                .modifier(BodyText(textColor: textColor))
+                .bodyText(textColor: textColor)
                 .padding(.bottom)
             Text("Rank")
-                .modifier(BodyText(textColor: .white))
+                .bodyText(textColor: .white)
             Text(String(rank))
-                .modifier(BodyText(textColor: textColor))
+                .bodyText(textColor: textColor)
         }
         
         .frame(width:width,alignment: .leading)
@@ -161,7 +164,7 @@ struct TopBar : View {
                     .foregroundColor(.white)
                     .padding(.init(top: 0, leading: 16, bottom: 8, trailing: 8))
                 Text("뒤로 가기")
-                    .modifier(BodyText(textColor: .white))
+                    .modifier(BodyTextModifier(textColor: .white))
                 Spacer()
             }
         }

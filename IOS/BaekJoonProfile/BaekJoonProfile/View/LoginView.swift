@@ -16,7 +16,7 @@ struct LoginView: View {
         VStack(alignment:.center) {
             Spacer().frame(height:60)
             Text("백준\n프로필")
-                .modifier(LargeTitle())
+                .largeTitle(textColor: .firstTextColor)
                 .frame(maxWidth:.infinity)
                 .multilineTextAlignment(.center)
             
@@ -24,7 +24,7 @@ struct LoginView: View {
                 .padding(.all,24)
             
             Text("solved.ac 아이디를\n입력해주세요")
-                .modifier(BodyText())
+                .bodyText(textColor: .firstTextColor)
                 .multilineTextAlignment(.center)
             
             BasicTextField(error: profileViewModel.profileState == DataState.Error(error: ProfileError.ParsingError), placeHolderText: "아이디", value: $id)
@@ -32,10 +32,10 @@ struct LoginView: View {
             
             if case let DataState.Error(error: error) = profileViewModel.profileState {
                 Text(error.localizedDescription)
-                    .modifier(CaptionText(color: .errorColor))
+                    .captionText(textColor: .errorColor)
             } else {
                 Text("ㅎㅎㅎ")
-                    .modifier(CaptionText(color: .backgroundColor))
+                    .foregroundColor(.backgroundColor)
             }
             
             

@@ -117,7 +117,7 @@ struct ErrorView : View{
     var body: some View {
         ZStack {
             Text(error.localizedDescription)
-                .modifier(BodyText(textColor: .white))
+                .bodyText(textColor: .white)
         }
         .multilineTextAlignment(.center)
         .frame(maxWidth:.infinity,maxHeight: .infinity,alignment: .center)

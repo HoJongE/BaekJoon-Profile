@@ -12,7 +12,7 @@ struct RootView: View {
     @State var showSheet : Bool = false
     @State var bottomSheetAction : BottomSheetAction = .IdList
     var body: some View {
-        ZStack(alignment:.bottomTrailing){
+        VStack{
             if case DataState.Success(data: let profile) = profileViewModel.profileState {
                 ProfileView(profile: profile, logout: profileViewModel.logout)
             } else {
@@ -30,8 +30,9 @@ struct RootView: View {
                     showSheet = true
                 }
             }
-            .padding()
+            .padding(16)
         }
+        .background(Color.backgroundColor.edgesIgnoringSafeArea(.all))
         .sheet(isPresented: $showSheet) {
             BottomSheetContainer(title: bottomSheetAction.rawValue, isPresent: $showSheet){
                 switch bottomSheetAction {
@@ -68,5 +69,8 @@ struct RootView_Previews: PreviewProvider {
     static var previews: some View {
         RootView()
             .environmentObject(ProfileViewModel())
+        RootView()
+            .environmentObject(ProfileViewModel(dataState: DataState.Success(data: Profile.provideDummyData())))
+            .previewDevice(PreviewDevice(rawValue: "iPhone 8"))
     }
 }
