@@ -49,7 +49,7 @@ struct ButtonTextModifier : ViewModifier {
 
 struct Text_Previews : PreviewProvider {
     static var previews: some View {
-        VStack {
+        Group {
             Text("LargeTitle")
                 .largeTitle(textColor: .black)
             Text("BodyText")
@@ -59,6 +59,7 @@ struct Text_Previews : PreviewProvider {
             Text("ButtonText")
                 .buttonText(textColor: .black)
         }
+        .previewLayout(.sizeThatFits)
     }
 }
 

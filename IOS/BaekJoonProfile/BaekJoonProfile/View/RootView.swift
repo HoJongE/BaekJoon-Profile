@@ -65,6 +65,7 @@ struct RootView: View {
     }
 }
 
+#if DEBUG
 struct RootView_Previews: PreviewProvider {
     static var previews: some View {
         RootView()
@@ -74,3 +75,4 @@ struct RootView_Previews: PreviewProvider {
             .previewDevice(PreviewDevice(rawValue: "iPhone 8"))
     }
 }
+#endif
