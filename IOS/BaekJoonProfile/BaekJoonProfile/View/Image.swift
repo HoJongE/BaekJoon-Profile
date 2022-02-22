@@ -40,11 +40,12 @@ struct SquareImage : View {
 }
 struct Image_Previews: PreviewProvider {
     static var previews: some View {
-        VStack{
+        Group {
             CircleImage(url: "https://static.solved.ac/uploads/profile/360x360/2dbfa96246ee0c02cf13a756d5ddd0ffb0ef978e.png",
-                        width: 250)
+                        width: 50)
             CircleImage(url: "https://nokiatech.github.io/heif/content/images/ski_jump_1440x96",
-                        width: 250)
+                        width: 50)
         }
+        .previewLayout(.fixed(width: 70, height: 70))
     }
 }

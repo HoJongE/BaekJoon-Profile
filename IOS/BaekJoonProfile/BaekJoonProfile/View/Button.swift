@@ -82,23 +82,16 @@ struct CloseButton : View {
 
 struct ButtonPreview : PreviewProvider {
     static var previews: some View {
-        VStack {
+        Group {
             TextButton(text:"프로필 조회", loading: true){
             }
-            .padding()
             TextButton(text: "프로필 조회", loading: false, onClick: {})
-                .padding()
             GuideButton{}
-            .padding()
             CloseButton{}
-            .padding()
             RecentIdButton{}
-            .padding()
         }
-        .frame(maxWidth:.infinity,maxHeight: .infinity)
+        .previewLayout(.sizeThatFits)
         .background(Color.backgroundColor)
-        .edgesIgnoringSafeArea(.all)
-        
         
     }
 }

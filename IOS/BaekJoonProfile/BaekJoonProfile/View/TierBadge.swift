@@ -69,5 +69,6 @@ struct TierBadgeMask : Shape {
 struct TierBadge_Previews: PreviewProvider {
     static var previews: some View {
         TierBadge(width: 50,tier : 24)
+            .previewLayout(.fixed(width: 50, height: 100))
     }
 }

@@ -9,6 +9,7 @@ import Foundation
 import SwiftUI
 
 class ProfileViewModel : ObservableObject {
+    
     @Published public private (set) var profileState : DataState<Profile> = .Empty
     @Published public private (set) var profileIdList : [String]
     

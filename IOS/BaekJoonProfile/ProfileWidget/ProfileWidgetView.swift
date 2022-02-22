@@ -125,6 +125,7 @@ struct ErrorView : View{
     }
 }
 
+#if DEBUG
 struct ProfileWidget_Previews: PreviewProvider {
     static var previews: some View {
         ProfileWidgetEntryView(profileState: DataState.Success(data: Profile.provideDummyData()))
@@ -138,8 +139,8 @@ struct ProfileWidget_Previews: PreviewProvider {
         ProfileWidgetEntryView(profileState: DataState.Error(error: ProfileError.DefaultError))
             .previewContext(WidgetPreviewContext(family: .systemSmall))
     }
-    
 }
+#endif
 
 
 

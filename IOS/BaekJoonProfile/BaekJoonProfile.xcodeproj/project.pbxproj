@@ -89,7 +89,7 @@
 		9311D57D27BFBD2B00E479E2 /* ProfileWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileWidgetView.swift; sourceTree = "<group>"; };
 		9317444927BE0F0600C60297 /* TierBadge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TierBadge.swift; sourceTree = "<group>"; };
 		9319742927BB75D200431024 /* Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
-		931E63EB27B69BF90056F60D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		931E63EB27B69BF90056F60D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		931E63ED27B6A52F0056F60D /* BasicTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicTextField.swift; sourceTree = "<group>"; };
 		9326AAD127BB59B800B24F95 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		9326AAD327BB5C9900B24F95 /* DataState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataState.swift; sourceTree = "<group>"; };
@@ -197,8 +197,8 @@
 		936534FC27BF5E0A00549BE1 /* ProfileWidget */ = {
 			isa = PBXGroup;
 			children = (
-				936534FD27BF5E0A00549BE1 /* ProfileWidget.swift */,
 				936534FF27BF5E0B00549BE1 /* Assets.xcassets */,
+				936534FD27BF5E0A00549BE1 /* ProfileWidget.swift */,
 				9365350127BF5E0B00549BE1 /* Info.plist */,
 				937AFE4327BF76CE008262F5 /* WidgetIntents.intentdefinition */,
 				9311D57D27BFBD2B00E479E2 /* ProfileWidgetView.swift */,
@@ -231,25 +231,14 @@
 		938536F327B52E0700D5A400 /* BaekJoonProfile */ = {
 			isa = PBXGroup;
 			children = (
+				93C3DE1627C4BB9B00948B85 /* Resources */,
 				9308F64527BCB7AA008C8CC4 /* Data */,
 				9389C14227B7C1A400A94E2D /* Model */,
 				93BD997227B72C3E00922E96 /* ViewModel */,
-				93BD996F27B72B8B00922E96 /* Color */,
 				931E63EC27B6A51B0056F60D /* View */,
-				931E63EB27B69BF90056F60D /* Info.plist */,
 				938536F427B52E0700D5A400 /* BaekJoonProfileApp.swift */,
-				938536F827B52E0900D5A400 /* Assets.xcassets */,
-				938536FA27B52E0900D5A400 /* Preview Content */,
 			);
 			path = BaekJoonProfile;
-			sourceTree = "<group>";
-		};
-		938536FA27B52E0900D5A400 /* Preview Content */ = {
-			isa = PBXGroup;
-			children = (
-				938536FB27B52E0900D5A400 /* Preview Assets.xcassets */,
-			);
-			path = "Preview Content";
 			sourceTree = "<group>";
 		};
 		9389C14227B7C1A400A94E2D /* Model */ = {
@@ -264,20 +253,23 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
-		93BD996F27B72B8B00922E96 /* Color */ = {
-			isa = PBXGroup;
-			children = (
-				93BD997027B72B9700922E96 /* Color.swift */,
-			);
-			path = Color;
-			sourceTree = "<group>";
-		};
 		93BD997227B72C3E00922E96 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
 				9308F64327BCB6E1008C8CC4 /* ProfileViewModel.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		93C3DE1627C4BB9B00948B85 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				938536FB27B52E0900D5A400 /* Preview Assets.xcassets */,
+				938536F827B52E0900D5A400 /* Assets.xcassets */,
+				931E63EB27B69BF90056F60D /* Info.plist */,
+				93BD997027B72B9700922E96 /* Color.swift */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 		93F2015727BBD3E800802391 /* Network */ = {
@@ -723,11 +715,11 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"BaekJoonProfile/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"BaekJoonProfile/Resources\"";
 				DEVELOPMENT_TEAM = 44RS35G3C5;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = BaekJoonProfile/Info.plist;
+				INFOPLIST_FILE = BaekJoonProfile/Resources/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -756,11 +748,11 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"BaekJoonProfile/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"BaekJoonProfile/Resources\"";
 				DEVELOPMENT_TEAM = 44RS35G3C5;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = BaekJoonProfile/Info.plist;
+				INFOPLIST_FILE = BaekJoonProfile/Resources/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

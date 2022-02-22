@@ -77,16 +77,7 @@ struct BackgroundView : View {
         
     }
 }
-struct ProfileView_Previews: PreviewProvider {
-    static var previews: some View {
-        ProfileView(profile : Profile.provideDummyData()){}
-        .previewDevice(PreviewDevice(rawValue: "iPhone 12 Pro"))
-        
-        ProfileView(profile : Profile.provideDummyData()){}
-        .previewDevice(PreviewDevice(rawValue: "iPhone 8"))
-        
-    }
-}
+
 
 struct ClassBadgeStreakView : View {
     let width : CGFloat
@@ -171,13 +162,7 @@ struct TopBar : View {
     }
 }
 
-struct TopBarPreview : PreviewProvider {
-    static var previews: some View {
-        TopBar {
-            
-        }.background(Color.black)
-    }
-}
+
 
 struct ProfileImage : View {
     let url : String
@@ -189,5 +174,26 @@ struct ProfileImage : View {
             TierBadge(width: width/5, tier: tier)
                 .offset(y:5)
         }
+    }
+}
+#if DEBUG
+struct ProfileView_Previews: PreviewProvider {
+    static var previews: some View {
+        ProfileView(profile : Profile.provideDummyData()){}
+        .previewDevice(PreviewDevice(rawValue: "iPhone 12 Pro"))
+        
+        ProfileView(profile : Profile.provideDummyData()){}
+        .previewDevice(PreviewDevice(rawValue: "iPhone 8"))
+        
+    }
+}
+#endif
+struct TopBarPreview : PreviewProvider {
+    static var previews: some View {
+        TopBar {
+            
+        }.background(Color.black)
+            .previewLayout(.sizeThatFits)
+            .previewDisplayName("탑 바")
     }
 }
