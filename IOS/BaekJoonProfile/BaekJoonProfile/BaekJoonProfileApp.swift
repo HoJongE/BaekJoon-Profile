@@ -12,6 +12,7 @@ import SDWebImageSVGCoder
 @main
 struct BaekJoonProfileApp: App {
     @StateObject var profileViewModel = ProfileViewModel(profileRepository: DefaultProfileRepository.shared)
+    @StateObject var sheetManager = SheetManager()
     
     init(){
         SDImageCodersManager.shared.addCoder(SDImageSVGCoder.shared)
@@ -21,6 +22,7 @@ struct BaekJoonProfileApp: App {
         WindowGroup {
             RootView()
                 .environmentObject(profileViewModel)
+                .environmentObject(sheetManager)
                 .onOpenURL { url in
                     parseURL(url: url)
                 }

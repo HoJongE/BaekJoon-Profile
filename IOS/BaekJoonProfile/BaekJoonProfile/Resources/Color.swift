@@ -19,5 +19,4 @@ extension Color {
     static let platinum = Color("Platinum")
     static let diamond = Color("Diamond")
     static let ruby = Color("Ruby")
-    
 }

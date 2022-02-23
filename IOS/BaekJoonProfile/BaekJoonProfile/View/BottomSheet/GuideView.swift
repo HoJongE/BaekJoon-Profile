@@ -7,42 +7,6 @@
 
 import SwiftUI
 
-struct BottomSheetContainer<Content:View>: View {
-    let title : String
-    let content : () -> Content
-    @Binding var isPresent : Bool
-    
-    init(title:String,isPresent : Binding<Bool> , @ViewBuilder content:@escaping () -> Content) {
-        self.title = title
-        self._isPresent = isPresent
-        self.content = content
-    }
-    
-    var body: some View {
-        VStack{
-            RoundedRectangle(cornerRadius: 20)
-                .frame(width: 50, height: 5, alignment: .center)
-                .foregroundColor(.gray)
-                .padding()
-            
-            HStack{
-                Text(title)
-                    .bodyText(textColor: .white)
-                    .padding()
-                Spacer()
-                CloseButton {
-                    isPresent = false
-                }
-                .padding(.trailing)
-            }
-            content()
-            Spacer()
-        }
-        .foregroundColor(.white)
-        .frame(maxWidth:.infinity,maxHeight: .infinity)
-        .background(Color.backgroundColor)
-    }
-}
 
 struct GuideView : View {
     
@@ -93,9 +57,6 @@ struct GuideView_Previews: PreviewProvider {
     static var previews: some View {
         BottomSheetContainer(title: "위젯 안내 가이드", isPresent: .constant(true)){
             GuideView()
-        }
-        BottomSheetContainer(title: "최근 조회목록", isPresent: .constant(true)){
-            IdListView(idList: ["1","2","3"],onDelete: {indexSet in },onMove: nil, onIdClick: {_ in })
         }
     }
 }

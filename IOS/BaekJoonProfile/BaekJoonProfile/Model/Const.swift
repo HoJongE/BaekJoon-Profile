@@ -28,5 +28,5 @@ extension Const {
     struct UserDefaultsKey {
         static let ID_LIST = "profile_id_list"
     }
-    
 }
+

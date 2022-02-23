@@ -23,24 +23,21 @@ struct IdListView: View {
                     Button(action:{onIdClick(id)}){
                         Text(id)
                             .bodyText(textColor: .white)
-                            .listRowBackground(Color.backgroundColor)
                     }
                 }
                 .onDelete(perform: onDelete)
                 .onMove(perform: onMove)
             }
         }
+        .background(Color.backgroundColor)
     }
     
 }
 
 struct IdListView_Previews: PreviewProvider {
     static var previews: some View {
-        IdListView(idList: ["1","2","3","4"]
-            ,onDelete: {index in
-        },
-                   onMove: nil) { id in
-            print(id)
+        BottomSheetContainer(title: "최근 조회목록", isPresent: .constant(true)){
+            IdListView(idList: mockedIDList,onDelete: {indexSet in },onMove: nil, onIdClick: {_ in })
         }
     }
 }
