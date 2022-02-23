@@ -42,46 +42,49 @@ struct Profile: Codable {
         case maxStreak
         case rank
     }
+    
+}
+extension Profile {
+    struct Badge : Codable{
+        var badgeId:String?
+        var badgeImageUrl:String?
+        var displayName:String?
+        var displayDescription:String?
+    }
 }
 
-struct Badge : Codable{
-    var badgeId:String?
-    var badgeImageUrl:String?
-    var displayName:String?
-    var displayDescription:String?
+extension Profile {
+    struct Background : Codable{
+        var backgroundImageUrl:String?
+        var author:String?
+        var displayName:String?
+        var displayDescription:String?
+    }
 }
-
-struct Background : Codable{
-    var backgroundImageUrl:String?
-    var author:String?
-    var displayName:String?
-    var displayDescription:String?
-}
-
 extension Profile : CustomStringConvertible{
-   
+    
     
     static func getTierName(tier: Int) -> String {
         switch tier {
-        case 1...5: return "Bronze \(getTierNumber(tier: tier))"
-        case 6...10: return "Silver \(getTierNumber(tier: tier))"
-        case 11...15: return "Gold \(getTierNumber(tier: tier))"
-        case 16...20: return "Platinum \(getTierNumber(tier: tier))"
-        case 21...25: return "Diamond \(getTierNumber(tier: tier))"
-        case 26...30: return "Ruby \(getTierNumber(tier: tier))"
-        default: return "Master"
+            case 1...5: return "Bronze \(getTierNumber(tier: tier))"
+            case 6...10: return "Silver \(getTierNumber(tier: tier))"
+            case 11...15: return "Gold \(getTierNumber(tier: tier))"
+            case 16...20: return "Platinum \(getTierNumber(tier: tier))"
+            case 21...25: return "Diamond \(getTierNumber(tier: tier))"
+            case 26...30: return "Ruby \(getTierNumber(tier: tier))"
+            default: return "Master"
         }
     }
     
     static func getTierColor(tier : Int) -> Color {
         switch tier {
-        case 1...5: return .bronze
-        case 6...10: return .silver
-        case 11...15: return .gold
-        case 16...20: return .platinum
-        case 21...25 : return .diamond
-        case 26...30: return .ruby
-        default: return .ruby
+            case 1...5: return .bronze
+            case 6...10: return .silver
+            case 11...15: return .gold
+            case 16...20: return .platinum
+            case 21...25 : return .diamond
+            case 26...30: return .ruby
+            default: return .ruby
         }
     }
     

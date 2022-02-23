@@ -15,6 +15,7 @@ class DefaultProfileRepository : ProfileRepository{
     init(solvedAcService: SolvedACService) {
         profileService = solvedAcService
     }
+    
     func getProfile(id: String, completion : @escaping (DataState<Profile>) -> Void) {
         profileService.getProfile(id: id, completion: completion)
     }

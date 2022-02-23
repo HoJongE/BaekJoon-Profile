@@ -28,11 +28,9 @@ class ProfileViewModel : ObservableObject {
     }
     
     public func getProfile(id:String) {
-        withAnimation {
-            profileState = DataState.Loading
-        }
+        profileState = DataState.Loading
         profileRepository.getProfile(id: id){ result in
-            withAnimation {
+            withAnimation(.spring()) {
                 self.profileState = result
             }
             if case DataState.Success = result {
@@ -53,7 +51,7 @@ class ProfileViewModel : ObservableObject {
     }
     
     public func logout() {
-        withAnimation {
+        withAnimation(.spring()) {
             self.profileState = DataState.Empty
         }
     }
