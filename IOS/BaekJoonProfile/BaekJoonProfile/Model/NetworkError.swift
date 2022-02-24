@@ -13,18 +13,18 @@ enum LoginError : String, Error {
     case NotExistedID = "존재하지 않는 아이디입니다"
 }
 
-enum ProfileError : Error {
+enum NetworkError : Error {
     case DefaultError
     case ParsingError
 }
 
-extension ProfileError : LocalizedError {
+extension NetworkError : LocalizedError {
     public var errorDescription: String? {
         switch self {
         case .DefaultError:
             return NSLocalizedString("네트워크나 아이디를 확인해주세요", comment: "기본 에러")
         case .ParsingError:
-            return NSLocalizedString("프로필 파싱 에러", comment: "데이터 파싱 에러")
+            return NSLocalizedString("데이터 파싱 에러", comment: "데이터 파싱 에러")
         }
     }
 }

@@ -23,3 +23,14 @@ enum DataState<T> : Equatable {
     case Error(error : Error)
     case Success(data : T)
 }
+
+extension DataState : CustomStringConvertible {
+    var description: String {
+        switch self {
+            case .Empty: return "빈 데이터"
+            case .Loading: return "\(T.self) 데이터 로딩 중"
+            case .Error(let error) : return "\(error.localizedDescription) 에러 상태"
+            case .Success(data: let data) : return "\(data) 성공"
+        }
+    }
+}

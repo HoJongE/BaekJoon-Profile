@@ -14,6 +14,7 @@ struct Const {
 extension Const {
     struct URL {
         static let BASE_URL = "https://solved.ac/api/v3/"
+        static let PROBLEM = "problem/show"
         static let USER_SHOW = "user/show"
         static let CLASS_IMAGE_PREFIX = "https://static.solved.ac/class/c"
         static let CLASS_IMAGE_POSTFIX = ".svg"
@@ -23,6 +24,10 @@ extension Const {
         static func widgetURL(id:String) -> String {
             "\(Const.URL.WIDGET_ACTION)?id=\(id)"
         }
+    }
+    
+    struct Problem {
+        static let MAX_PROBLEM_COUNT = 24541
     }
     
     struct UserDefaultsKey {

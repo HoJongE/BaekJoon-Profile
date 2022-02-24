@@ -13,6 +13,7 @@ import SDWebImageSVGCoder
 struct BaekJoonProfileApp: App {
     @StateObject var profileViewModel = ProfileViewModel(profileRepository: DefaultProfileRepository.shared)
     @StateObject var sheetManager = SheetManager()
+    @StateObject var problemViewModel = ProblemViewModel()
     
     init(){
         SDImageCodersManager.shared.addCoder(SDImageSVGCoder.shared)

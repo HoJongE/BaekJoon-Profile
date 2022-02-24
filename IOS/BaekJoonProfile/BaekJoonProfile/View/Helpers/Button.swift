@@ -80,6 +80,29 @@ struct CloseButton : View {
     }
 }
 
+struct BottomButton : View {
+    let label : String
+    let loading : Bool
+    let onClick: () -> ()
+    
+    var body: some View {
+        Button(action: onClick){
+            ZStack {
+                RoundedRectangle(cornerRadius: 8)
+                    .foregroundColor(loading ? .gray : .white)
+                    .frame(maxWidth:.infinity, maxHeight: 50, alignment: .center)
+                if !loading {
+                    Text(label)
+                        .buttonText(textColor: .black)
+                } else {
+                    ProgressView()
+                }
+            }
+        }
+        .padding(.init(top: 8, leading: 24, bottom: 8, trailing: 24))
+    }
+}
+
 struct ButtonPreview : PreviewProvider {
     static var previews: some View {
         Group {
@@ -89,6 +112,9 @@ struct ButtonPreview : PreviewProvider {
             GuideButton{}
             CloseButton{}
             RecentIdButton{}
+            BottomButton(label: "닫기",loading: true) {
+                
+            }
         }
         .previewLayout(.sizeThatFits)
         .background(Color.backgroundColor)

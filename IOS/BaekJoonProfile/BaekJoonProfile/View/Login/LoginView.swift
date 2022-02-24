@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct LoginView: View {
-    @State var id:String = "as00098"
+    @State private var id:String = "as00098"
     @EnvironmentObject var profileViewModel : ProfileViewModel
     @EnvironmentObject var sheetManager : SheetManager
 
@@ -28,8 +28,8 @@ struct LoginView: View {
                 .bodyText(textColor: .firstTextColor)
                 .multilineTextAlignment(.center)
             
-            BasicTextField(error: profileViewModel.profileState == DataState.Error(error: ProfileError.ParsingError), placeHolderText: "아이디", value: $id)
-                .padding(.vertical,24)
+            BasicTextField(error: profileViewModel.profileState == DataState.Error(error: NetworkError.ParsingError), placeHolderText: "아이디", value: $id)
+                .padding(.top)
             
             if case let DataState.Error(error: error) = profileViewModel.profileState {
                 Text(error.localizedDescription)
@@ -39,11 +39,17 @@ struct LoginView: View {
                     .foregroundColor(.backgroundColor)
             }
             
-            
             TextButton(text: "프로필 조회",loading: profileViewModel.profileState == DataState.Loading , onClick: {
                 profileViewModel.getProfile(id: id)
             })
-            .padding(.init(top: 16, leading: 24, bottom: 24, trailing: 24))
+            .padding(.init(top: 4, leading: 24, bottom: 16, trailing: 24))
+            
+            TextButton(text: "문제 추천", loading: false) {
+                sheetManager.sheetAction = .ProblemRecommend
+                sheetManager.isPresent = true
+            }
+            .padding()
+            
             Spacer()
             BottomSheetButtonView()
         }
@@ -65,6 +71,8 @@ struct LoginView: View {
                             profileViewModel.getProfile(id: id)
                         }
                         .background(Color.backgroundColor)
+                    case .ProblemRecommend:
+                        ProblemHost()
                 }
             }
         }

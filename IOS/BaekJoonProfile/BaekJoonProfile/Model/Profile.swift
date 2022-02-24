@@ -66,6 +66,7 @@ extension Profile : CustomStringConvertible{
     
     static func getTierName(tier: Int) -> String {
         switch tier {
+            case 0 : return "Unrated"
             case 1...5: return "Bronze \(getTierNumber(tier: tier))"
             case 6...10: return "Silver \(getTierNumber(tier: tier))"
             case 11...15: return "Gold \(getTierNumber(tier: tier))"
@@ -78,6 +79,7 @@ extension Profile : CustomStringConvertible{
     
     static func getTierColor(tier : Int) -> Color {
         switch tier {
+            case 0: return .black
             case 1...5: return .bronze
             case 6...10: return .silver
             case 11...15: return .gold
@@ -88,8 +90,14 @@ extension Profile : CustomStringConvertible{
         }
     }
     
-    static func getTierNumber(tier : Int) -> Int {
-        tier % 5 == 0 ? 1 : 6 - (tier % 5)
+    static func getTierNumber(tier : Int) -> String {
+        guard tier != 0 else {
+            return "?"
+        }
+        guard tier != 31 else {
+            return "M"
+        }
+        return String(tier % 5 == 0 ? 1 : 6 - (tier % 5))
     }
     
     var description: String {
