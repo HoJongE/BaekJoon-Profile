@@ -13,7 +13,6 @@ import SDWebImageSVGCoder
 struct BaekJoonProfileApp: App {
     @StateObject var profileViewModel = ProfileViewModel(profileRepository: DefaultProfileRepository.shared)
     @StateObject var sheetManager = SheetManager()
-    @StateObject var problemViewModel = ProblemViewModel()
     
     init(){
         SDImageCodersManager.shared.addCoder(SDImageSVGCoder.shared)
@@ -36,7 +35,6 @@ struct BaekJoonProfileApp: App {
         }
         guard let urlComponents = URLComponents(string: url.absoluteString) else {return}
         guard let id = urlComponents.queryItems?.first(where: {$0.name == "id"})?.value else {return}
-        profileViewModel.logout()
         profileViewModel.getProfile(id: id)
     }
 }

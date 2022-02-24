@@ -10,8 +10,6 @@ import SwiftUI
 struct ProblemHost: View {
     @ObservedObject private(set) var problemViewModel : ProblemViewModel = ProblemViewModel()
     
-    @State var moveAlongCircle = false
-    
     var body: some View {
        
         let success : Bool = {

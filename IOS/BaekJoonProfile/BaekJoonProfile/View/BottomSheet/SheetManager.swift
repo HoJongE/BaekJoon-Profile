@@ -15,9 +15,19 @@ class SheetManager : ObservableObject {
 }
 
 extension SheetManager {
-    enum SheetAction : String {
+    enum SheetAction : String, CaseIterable {
         case Description = "위젯 추가 안내"
         case IdList = "최근 조회목록"
         case ProblemRecommend = "문제 추천"
+        
+        func imageName() -> String {
+            switch self {
+                case .ProblemRecommend: return "shippingbox.fill"
+                case .Description: return "questionmark.circle.fill"
+                case .IdList: return "list.bullet.rectangle"
+            }
+        }
     }
+    
+    
 }

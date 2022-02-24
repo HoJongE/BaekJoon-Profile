@@ -44,14 +44,10 @@ struct LoginView: View {
             })
             .padding(.init(top: 4, leading: 24, bottom: 16, trailing: 24))
             
-            TextButton(text: "문제 추천", loading: false) {
-                sheetManager.sheetAction = .ProblemRecommend
-                sheetManager.isPresent = true
-            }
-            .padding()
+            BottomSheetActionButton()
+                .padding()
             
             Spacer()
-            BottomSheetButtonView()
         }
         .disabled(profileViewModel.profileState == DataState.Loading)
         .frame(maxHeight:.infinity)
@@ -75,28 +71,6 @@ struct LoginView: View {
                         ProblemHost()
                 }
             }
-        }
-    }
-}
-
-extension LoginView {
-    
-    struct BottomSheetButtonView : View {
-        @EnvironmentObject var sheetManager : SheetManager
-        
-        var body: some View {
-            HStack{
-                RecentIdButton {
-                    sheetManager.sheetAction = .IdList
-                    sheetManager.isPresent = true
-                }
-                Spacer()
-                GuideButton {
-                    sheetManager.sheetAction = .Description
-                    sheetManager.isPresent = true
-                }
-            }
-            .padding(16)
         }
     }
 }
