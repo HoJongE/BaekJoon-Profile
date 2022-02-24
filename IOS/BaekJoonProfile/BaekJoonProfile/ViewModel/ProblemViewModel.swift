@@ -30,21 +30,35 @@ class ProblemViewModel : ObservableObject {
     public func getRecommendedProblem() {
         problem = DataState.Loading
         
-        let timer = Timer.scheduledTimer(withTimeInterval: 0.13, repeats: true){ _ in
+        let timer = Timer.scheduledTimer(withTimeInterval: 0.13, repeats: true){ [weak self] _ in
+            guard let self = self else {
+                return
+            }
             self.randomTierIndicator = Int.random(in: 0...30)
+#if DEBUG
+            print(self.randomTierIndicator)
+#endif
         }
         
-        DispatchQueue(label: "problem recommend")
-            .asyncAfter(deadline: DispatchTime.now() + 3){
-                DispatchQueue.main.async {
-                    self.problemRepository.getRandomProblem { result in
-                        timer.invalidate()
-                        self.problem = result
-                        #if DEBUG
-                        print(result.description)
-                        #endif
-                    }
+        DispatchQueue.global(qos: .userInteractive)
+            .asyncAfter(deadline: DispatchTime.now() + 3){ [weak self] in
+                guard let self = self else {
+                    timer.invalidate()
+                    return
+                }
+                self.problemRepository.getRandomProblem { result in
+                    timer.invalidate()
+                    self.problem = result
+#if DEBUG
+                    print(result.description)
+#endif
                 }
             }
     }
+    
+#if DEBUG
+    deinit {
+        print("ProblemViewModel Deinitialized")
+    }
+#endif
 }

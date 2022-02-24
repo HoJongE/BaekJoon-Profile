@@ -11,8 +11,25 @@ import SDWebImageSwiftUI
 struct ProfileHost: View {
     let profile : Profile
     let logout:()->()
+    @GestureState private var offset : CGSize = .zero
     
     var body: some View {
+        
+        let dragGesture = DragGesture(minimumDistance: 20)
+            .updating($offset) { dragValue, state, transaction in
+                var translation = dragValue.translation
+                translation.width = 0
+                state = translation
+            }
+            .onEnded { value in
+                debugPrint("종료 위치" + value.location.debugDescription)
+                debugPrint("시작 위치" + value.startLocation.debugDescription )
+                debugPrint("변화 정도" + value.translation.debugDescription)
+                if value.translation.height > 10 {
+                    logout()
+                }
+            }
+        
         
         GeometryReader { geo in
             
@@ -20,10 +37,13 @@ struct ProfileHost: View {
                 
                 ScrollView(.vertical, showsIndicators: false){
                     BackgroundView(url: profile.backgroundImage ,width: geo.size.width)
+                        .gesture(dragGesture)
+                    
                     
                     ProfileImage(url : profile.profileImage , tier: profile.tier ,width: geo.size.width/3)
                         .offset(y:-70)
                         .padding(.bottom,-56)
+                    
                     
                     Text(profile.handle)
                         .bodyText(textColor: .white)
@@ -38,7 +58,7 @@ struct ProfileHost: View {
                 BottomButton(label:"닫기",loading: false) {
                     logout()
                 }
-            
+                
             }
             
         }
@@ -46,6 +66,8 @@ struct ProfileHost: View {
         .background(Color.backgroundColor.edgesIgnoringSafeArea(.all))
         .edgesIgnoringSafeArea(.top)
         .preferredColorScheme(.dark)
+        .offset(offset)
+        .animation(.spring())
         
     }
 }

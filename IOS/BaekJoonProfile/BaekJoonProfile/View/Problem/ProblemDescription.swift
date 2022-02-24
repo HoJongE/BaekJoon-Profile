@@ -17,7 +17,7 @@ struct ProblemDescription: View {
             Text(problem.titleKo)
                 .font(.custom("GmarketSansTTFBold", size: 20))
                 .offset(x: 0, y: -3)
-                .padding(.top,3)
+                .padding(.vertical,3)
             
             SectionView(sectionTitle: "문제 정보"){}
             
