@@ -20,37 +20,59 @@ struct SolvedACService{
                                      parameters: parameters,
                                      encoding: URLEncoding.default,
                                      headers: headers
-                                     )
+        )
         
         dataRequest.responseData { response in
             switch response.result {
-            case .success:
-                guard let statusCode = response.response?.statusCode else {return}
-                guard let value = response.value else {return}
-                
-                let networkResult = self.judgeStatus(by: statusCode, value)
-                completion(networkResult)
-                
-            case .failure(let error):
-                completion(.Error(error: error))
+                case .success:
+                    guard let statusCode = response.response?.statusCode else {
+                        completion(DataState.Error(error: NetworkError.DefaultError))
+                        return
+                    }
+                    guard let value = response.value else {
+                        completion(DataState.Error(error: NetworkError.DefaultError))
+                        return
+                    }
+                    let resultParser = ResultParser()
+                    let networkResult = resultParser.judgeStatus(by: statusCode, value,of: Profile.self)
+                    completion(networkResult)
+                    
+                case .failure(let error):
+                    completion(.Error(error: error))
             }
         }
     }
     
-    private func judgeStatus(by statusCode:Int, _ data: Data) -> DataState<Profile> {
-        switch statusCode {
-        case 200: return isValidData(data:data)
-        default: return DataState.Error(error: ProfileError.DefaultError)
-            
+    func getRandomProblem(completion : @escaping (DataState<Problem>) -> Void) {
+        let randomNumber = Int.random(in: 1000...Const.Problem.MAX_PROBLEM_COUNT)
+        let URL = Const.URL.BASE_URL + Const.URL.PROBLEM
+        let parameters : Parameters = ["problemId" : randomNumber]
+        let headers : HTTPHeaders = ["Content-Type" : "application/json"]
+        
+        let dataRequest = AF.request(URL,
+                                     method: .get,
+                                     parameters: parameters,
+                                     encoding: URLEncoding.default,
+                                     headers: headers)
+        
+        dataRequest.responseData { response in
+            switch response.result {
+                case .success:
+                    guard let statusCode = response.response?.statusCode else {
+                        completion(DataState.Error(error: NetworkError.DefaultError))
+                        return
+                    }
+                    guard let value = response.value else {
+                        completion(DataState.Error(error: NetworkError.DefaultError))
+                        return
+                    }
+                    let resultParser = ResultParser()
+                    let networkResult = resultParser.judgeStatus(by: statusCode, value, of: Problem.self)
+                    completion(networkResult)
+                case .failure(let error):
+                    completion(.Error(error: error))
+            }
         }
-    }
-    
-    private func isValidData(data: Data) -> DataState<Profile> {
-        let decoder = JSONDecoder()
-        
-        guard let decodeData = try? decoder.decode(Profile.self, from: data) else {return .Error(error: ProfileError.ParsingError)}
-        
-        return .Success(data: decodeData)
     }
 }
 

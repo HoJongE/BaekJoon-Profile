@@ -35,9 +35,10 @@ struct ProfileHost: View {
                     
                     VerticalInfoView(solved: profile.solvedCount, rating: profile.rating, rank: profile.rank ,width: geo.size.width-32, textColor: Profile.getTierColor(tier: profile.tier))
                 }
-                BottomButton {
+                BottomButton(label:"닫기",loading: false) {
                     logout()
                 }
+            
             }
             
         }

@@ -18,5 +18,6 @@ extension SheetManager {
     enum SheetAction : String {
         case Description = "위젯 추가 안내"
         case IdList = "최근 조회목록"
+        case ProblemRecommend = "문제 추천"
     }
 }

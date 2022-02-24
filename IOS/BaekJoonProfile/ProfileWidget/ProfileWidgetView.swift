@@ -14,9 +14,9 @@ struct ProfileWidgetEntryView : View {
     var body: some View {
         switch profileState {
             case .Empty:
-                ErrorView(error: ProfileError.DefaultError)
+                ErrorView(error: NetworkError.DefaultError)
             case .Loading:
-                ErrorView(error: ProfileError.DefaultError)
+                ErrorView(error: NetworkError.DefaultError)
             case .Error(error: let error):
                 ErrorView(error: error)
             case .Success(data: let data):
@@ -131,12 +131,12 @@ struct ProfileWidget_Previews: PreviewProvider {
         ProfileWidgetEntryView(profileState: DataState.Success(data: Profile.provideDummyData()))
             .previewContext(WidgetPreviewContext(family: .systemMedium))
         
-        ProfileWidgetEntryView(profileState: DataState.Error(error: ProfileError.DefaultError))
+        ProfileWidgetEntryView(profileState: DataState.Error(error: NetworkError.DefaultError))
             .previewContext(WidgetPreviewContext(family: .systemMedium))
         ProfileWidgetEntryView(profileState: DataState.Success(data: Profile.provideDummyData()))
             .previewContext(WidgetPreviewContext(family: .systemSmall))
         
-        ProfileWidgetEntryView(profileState: DataState.Error(error: ProfileError.DefaultError))
+        ProfileWidgetEntryView(profileState: DataState.Error(error: NetworkError.DefaultError))
             .previewContext(WidgetPreviewContext(family: .systemSmall))
     }
 }
