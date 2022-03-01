@@ -46,7 +46,7 @@
 ### IOS
 |프로필 조회|위젯 생성|문제 추천|
 |:-------:|:-------:|:-------:|
-|<img src = "https://user-images.githubusercontent.com/57793298/156162143-d1f80c24-23f3-4a9d-b154-b5978c2d4497.gif" width = 500 height = 1081>|<img src = "https://user-images.githubusercontent.com/57793298/156162279-ab515547-6fe1-4d08-903c-348f6f33f269.gif" width = 500 height = 1081 >|<img src = "https://user-images.githubusercontent.com/57793298/156162187-993987a0-4f87-41a0-a731-ae5685b780f0.gif" width = 500 height = 1081>|
+|<img src = "https://user-images.githubusercontent.com/57793298/156162143-d1f80c24-23f3-4a9d-b154-b5978c2d4497.gif" width = 500 height = 961>|<img src = "https://user-images.githubusercontent.com/57793298/156162279-ab515547-6fe1-4d08-903c-348f6f33f269.gif" width = 500 height = 961 >|<img src = "https://user-images.githubusercontent.com/57793298/156162187-993987a0-4f87-41a0-a731-ae5685b780f0.gif" width = 500 height = 961>|
 
 
 
