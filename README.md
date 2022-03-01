@@ -38,7 +38,15 @@
   
 
 ## 스크린샷
-
+### AOS
 |프로필 조회|위젯 생성|문제 풀이 알림|
 |:-------:|:-------:|:-------:|
 |![2022-01-27_20 06 22](https://user-images.githubusercontent.com/57793298/151350658-086c4049-234c-4ba6-b473-59638e2e3206.gif)|![2022-01-27_20 10 40](https://user-images.githubusercontent.com/57793298/151351100-bc278a79-52cf-4423-a5cc-5398ab77390d.gif)|![2022-01-27_20 18 42](https://user-images.githubusercontent.com/57793298/151351208-53fc3925-12f4-4fbc-9f35-e90969cfc715.gif)|
+
+### IOS
+|프로필 조회|위젯 생성|문제 추천|
+|:-------:|:-------:|:-------:|
+|<img src = "https://user-images.githubusercontent.com/57793298/156162143-d1f80c24-23f3-4a9d-b154-b5978c2d4497.gif" width = 500 height = 1081>|<img src = "https://user-images.githubusercontent.com/57793298/156162279-ab515547-6fe1-4d08-903c-348f6f33f269.gif" width = 500 height = 1081 >|<img src = "https://user-images.githubusercontent.com/57793298/156162187-993987a0-4f87-41a0-a731-ae5685b780f0.gif" width = 500 height = 1081>|
+
+
+
