@@ -29,6 +29,7 @@ struct SolvedACService{
                         completion(DataState.Error(error: NetworkError.DefaultError))
                         return
                     }
+                    
                     guard let value = response.value else {
                         completion(DataState.Error(error: NetworkError.DefaultError))
                         return

@@ -22,6 +22,28 @@ enum DataState<T> : Equatable {
     case Loading
     case Error(error : Error)
     case Success(data : T)
+    
+    var loading : Bool {
+        switch self {
+            case .Loading : return true
+            default: return false
+        }
+    }
+    
+    var value : T? {
+        switch self {
+            case .Success(let data) : return data
+            default: return nil
+        }
+    }
+    
+    var error : Error? {
+        switch self {
+            case .Error(let error) : return error
+            default : return nil
+        }
+    }
+    
 }
 
 extension DataState : CustomStringConvertible {

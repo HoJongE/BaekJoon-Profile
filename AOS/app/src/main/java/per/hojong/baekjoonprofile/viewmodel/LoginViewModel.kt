@@ -42,6 +42,7 @@ class LoginViewModel @Inject constructor(
             val profile = repository.loadProfile(id)
             _profileLoadingState.value = ProfileLoadingState.Success(profile)
             onSuccess?.invoke(profile)
+
         }
     }
 

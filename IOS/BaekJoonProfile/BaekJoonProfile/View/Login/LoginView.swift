@@ -28,28 +28,28 @@ struct LoginView: View {
                 .bodyText(textColor: .firstTextColor)
                 .multilineTextAlignment(.center)
             
-            BasicTextField(error: profileViewModel.profileState == DataState.Error(error: NetworkError.ParsingError), placeHolderText: "아이디", value: $id)
+            BasicTextField(error: profileViewModel.profileState.error != nil , placeHolderText: "아이디", value: $id)
                 .padding(.top)
             
-            if case let DataState.Error(error: error) = profileViewModel.profileState {
+            if let error = profileViewModel.profileState.error {
                 Text(error.localizedDescription)
                     .captionText(textColor: .errorColor)
             } else {
                 Text("ㅎㅎㅎ")
-                    .foregroundColor(.backgroundColor)
+                    .captionText(textColor: .backgroundColor)
             }
             
-            TextButton(text: "프로필 조회",loading: profileViewModel.profileState == DataState.Loading , onClick: {
+            TextButton(text: "프로필 조회",loading: profileViewModel.profileState.loading, onClick: {
                 profileViewModel.getProfile(id: id)
             })
-            .padding(.init(top: 4, leading: 24, bottom: 16, trailing: 24))
+            .padding(.init(top: 16, leading: 24, bottom: 16, trailing: 24))
             
             BottomSheetActionButton()
                 .padding()
             
             Spacer()
         }
-        .disabled(profileViewModel.profileState == DataState.Loading)
+        .disabled(profileViewModel.profileState.loading)
         .frame(maxHeight:.infinity)
         .background(Color.backgroundColor.edgesIgnoringSafeArea(.all))
         .preferredColorScheme(.dark)

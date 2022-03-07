@@ -9,7 +9,7 @@
 	<key>INIntentDefinitionNamespace</key>
 	<string>egPiy3</string>
 	<key>INIntentDefinitionSystemVersion</key>
-	<string>21E5212f</string>
+	<string>21E5227a</string>
 	<key>INIntentDefinitionToolsBuildVersion</key>
 	<string>13C100</string>
 	<key>INIntentDefinitionToolsVersion</key>
@@ -140,6 +140,8 @@
 			<string>11zOnd</string>
 			<key>INIntentType</key>
 			<string>Custom</string>
+			<key>INIntentUserConfirmationRequired</key>
+			<true/>
 			<key>INIntentVerb</key>
 			<string>View</string>
 		</dict>
