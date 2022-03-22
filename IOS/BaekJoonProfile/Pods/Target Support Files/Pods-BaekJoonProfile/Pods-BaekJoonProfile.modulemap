@@ -1,0 +1,6 @@
+framework module Pods_BaekJoonProfile {
+  umbrella header "Pods-BaekJoonProfile-umbrella.h"
+
+  export *
+  module * { export * }
+}
