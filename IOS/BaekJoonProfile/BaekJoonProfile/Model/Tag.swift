@@ -8,31 +8,28 @@
 import Foundation
 
 struct ProblemTag : Codable, Identifiable {
-    let id: UUID = UUID()
-    let key : String
-    let bojTagId : Int
-    let displayNames : [DisplayName]
+  let id: UUID = UUID()
+  let key : String
+  let bojTagId : Int
+  let displayNames : [DisplayName]
 }
-
-
 
 extension ProblemTag {
-    struct DisplayName :Codable {
-        let language : String
-        let name : String
-        let short : String
-    }
+  struct DisplayName :Codable {
+    let language : String
+    let name : String
+    let short : String
+  }
 }
 
-
 extension ProblemTag : CustomStringConvertible {
-    var description: String {
-        "태그 목록: \(displayNames.description)"
-    }
+  var description: String {
+    "태그 목록: \(displayNames.description)"
+  }
 }
 
 extension ProblemTag.DisplayName : CustomStringConvertible{
-    var description: String {
-        "태그 이름 : \(name)"
-    }
+  var description: String {
+    "태그 이름 : \(name)"
+  }
 }

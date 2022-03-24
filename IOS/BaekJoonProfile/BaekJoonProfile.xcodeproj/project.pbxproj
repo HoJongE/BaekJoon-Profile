@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		000C9F1927EC577E001D11E9 /* MockedData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0079A04E27E9E3E4001B4387 /* MockedData.swift */; };
+		000C9F1B27EC57C5001D11E9 /* APICall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000C9F1A27EC57C5001D11E9 /* APICall.swift */; };
+		000C9F1C27EC57C5001D11E9 /* APICall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000C9F1A27EC57C5001D11E9 /* APICall.swift */; };
 		00799FF727E9E12E001B4387 /* BaekJoonProfileApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00799FF627E9E12E001B4387 /* BaekJoonProfileApp.swift */; };
 		00799FFB27E9E12E001B4387 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 00799FFA27E9E12E001B4387 /* Assets.xcassets */; };
 		00799FFE27E9E12E001B4387 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 00799FFD27E9E12E001B4387 /* Preview Assets.xcassets */; };
@@ -101,6 +104,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		000C9F1A27EC57C5001D11E9 /* APICall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APICall.swift; sourceTree = "<group>"; };
 		00799FF327E9E12E001B4387 /* BaekJoonProfile.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BaekJoonProfile.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		00799FF627E9E12E001B4387 /* BaekJoonProfileApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaekJoonProfileApp.swift; sourceTree = "<group>"; };
 		00799FFA27E9E12E001B4387 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -184,6 +188,27 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		000C9F1727EC5759001D11E9 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				0079A05127E9E3E5001B4387 /* NetworkError.swift */,
+				0079A04727E9E3D8001B4387 /* ResultParser.swift */,
+				0079A04627E9E3D8001B4387 /* SolvedACService.swift */,
+				000C9F1A27EC57C5001D11E9 /* APICall.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		000C9F1827EC576B001D11E9 /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				0079A04F27E9E3E5001B4387 /* Const.swift */,
+				0079A04D27E9E3E4001B4387 /* DataState.swift */,
+				0079A04E27E9E3E4001B4387 /* MockedData.swift */,
+			);
+			path = Utility;
+			sourceTree = "<group>";
+		};
 		00799FEA27E9E12E001B4387 = {
 			isa = PBXGroup;
 			children = (
@@ -210,6 +235,8 @@
 		00799FF527E9E12E001B4387 /* BaekJoonProfile */ = {
 			isa = PBXGroup;
 			children = (
+				000C9F1827EC576B001D11E9 /* Utility */,
+				000C9F1727EC5759001D11E9 /* Service */,
 				0079A0A227E9E524001B4387 /* Info.plist */,
 				0079A06A27E9E421001B4387 /* ColorResources.swift */,
 				0079A06527E9E409001B4387 /* Data */,
@@ -266,14 +293,9 @@
 		0079A04227E9E3A8001B4387 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				0079A04F27E9E3E5001B4387 /* Const.swift */,
-				0079A04D27E9E3E4001B4387 /* DataState.swift */,
-				0079A04E27E9E3E4001B4387 /* MockedData.swift */,
-				0079A05127E9E3E5001B4387 /* NetworkError.swift */,
 				0079A04C27E9E3E4001B4387 /* Problem.swift */,
 				0079A05027E9E3E5001B4387 /* Profile.swift */,
 				0079A05227E9E3E5001B4387 /* Tag.swift */,
-				0079A04527E9E3CC001B4387 /* Network */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -298,15 +320,6 @@
 				0079A06D27E9E42C001B4387 /* Problem */,
 			);
 			path = View;
-			sourceTree = "<group>";
-		};
-		0079A04527E9E3CC001B4387 /* Network */ = {
-			isa = PBXGroup;
-			children = (
-				0079A04727E9E3D8001B4387 /* ResultParser.swift */,
-				0079A04627E9E3D8001B4387 /* SolvedACService.swift */,
-			);
-			path = Network;
 			sourceTree = "<group>";
 		};
 		0079A06527E9E409001B4387 /* Data */ = {
@@ -594,6 +607,7 @@
 				0079A0A027E9E48B001B4387 /* ProblemDescription.swift in Sources */,
 				0079A09427E9E480001B4387 /* BottomSheet.swift in Sources */,
 				0079A04827E9E3D8001B4387 /* SolvedACService.swift in Sources */,
+				000C9F1B27EC57C5001D11E9 /* APICall.swift in Sources */,
 				0079A09E27E9E48B001B4387 /* ProblemHost.swift in Sources */,
 				0079A05D27E9E3E5001B4387 /* NetworkError.swift in Sources */,
 				0079A09927E9E486001B4387 /* LoginView.swift in Sources */,
@@ -611,6 +625,7 @@
 				0079A05C27E9E3E5001B4387 /* Profile.swift in Sources */,
 				0079A04B27E9E3D8001B4387 /* ResultParser.swift in Sources */,
 				0079A05427E9E3E5001B4387 /* Problem.swift in Sources */,
+				000C9F1927EC577E001D11E9 /* MockedData.swift in Sources */,
 				0079A05627E9E3E5001B4387 /* DataState.swift in Sources */,
 				0079A03027E9E2E5001B4387 /* ProfileWidgetView.swift in Sources */,
 				0079A03127E9E2E5001B4387 /* WidgetIntents.intentdefinition in Sources */,
@@ -619,6 +634,7 @@
 				0079A02F27E9E2E5001B4387 /* ProfileWidget.swift in Sources */,
 				0079A05E27E9E3E5001B4387 /* NetworkError.swift in Sources */,
 				0079A07A27E9E449001B4387 /* TierBadge.swift in Sources */,
+				000C9F1C27EC57C5001D11E9 /* APICall.swift in Sources */,
 				0079A05A27E9E3E5001B4387 /* Const.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

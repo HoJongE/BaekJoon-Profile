@@ -42,10 +42,10 @@ struct Provider: IntentTimelineProvider {
         let nextUpdateDate = Calendar.current.date(byAdding: .minute,value: updateInterval.intValue , to: date)!
         
         
-        SolvedACService.shared.getProfile(id: id){ result in
-            let entry = Entry(date: date, profile: result)
-            let timeLine = Timeline(entries: [entry], policy: .after(nextUpdateDate))
-            completion(timeLine)
+        _ = SolvedACService.shared.getProfile(id: id).sink {
+          let entry = Entry(date: date, profile: $0)
+          let timeLine = Timeline(entries: [entry], policy: .after(nextUpdateDate))
+          completion(timeLine)
         }
     }
 }
