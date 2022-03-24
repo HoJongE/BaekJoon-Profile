@@ -8,9 +8,9 @@
 import SwiftUI
 
 struct LoginView: View {
-  @State private var id:String = ""
-  @EnvironmentObject var profileViewModel : ProfileViewModel
-  @EnvironmentObject var sheetManager : SheetManager
+  @State private var id: String = ""
+  @EnvironmentObject private var profileViewModel : ProfileViewModel
+  @EnvironmentObject private var sheetManager : SheetManager
   
   var body: some View {
     ScrollView(.vertical, showsIndicators: false) {
@@ -50,7 +50,7 @@ struct LoginView: View {
         Spacer()
       }
     }
-    .disabled(profileViewModel.profileState == DataState.Loading)
+    .disabled(profileViewModel.profileState.loading)
     .frame(maxHeight:.infinity)
     .background(Color.backgroundColor.edgesIgnoringSafeArea(.all))
     .preferredColorScheme(.dark)
